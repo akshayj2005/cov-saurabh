@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>COV Registration - Work Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+        :root{--primary:#002b5b;--accent-teal:#00a6a6;--soft-bg:#f2f9ff;--highlight:#38b6ff;--text-dark:#012a4a;--white:#fff;--light-gray:#e8f4f8}*{margin:0;padding:0;box-sizing:border-box}body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,sans-serif;background:linear-gradient(135deg,#0d4d6d 0%,#1a7a9e 50%,#4db8b8 100%);min-height:100vh;padding-top:100px;overflow-x:hidden;color:var(--text-dark);line-height:1.6}body.modal-open{overflow:hidden}header{background:var(--white);box-shadow:0 2px 10px rgba(0,43,91,.1);position:fixed;top:0;left:0;right:0;z-index:1000}.header-content{max-width:1520px;margin:0 auto;padding:15px 40px;display:flex;justify-content:space-between;align-items:center;gap:20px}.logo-container{display:flex;align-items:center;flex-shrink:0}#logo{height:70px;display:block}nav{display:flex;gap:10px;align-items:center;flex-wrap:nowrap;justify-content:center;flex:1}nav a{position:relative;padding:8px 16px;border-radius:20px;text-decoration:none;color:rgb(10,8,94);font-size:18px;transition:.3s ease-in-out;white-space:nowrap}nav a:hover{background-color:rgba(10,8,94,.12);transform:translateY(-2px)}.nav-item{position:relative}.dropdown{position:absolute;top:100%;left:50%;transform:translateX(-50%);background:#fff;border-radius:12px;box-shadow:0 8px 25px rgba(0,43,91,.15);min-width:220px;opacity:0;visibility:hidden;transition:all .3s cubic-bezier(.68,-.55,.265,1.55);z-index:1100;margin-top:10px;overflow:hidden}.nav-item:hover .dropdown{opacity:1;visibility:visible;margin-top:15px}.dropdown a{display:block;padding:12px 20px;color:var(--primary);font-size:16px;border-radius:0;transition:all .3s ease;border-left:3px solid transparent}.dropdown a:hover{background-color:rgba(0,166,166,.1);border-left-color:var(--accent-teal);transform:translateX(5px)}.dropdown-arrow{display:inline-block;margin-left:5px;font-size:12px;transition:transform .3s ease}.nav-item:hover .dropdown-arrow{transform:rotate(180deg)}.nav-right{display:flex;align-items:center;gap:15px;flex-shrink:0}.register-btn{padding:8px 16px;background-color:transparent;color:rgb(10,8,94);text-decoration:none;border-radius:20px;font-size:18px;font-weight:400;transition:.3s ease-in-out;white-space:nowrap}.register-btn:hover{background-color:rgba(10,8,94,.12);transform:translateY(-2px)}.login-btn{padding:8px 20px;background-color:rgb(10,8,94);color:#fff;border:none;border-radius:25px;cursor:pointer;font-size:16px;font-weight:600;transition:all .3s ease;white-space:nowrap}.login-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(10,8,94,.4)}.hamburger{display:none;flex-direction:column;justify-content:space-between;width:30px;height:24px;background:transparent;border:none;cursor:pointer;padding:0;z-index:1001;position:relative}.hamburger span{width:100%;height:3px;background-color:var(--primary);border-radius:3px;transition:all .3s ease;transform-origin:center}.hamburger.active span:nth-child(1){transform:translateY(10.5px) rotate(45deg)}.hamburger.active span:nth-child(2){opacity:0;transform:translateX(-20px)}.hamburger.active span:nth-child(3){transform:translateY(-10.5px) rotate(-45deg)}.menu-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.5);z-index:999;opacity:0;transition:opacity .3s ease}.menu-overlay.active{display:block;opacity:1}.container{background:#fff;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.2);max-width:1520px;width:calc(100% - 80px);margin:20px auto 40px;padding:40px}.page-title{font-size:32px;font-weight:700;color:#0d4d6d;margin-bottom:35px;text-align:center}.tabs{display:flex;gap:10px;margin-bottom:30px;flex-wrap:wrap}.tab{padding:12px 28px;border:none;background:#e8e8e8;color:#666;font-size:18px;font-weight:500;cursor:pointer;border-radius:6px;transition:all .3s ease;text-decoration:none;display:inline-block}.tab.active{background:linear-gradient(135deg,#1a7a9e,#4db8b8);color:#fff;box-shadow:0 4px 12px rgba(29,122,158,.3)}.tab:hover:not(.active){background:#d5d5d5}.content{background:#f9f9f9;border-radius:8px;padding:35px;border:2px solid #e0e0e0}.experience-section,.terms-section{background:#fff;padding:25px;border-radius:8px;border:2px solid #1a7a9e;margin-bottom:30px}.section-title{font-size:18px;font-weight:600;color:#0d4d6d;margin-bottom:20px;padding-bottom:10px;border-bottom:2px solid #4db8b8}.experience-table{width:100%;border-collapse:collapse;margin-bottom:15px}.experience-table th{background:linear-gradient(135deg,#1a7a9e,#4db8b8);color:#fff;padding:12px 10px;text-align:left;font-size:18px;font-weight:600}.experience-table td{padding:10px;border-bottom:1px solid #e0e0e0}.experience-table input[type=text],.experience-table select{width:100%;padding:8px 10px;border:1px solid #ccc;border-radius:4px;font-size:18px;background:#fff;transition:all .3s ease}.experience-table input[type=text]:focus,.experience-table select:focus{outline:0;border-color:#1a7a9e;box-shadow:0 0 0 2px rgba(26,122,158,.1)}.upload-btn{padding:8px 20px;background:linear-gradient(135deg,#1a7a9e,#4db8b8);color:#fff;border:none;border-radius:5px;font-size:18px;font-weight:500;cursor:pointer;transition:all .3s ease;white-space:nowrap}.upload-btn:hover{transform:translateY(-2px);box-shadow:0 6px 16px rgba(26,122,158,.3)}.add-row-btn{padding:10px 24px;background:#fff;color:#1a7a9e;border:2px solid #1a7a9e;border-radius:5px;font-size:18px;font-weight:600;cursor:pointer;transition:all .3s ease}.add-row-btn:hover{background:#1a7a9e;color:#fff}.terms-list{list-style:none;counter-reset:terms-counter}.terms-list>li{counter-increment:terms-counter;margin-bottom:15px;display:flex;align-items:flex-start;gap:15px;font-size:18px;line-height:1.6;color:#333}.terms-list>li::before{content:counter(terms-counter) ".";font-weight:600;min-width:20px;color:#0d4d6d}.terms-list .sub-list{list-style:none;counter-reset:sub-counter;margin-top:8px;padding-left:0}.terms-list .sub-list li{counter-increment:sub-counter;margin-bottom:8px;font-size:18px;display:flex;align-items:flex-start;gap:15px}.terms-list .sub-list li::before{content:counter(sub-counter,lower-alpha) ".";font-weight:600;color:#1a7a9e;min-width:20px}.no-counter{counter-increment:none!important}.no-counter::before{content:none!important}.radio-group{display:flex;gap:20px;align-items:center;margin-left:auto;min-width:120px}.radio-option{display:flex;align-items:center;gap:5px;cursor:pointer}.radio-option input[type=radio]{width:16px;height:16px;cursor:pointer;accent-color:#1a7a9e}.radio-option label{font-size:18px;font-weight:500;cursor:pointer;color:#333}.action-buttons{display:flex;justify-content:space-between;margin-top:25px;gap:15px}.back-btn,.next-btn{padding:14px 50px;border:none;border-radius:6px;font-size:15px;font-weight:600;cursor:pointer;transition:all .3s ease}.back-btn{background:#fff;color:#1a7a9e;border:2px solid #1a7a9e}.back-btn:hover{background:#f0f0f0;transform:translateY(-2px)}.next-btn{background:linear-gradient(135deg,#1a7a9e,#4db8b8);color:#fff}.next-btn:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(26,122,158,.4)}input[type=file]{display:none}.footer{background:#001a33;padding:25px 40px;margin-top:40px}.footer-content{max-width:1440px;margin:0 auto;display:flex;justify-content:space-between;align-items:center}.footer-content a{color:#fff;text-decoration:none;transition:color .3s ease}.footer-content a:hover{color:var(--accent-teal)}.footer-content p{color:#fff}.footer-legal{display:flex;gap:20px}@media (max-width:1024px){.experience-table{font-size:12px}.experience-table td,.experience-table th{padding:8px 6px}}@media (max-width:768px){body{padding-top:85px}.header-content{padding:15px 20px;flex-wrap:wrap;gap:20px}#logo{height:50px;z-index:1001}.hamburger{display:flex;margin-left:auto}.nav-right{display:none}nav{position:fixed;top:0;right:-100%;width:280px;height:100vh;background:linear-gradient(135deg,#f2f9ff 0%,#fff 100%);flex-direction:column!important;justify-content:flex-start!important;align-items:stretch!important;padding:100px 30px 30px 30px;gap:0!important;box-shadow:-5px 0 15px rgba(0,0,0,.1);transition:right .4s cubic-bezier(.68,-.55,.265,1.55);z-index:1000;overflow-y:auto}nav.active{right:0}nav a{width:100%;padding:15px 20px;margin:5px 0;border-radius:12px;font-size:16px;text-align:left;border-left:3px solid transparent;transition:all .3s ease}nav a:hover{background-color:rgba(0,166,166,.1);border-left-color:var(--accent-teal);transform:translateX(5px)}.nav-item{width:100%}.nav-item>a{width:100%}.dropdown{position:static;transform:none;box-shadow:none;background:rgba(0,166,166,.05);margin:5px 0;border-radius:8px;max-height:0;opacity:0;visibility:visible;overflow:hidden;transition:all .3s ease}.nav-item.mobile-active .dropdown{max-height:200px;opacity:1;margin-top:8px}.dropdown a{padding:10px 20px 10px 30px;font-size:15px}.dropdown-arrow{float:right}.nav-item.mobile-active .dropdown-arrow{transform:rotate(180deg)}.register-btn{width:100%!important;margin:15px 0 0 0!important;padding:15px 20px!important;border-radius:12px;font-size:16px;text-align:center;display:block!important}.login-btn{width:100%!important;margin:10px 0 0 0!important;padding:15px 20px!important;border-radius:12px;font-size:16px;background-color:var(--accent-teal);transition:all .3s ease;display:block!important}.login-btn:hover{transform:translateY(-2px);box-shadow:0 5px 15px rgba(0,166,166,.3)}.container{width:calc(100% - 40px);padding:30px 20px}.page-title{font-size:28px;margin-bottom:25px}.content{padding:25px 20px}.experience-section,.terms-section{padding:20px 15px;overflow-x:auto}.experience-table{min-width:600px}.action-buttons{flex-direction:column}.back-btn,.next-btn{width:100%}.tabs{flex-wrap:wrap}.tab{font-size:15px;padding:10px 20px}.terms-list>li{flex-direction:column}.radio-group{margin-left:20px}.footer-content{flex-direction:column;text-align:center;gap:15px}}@media (max-width:480px){body{padding-top:75px}#logo{height:45px}.hamburger{width:28px;height:22px}nav{width:260px;padding:90px 25px 25px 25px}nav a{font-size:15px;padding:12px 16px}.login-btn{font-size:15px!important;padding:12px 16px!important}.container{width:calc(100% - 20px);padding:20px 15px}.page-title{font-size:24px;margin-bottom:20px}.content{padding:20px 15px}.experience-section,.terms-section{padding:15px 12px}.section-title{font-size:16px}.tabs{gap:8px}}::-webkit-scrollbar{width:0;height:0}*{scrollbar-width:none;-ms-overflow-style:none}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <a href="index.html"><img id='logo' src="assets/Logo.avif" height="70px" alt="COV Logo"></a>
+            </div>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+            <nav id="navMenu">
+                <a href="membership.html">Membership</a>
+                <a href="#training">Training & Courses</a>
+                <a href="#events">Events</a>
+                <div class="nav-item">
+                    <a>About Us <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown">
+                        <a href="about.html#our-story">Our Story</a>
+                        <a href="BOD.html">Board of Directors</a>
+                    </div>
+                </div>
+                <a href="covsphere.html">COV Sphere</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="nav-right">
+                <a href="reg1.html" class="register-btn">Register Now</a>
+                <button class="login-btn">Login</button>
+            </div>
+        </div>
+    </header>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="container">
+        <h1 class="page-title">Registration Form</h1>
+        <div class="tabs">
+            <a class="tab" href="reg1.html">Personal Details</a>
+            <a class="tab" href="reg2.html">Educational Details</a>
+            <a href='reg3.html' class="tab active">Work Experience</a>
+        </div>
+        <div class="content">
+            <div class="experience-section">
+                <h3 class="section-title">Work Experience</h3>
+                <table class="experience-table">
+                    <thead>
+                        <tr><th>You are presently</th><th>Total no. of years in practice/emp</th><th>Period From</th><th>Period To</th><th>Employer</th><th>Designation</th><th>Area of Work</th><th>Upload</th></tr>
+                    </thead>
+                    <tbody id="experienceTableBody">
+                        <tr>
+                            <td><select><option value="">Select</option><option value="employment">Employment</option><option value="practice">Practice</option></select></td>
+                            <td><input type="text" placeholder="Year"></td>
+                            <td><input type="text" placeholder="From"></td>
+                            <td><input type="text" placeholder="To"></td>
+                            <td><input type="text" placeholder="Employer"></td>
+                            <td><input type="text" placeholder="Designation"></td>
+                            <td><input type="text" placeholder="Area"></td>
+                            <td><button class="upload-btn" onclick="document.getElementById('expUpload1').click()">Upload</button><input type="file" id="expUpload1" accept=".pdf,.jpg,.png"></td>
+                        </tr>
+                        <tr>
+                            <td><select><option value="">Select</option><option value="employment">Employment</option><option value="practice">Practice</option></select></td>
+                            <td><input type="text" placeholder="Year"></td>
+                            <td><input type="text" placeholder="From"></td>
+                            <td><input type="text" placeholder="To"></td>
+                            <td><input type="text" placeholder="Employer"></td>
+                            <td><input type="text" placeholder="Designation"></td>
+                            <td><input type="text" placeholder="Area"></td>
+                            <td><button class="upload-btn" onclick="document.getElementById('expUpload2').click()">Upload</button><input type="file" id="expUpload2" accept=".pdf,.jpg,.png"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button class="add-row-btn" onclick="addExperienceRow()">+ Add Row</button>
+            </div>
+            <div class="terms-section">
+                <h3 class="section-title">Terms</h3>
+                <ul class="terms-list">
+                    <li><span>Have you every been Convicted for an offence?</span><div class="radio-group"><div class="radio-option"><input type="radio" id="q1-yes" name="question1" value="yes"><label for="q1-yes">Yes</label></div><div class="radio-option"><input type="radio" id="q1-no" name="question1" value="no" checked><label for="q1-no">No</label></div></div></li>
+                    <li><span>Whether any criminal proceeding is initiated against you and is pending for disposal before the court of law? (excluding litigation of personal/ matrimonial nature)</span><div class="radio-group"><div class="radio-option"><input type="radio" id="q2-yes" name="question2" value="yes"><label for="q2-yes">Yes</label></div><div class="radio-option"><input type="radio" id="q2-no" name="question2" value="no" checked><label for="q2-no">No</label></div></div></li>
+                    <li><span>Have you ever been declared as an undischarged bankrupt or applied to be adjudged as Bankrupt?</span><div class="radio-group"><div class="radio-option"><input type="radio" id="q3-yes" name="question3" value="yes"><label for="q3-yes">Yes</label></div><div class="radio-option"><input type="radio" id="q3-no" name="question3" value="no" checked><label for="q3-no">No</label></div></div></li>
+                    <li><span>Have you ever been restrained by any public sector bank / any other institution to conduct valuation services and subsequently de-panelled from their panel</span><div class="radio-group"><div class="radio-option"><input type="radio" id="q4-yes" name="question4" value="yes"><label for="q4-yes">Yes</label></div><div class="radio-option"><input type="radio" id="q4-no" name="question4" value="no" checked><label for="q4-no">No</label></div></div></li>
+                    <li><span>Whether any disciplinary proceeding are pending or any disciplinary action has been taken at any time in the preceding three years against you by the institution / body of which you are a member</span><div class="radio-group"><div class="radio-option"><input type="radio" id="q5-yes" name="question5" value="yes"><label for="q5-yes">Yes</label></div><div class="radio-option"><input type="radio" id="q5-no" name="question5" value="no" checked><label for="q5-no">No</label></div></div></li>
+                    <li><span>Whether you had an unblemished service with the last employer in case of employment?</span><div class="radio-group"><div class="radio-option"><input type="radio" id="q6-yes" name="question6" value="yes" checked><label for="q6-yes">Yes</label></div><div class="radio-option"><input type="radio" id="q6-no" name="question6" value="no"><label for="q6-no">No</label></div></div></li>
+                    <li><span>Whether your name appears in the database of MCA regarding:</span><div class="radio-group"><div class="radio-option"><input type="radio" id="q7-yes" name="question7" value="yes"><label for="q7-yes">Yes</label></div><div class="radio-option"><input type="radio" id="q7-no" name="question7" value="no" checked><label for="q7-no">No</label></div></div></li>
+                    <li class="no-counter" style="margin-left:35px"><ul class="sub-list"><li><span>Directors disqualified under section 164 of companies act 2013</span><div class="radio-group"><div class="radio-option"><input type="radio" id="q8a-yes" name="question8a" value="yes"><label for="q8a-yes">Yes</label></div><div class="radio-option"><input type="radio" id="q8a-no" name="question8a" value="no" checked><label for="q8a-no">No</label></div></div></li><li><span>Proclaimed Offenders under section 82 of the code of Criminal Procedure, 1973?</span><div class="radio-group"><div class="radio-option"><input type="radio" id="q8b-yes" name="question8b" value="yes"><label for="q8b-yes">Yes</label></div><div class="radio-option"><input type="radio" id="q8b-no" name="question8b" value="no" checked><label for="q8b-no">No</label></div></div></li></ul></li>
+                    <li><span>Whether you have been penalised by a market regulator (SEBI or CCI) in the last 3 years?</span><div class="radio-group"><div class="radio-option"><input type="radio" id="q9-yes" name="question9" value="yes"><label for="q9-yes">Yes</label></div><div class="radio-option"><input type="radio" id="q9-no" name="question9" value="no" checked><label for="q9-no">No</label></div></div></li>
+                    <li><span>Whether your name appears in the list of defaulters of RBI?</span><div class="radio-group"><div class="radio-option"><input type="radio" id="q10-yes" name="question10" value="yes"><label for="q10-yes">Yes</label></div><div class="radio-option"><input type="radio" id="q10-no" name="question10" value="no" checked><label for="q10-no">No</label></div></div></li>
+                </ul>
+            </div>
+            <div class="action-buttons">
+                <button class="back-btn" onclick="window.location.href='reg2.html'">Back</button>
+                <button class="next-btn" onclick="alert('Form Submitted!')">Submit</button>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">© 2025 Confederation of Valuers — All Rights Reserved</p>
+            <div class="footer-legal">
+                <a href="faq.html">FAQ</a>
+                <a href="TandC.html">Terms & Conditions</a>
+                <a href="policy.html">Policy</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        let expRowCount=2;function addExperienceRow(){expRowCount++;const t=document.getElementById("experienceTableBody"),e=document.createElement("tr");e.innerHTML=`<td><select><option value="">Select</option><option value="employment">Employment</option><option value="practice">Practice</option></select></td><td><input type="text" placeholder="Year"></td><td><input type="text" placeholder="From"></td><td><input type="text" placeholder="To"></td><td><input type="text" placeholder="Employer"></td><td><input type="text" placeholder="Designation"></td><td><input type="text" placeholder="Area"></td><td><button class="upload-btn" onclick="document.getElementById('expUpload${expRowCount}').click()">Upload</button><input type="file" id="expUpload${expRowCount}" accept=".pdf,.jpg,.png"></td>`,t.appendChild(e)}const hamburger=document.getElementById("hamburger"),navMenu=document.getElementById("navMenu"),menuOverlay=document.getElementById("menuOverlay");hamburger.addEventListener("click",function(){this.classList.toggle("active"),navMenu.classList.toggle("active"),menuOverlay.classList.toggle("active"),document.body.style.overflow=this.classList.contains("active")?"hidden":""}),menuOverlay.addEventListener("click",function(){hamburger.classList.remove("active"),navMenu.classList.remove("active"),this.classList.remove("active"),document.body.style.overflow=""}),navMenu.querySelectorAll("a").forEach(t=>{t.addEventListener("click",function(t){window.innerWidth<=768&&this.parentElement.classList.contains("nav-item")||(hamburger.classList.remove("active"),navMenu.classList.remove("active"),menuOverlay.classList.remove("active"),document.body.style.overflow="")})});if(window.innerWidth<=768){const t=document.querySelector(".nav-item");if(t){t.querySelector("a").addEventListener("click",function(e){e.preventDefault(),t.classList.toggle("mobile-active")})}}const navRight=document.querySelector(".nav-right");if(navRight&&window.innerWidth<=768){const t=navRight.querySelector(".register-btn").cloneNode(!0),e=navRight.querySelector(".login-btn").cloneNode(!0);navMenu.appendChild(t),navMenu.appendChild(e)}
+    </script>
+</body>
+</html>

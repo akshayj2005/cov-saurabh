@@ -1,0 +1,1095 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Membership - COV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+        :root {
+            --primary: #002b5b;
+            --accent-teal: #00a6a6;
+            --soft-bg: #f2f9ff;
+            --highlight: #38b6ff;
+            --text-dark: #012a4a;
+            --white: #ffffff;
+            --light-gray: #e8f4f8;
+            --hero-height: min(85vh, 600px);
+            --header-offset: 100px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+            color: var(--text-dark);
+            background: var(--white);
+            line-height: 1.6;
+        }
+
+        /* ==================== HEADER STYLES - BOD MATCH ==================== */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 43, 91, 0.1);
+            position: relative;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1520px;
+            margin: 0 auto;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        #logo {
+            height: 70px;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: nowrap;
+            justify-content: center;
+            flex: 1;
+        }
+
+        nav a {
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: rgb(10, 8, 94);
+            font-size: 18px;
+            transition: 0.3s ease-in-out;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            background-color: rgba(10, 8, 94, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 43, 91, 0.15);
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1100;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 15px;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--primary);
+            font-size: 16px;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown a:hover {
+            background-color: rgba(0, 166, 166, 0.1);
+            border-left-color: var(--accent-teal);
+            transform: translateX(5px);
+        }
+
+        .dropdown-arrow {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+
+        .register-btn-header {
+            padding: 8px 16px;
+            background-color: transparent;
+            color: rgb(10, 8, 94);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 18px;
+            font-weight: 400;
+            transition: 0.3s ease-in-out;
+            white-space: nowrap;
+        }
+
+        .register-btn-header:hover {
+            background-color: rgba(10, 8, 94, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .login-btn {
+            padding: 8px 20px;
+            background-color: rgb(10, 8, 94);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(10.5px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-10.5px) rotate(-45deg);
+        }
+
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-teal) 100%);
+            color: white;
+            padding: 120px 40px 120px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 0;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-30px) scale(1.05);
+            }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            letter-spacing: -1px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-section p {
+            font-size: clamp(16px, 2vw, 20px);
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* ===== CATEGORIES SECTION ===== */
+        .categories-section {
+            padding: 80px 40px;
+            background: var(--white);
+        }
+
+        .categories-container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 38px);
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .categories-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            background: #e8e8e8;
+            color: #666;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 166, 166, 0.3);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #d5d5d5;
+        }
+
+        .tab-content {
+            display: none;
+            background: var(--soft-bg);
+            padding: 40px;
+            border-radius: 12px;
+            border: 2px solid var(--accent-teal);
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tab-content h3 {
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .tab-content p {
+            font-size: 16px;
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .tab-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 25px;
+        }
+
+        .tab-content ul li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            font-size: 16px;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .tab-content ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-teal);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .subcategories {
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+
+        .register-btn {
+            padding: 14px 40px;
+            background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+        }
+
+        .register-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 166, 166, 0.4);
+        }
+
+        /* ===== BENEFITS SECTION ===== */
+        .benefits-section {
+            padding: 80px 40px;
+            background: var(--soft-bg);
+        }
+
+        .benefits-container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 43, 91, 0.12);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent-teal);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .benefit-card.fade-in-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 166, 166, 0.2);
+        }
+
+        .benefit-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .benefit-card p {
+            font-size: 15px;
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #001a33;
+            padding: 25px 40px;
+        }
+
+        .footer-content {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-content a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-content a:hover {
+            color: var(--accent-teal);
+        }
+
+        .footer-content p {
+            color: white;
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 20px;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            #logo {
+                height: 50px;
+                z-index: 1001;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+            }
+
+            .nav-right {
+                display: none;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: linear-gradient(135deg, #f2f9ff 0%, #ffffff 100%);
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                align-items: stretch !important;
+                padding: 100px 30px 30px 30px;
+                gap: 0 !important;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                z-index: 1000;
+                overflow-y: auto;
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            nav a {
+                width: 100%;
+                padding: 15px 20px;
+                margin: 5px 0;
+                border-radius: 12px;
+                font-size: 16px;
+                text-align: left;
+                border-left: 3px solid transparent;
+                transition: all 0.3s ease;
+            }
+
+            nav a:hover {
+                background-color: rgba(0, 166, 166, 0.1);
+                border-left-color: var(--accent-teal);
+                transform: translateX(5px);
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-item>a {
+                width: 100%;
+            }
+
+            .dropdown {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background: rgba(0, 166, 166, 0.05);
+                margin: 5px 0;
+                border-radius: 8px;
+                max-height: 0;
+                opacity: 0;
+                visibility: visible;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .nav-item.mobile-active .dropdown {
+                max-height: 200px;
+                opacity: 1;
+                margin-top: 8px;
+            }
+
+            .dropdown a {
+                padding: 10px 20px 10px 30px;
+                font-size: 15px;
+            }
+
+            .dropdown-arrow {
+                float: right;
+            }
+
+            .nav-item.mobile-active .dropdown-arrow {
+                transform: rotate(180deg);
+            }
+
+            .register-btn-header {
+                width: 100% !important;
+                margin: 15px 0 0 0 !important;
+                padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
+                text-align: center;
+                display: block !important;
+            }
+
+            .login-btn {
+                width: 100% !important;
+                margin: 10px 0 0 0 !important;
+                padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
+                background-color: var(--accent-teal);
+                transition: all 0.3s ease;
+                display: block !important;
+            }
+
+            .hero-section {
+                padding: 80px 20px 80px;
+                min-height: 400px;
+            }
+
+            .categories-section,
+            .benefits-section {
+                padding: 50px 20px;
+            }
+
+            .tab-content {
+                padding: 25px 20px;
+            }
+
+            .categories-tabs {
+                gap: 10px;
+            }
+
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            #logo {
+                height: 45px;
+            }
+
+            .hamburger {
+                width: 28px;
+                height: 22px;
+            }
+
+            nav {
+                width: 260px;
+                padding: 90px 25px 25px 25px;
+            }
+        }
+
+        ::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+        * {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img id='logo' src="assets/Logo.avif" height="70px" alt="COV Logo">
+                </a>
+            </div>
+
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav id="navMenu">
+                <a href="membership.html">Membership</a>
+                <a href="#training">Training & Courses</a>
+                <a href="#events">Events</a>
+                <div class="nav-item">
+                    <a>About Us <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown">
+                        <a href="about.html#our-story">Our Story</a>
+                        <a href="BOD.html">Board of Directors</a>
+                    </div>
+                </div>
+                <a href="covsphere.html">COV Sphere</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="nav-right">
+                <a href="reg1.html" class="register-btn-header">Register Now</a>
+                <button class="login-btn">Login</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- HERO SECTION -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Membership at COV</h1>
+            <p>At COV, membership is more than a credential—it's a commitment to excellence, integrity, and lifelong
+                learning in the valuation profession. Whether you're a student, an emerging practitioner, or a seasoned
+                expert, we offer a pathway tailored to your stage of professional growth.</p>
+        </div>
+    </section>
+
+    <!-- MEMBERSHIP CATEGORIES SECTION -->
+    <section class="categories-section">
+        <div class="categories-container">
+            <h2 class="section-title">Membership Categories</h2>
+            <p class="section-subtitle">COV's membership structure is designed to support you at every stage of your
+                professional journey.</p>
+
+            <div class="categories-tabs">
+                <button class="tab-btn active" data-tab="student">Student</button>
+                <button class="tab-btn" data-tab="affiliate">Affiliate</button>
+                <button class="tab-btn" data-tab="chartered">Chartered</button>
+                <button class="tab-btn" data-tab="fellow">Fellow</button>
+                <button class="tab-btn" data-tab="institutional">Institutional</button>
+            </div>
+
+            <!-- Student Tab -->
+            <div class="tab-content active" id="student">
+                <h3>Student Member</h3>
+                <p>Ideal for current students or recent graduates pursuing academic programmes related to valuation,
+                    finance, economics, law, engineering, or real estate.</p>
+                <ul>
+                    <li>Provides early exposure to the professional valuation ecosystem</li>
+                    <li>Access to foundational learning resources, events, and mentorship</li>
+                    <li>Prepares members for transition into Affiliate or Chartered levels</li>
+                    <li>Encourages participation in student chapters, competitions, and forums</li>
+                </ul>
+                <a href="reg1.html" class="register-btn">Register Now</a>
+            </div>
+
+            <!-- Affiliate Tab -->
+            <div class="tab-content" id="affiliate">
+                <h3>Affiliate Member</h3>
+                <p>Suited for early-career professionals or individuals transitioning into valuation, who have
+                    foundational knowledge or a demonstrated interest in the profession.</p>
+                <ul>
+                    <li>Ideal for those seeking structured pathways toward becoming Chartered Members or Registered
+                        Valuers</li>
+                    <li>Access to foundational CPD programmes, industry events, and mentorship</li>
+                    <li>Serves as a launchpad for professional certification and practical exposure</li>
+                    <li>Sub-categories include:
+                        <div class="subcategories">
+                            <ul>
+                                <li>Affiliate (Land & Building Valuation)</li>
+                                <li>Affiliate (Plant & Machinery Valuation)</li>
+                                <li>Affiliate (Business Valuation)</li>
+                                <li>Affiliate (Jewellery & Precious Assets)</li>
+                                <li>Affiliate (Financial Instruments & Securities)</li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+                <a href="reg1.html" class="register-btn">Register Now</a>
+            </div>
+
+            <!-- Chartered Tab -->
+            <div class="tab-content" id="chartered">
+                <h3>Chartered Member</h3>
+                <p>This is the core professional grade of membership, awarded to those who meet rigorous standards of
+                    competency, ethics, and practical experience.</p>
+                <ul>
+                    <li>Requires formal qualification and experience in valuation or allied domains</li>
+                    <li>Recognised through post-nominal: CM-COV</li>
+                    <li>Eligible for advanced CPD, technical committees, and mentoring roles</li>
+                    <li>Demonstrates commitment to international valuation standards and ethical practice</li>
+                </ul>
+                <a href="reg1.html" class="register-btn">Register Now</a>
+            </div>
+
+            <!-- Fellow Tab -->
+            <div class="tab-content" id="fellow">
+                <h3>Fellow Member</h3>
+                <p>Reserved for accomplished professionals with substantial experience, contributions to the valuation
+                    community, and a reputation for integrity and leadership.</p>
+                <ul>
+                    <li>Recognised through post-nominal: FM-COV</li>
+                    <li>Eligible to chair committees, lead technical discussions, and represent COV in global forums
+                    </li>
+                    <li>Mentors junior members and contributes to setting benchmarks for the profession</li>
+                    <li>Acknowledged for research, innovation, or long-standing impact in valuation practice</li>
+                </ul>
+                <a href="reg1.html" class="register-btn">Register Now</a>
+            </div>
+
+            <!-- Institutional Tab -->
+            <div class="tab-content" id="institutional">
+                <h3>Institutional Member</h3>
+                <p>Open to valuation firms, academic institutions, industry bodies, and organisations engaged in or
+                    supporting the valuation profession.</p>
+                <ul>
+                    <li>Encourages organisational participation in COV's professional ecosystem</li>
+                    <li>Access to team-wide CPD opportunities, joint events, and research partnerships</li>
+                    <li>Opportunity to contribute to capacity building, policy advocacy, and knowledge sharing</li>
+                    <li>Demonstrates institutional commitment to ethical and global best practices in valuation</li>
+                </ul>
+                <a href="reg1.html" class="register-btn">Register Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- BENEFITS SECTION -->
+    <section class="benefits-section">
+        <div class="benefits-container">
+            <h2 class="section-title">Member Benefits</h2>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-number">1</div>
+                    <h3>Professional Recognition</h3>
+                    <p>Your credentials are backed by a reputable institution aligned with international standards.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-number">2</div>
+                    <h3>Learning & Development</h3>
+                    <p>Workshops, certifications, webinars, and CPD tracking—designed to keep you future-ready.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-number">3</div>
+                    <h3>Global Standards & Tools</h3>
+                    <p>Stay updated with the latest valuation methodologies, IVS-aligned practices, and digital tools.
+                    </p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-number">4</div>
+                    <h3>Career Support</h3>
+                    <p>Mentorship, networking events, and listings on COV's One Stop Platform (OSP).</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-number">5</div>
+                    <h3>Thought Leadership</h3>
+                    <p>Contribute to journals, working groups, committees, and global initiatives like V20.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-number">6</div>
+                    <h3>Collaborative Community</h3>
+                    <p>Engage with peers, industry experts, and stakeholders shaping the valuation profession.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">
+                © 2025 Confederation of Valuers — All Rights Reserved
+            </p>
+            <div class="footer-legal">
+                <a href="faq.html">FAQ</a>
+                <a href="TandC.html">Terms & Conditions</a>
+                <a href="policy.html">Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        hamburger.addEventListener('click', function () {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = this.classList.contains('active') ? 'hidden' : '';
+        });
+
+        menuOverlay.addEventListener('click', function () {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            this.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                if (window.innerWidth <= 768 && this.parentElement.classList.contains('nav-item')) {
+                    return;
+                }
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            const navItem = document.querySelector('.nav-item');
+            if (navItem) {
+                const navItemLink = navItem.querySelector('a');
+                navItemLink.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    navItem.classList.toggle('mobile-active');
+                });
+            }
+        }
+
+        // Clone right buttons into mobile menu
+        const navRight = document.querySelector('.nav-right');
+        if (navRight && window.innerWidth <= 768) {
+            const registerBtn = navRight.querySelector('.register-btn-header');
+            const loginBtn = navRight.querySelector('.login-btn');
+            if (registerBtn && loginBtn) {
+                const registerClone = registerBtn.cloneNode(true);
+                const loginClone = loginBtn.cloneNode(true);
+                navMenu.appendChild(registerClone);
+                navMenu.appendChild(loginClone);
+            }
+        }
+
+        // Tab functionality
+        const tabButtons = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                tabContents.forEach(content => content.classList.remove('active'));
+                this.classList.add('active');
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId).classList.add('active');
+            });
+        });
+
+        // ==================== BENEFIT CARDS FADE IN ANIMATION ====================
+        window.addEventListener('load', () => {
+            // Hero Section Animation
+            const heroTitle = document.querySelector('.hero-section h1');
+            const heroParagraph = document.querySelector('.hero-section p');
+
+            if (heroTitle) {
+                setTimeout(() => {
+                    heroTitle.style.transition = 'all 0.8s ease';
+                    heroTitle.style.opacity = '1';
+                    heroTitle.style.transform = 'translateY(0)';
+                }, 100);
+            }
+
+            if (heroParagraph) {
+                setTimeout(() => {
+                    heroParagraph.style.transition = 'all 0.8s ease';
+                    heroParagraph.style.opacity = '1';
+                    heroParagraph.style.transform = 'translateY(0)';
+                }, 400);
+            }
+
+            // Benefit Cards Animation
+            const benefitCards = document.querySelectorAll('.benefit-card');
+            
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const cardObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const card = entry.target;
+                        const index = Array.from(benefitCards).indexOf(card);
+                        
+                        setTimeout(() => {
+                            card.style.transition = 'all 0.8s ease';
+                            card.classList.add('fade-in-visible');
+                        }, index * 150);
+                        
+                        cardObserver.unobserve(card);
+                    }
+                });
+            }, observerOptions);
+
+            benefitCards.forEach(card => {
+                cardObserver.observe(card);
+            });
+        });
+    </script>
+</body>
+
+</html>
