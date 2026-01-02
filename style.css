@@ -1100,7 +1100,7 @@ nav a:hover {
 
   .hero-text {
     align-items: center;
-    margin-top: 40px;
+    margin-top: 50px;
   }
 
   .hero-text h1 {
@@ -1108,12 +1108,14 @@ nav a:hover {
   }
 
   .hero-text h2 {
+    margin-top: 20px;
     font-size: 20px;
     white-space: nowrap;
   }
 
   .hero-text p {
-    font-size: 15px;
+    margin-top: 40px;
+    font-size: 20px;
     max-width: 100%;
   }
 
