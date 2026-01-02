@@ -1092,6 +1092,12 @@ nav a:hover {
     margin-left: auto;
   }
 
+  .hero {
+    min-height: auto;          /* remove forced height */
+    padding: 20px 0 50px;      /* control vertical space manually */
+  }
+
+
   .hero-content {
     flex-direction: column;
     justify-content: center;
@@ -1115,7 +1121,8 @@ nav a:hover {
 
   .hero-text p {
     margin-top: 40px;
-    font-size: 20px;
+    justify-content:left;
+    font-size: 15px;
     max-width: 100%;
   }
 
