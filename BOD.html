@@ -731,7 +731,6 @@
             nav {
                 position: fixed;
                 top: 0;
-                right: -100%;
                 width: 280px;
                 height: 100vh;
                 background: linear-gradient(135deg, #f2f9ff 0%, #ffffff 100%);
@@ -741,14 +740,21 @@
                 padding: 100px 30px 30px 30px;
                 gap: 0 !important;
                 box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-                transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
                 z-index: 1000;
                 overflow-y: auto;
+                
+                position: fixed;
+                top: 0;
+                right: 0;
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                
             }
 
-            nav.active {
-                right: 0;
-            }
+                nav.active {
+                    transform: translateX(0);
+                }
+            
 
             nav a {
                 width: 100%;
@@ -837,7 +843,7 @@
             }
 
             .hero-section {
-                padding: 120px 20px 60px;
+                padding: 90px 16px 50px;
             }
 
             .directors-section {
@@ -872,6 +878,14 @@
                 gap: 15px;
             }
         }
+
+        @media (max-width: 360px) {
+            .modal-image {
+                width: 130px;
+                height: 130px;
+            }
+        }
+
 
         @media (min-width: 769px) and (max-width: 1100px) {
             .directors-grid {

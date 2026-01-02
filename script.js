@@ -57,17 +57,17 @@ if (window.innerWidth <= 768) {
 
 // Clone right buttons into mobile menu
 const navRight = document.querySelector('.nav-right');
-if (navRight && window.innerWidth <= 768) {
+if (navRight && window.innerWidth <= 768 && !navMenu.classList.contains('buttons-added')) {
     const registerBtn = navRight.querySelector('.register-btn');
     const loginBtn = navRight.querySelector('.login-btn');
     
     if (registerBtn && loginBtn) {
-        const registerClone = registerBtn.cloneNode(true);
-        const loginClone = loginBtn.cloneNode(true);
-        navMenu.appendChild(registerClone);
-        navMenu.appendChild(loginClone);
+        navMenu.appendChild(registerBtn.cloneNode(true));
+        navMenu.appendChild(loginBtn.cloneNode(true));
+        navMenu.classList.add('buttons-added');
     }
 }
+
 
 // ==================== HERO SECTION TEXT ANIMATION ====================
 const texts = [
@@ -84,7 +84,7 @@ function changeText() {
         changingText.style.opacity = '0';
         setTimeout(() => {
             currentIndex = (currentIndex + 1) % texts.length;
-            changingText.textContent = texts[currentIndex];
+            changingText.textContent = texts[currentIndex].toUpperCase();
             changingText.style.opacity = '1';
         }, 500);
     }

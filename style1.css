@@ -773,7 +773,7 @@ header {
 }
 
 @media (max-width: 768px) {
-  .cont1 {
+  .header-content {
     padding: 15px 20px;
     flex-wrap: wrap;
     gap: 20px;
@@ -789,27 +789,167 @@ header {
     margin-left: auto;
   }
 
+  @media (max-width: 768px) {
   nav {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: 280px;
     height: 100vh;
     background: linear-gradient(135deg, #f2f9ff 0%, #ffffff 100%);
     flex-direction: column !important;
     justify-content: flex-start !important;
     align-items: stretch !important;
-    padding: 100px 30px 30px 30px;
+    padding: 100px 30px 30px;
     gap: 0 !important;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
     z-index: 1000;
     overflow-y: auto;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    will-change: transform;
   }
 
   nav.active {
-    right: 0;
+    transform: translateX(0);
   }
+
+  .nav-item {
+  width: 100%;
+}
+
+.nav-item > a {
+  width: 100%;
+}
+
+.dropdown {
+  position: static;
+  transform: none;
+  box-shadow: none;
+  background: rgba(0, 166, 166, 0.05);
+  margin: 5px 0;
+  border-radius: 8px;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.nav-item.mobile-active .dropdown {
+  max-height: 200px;
+  opacity: 1;
+  margin-top: 8px;
+}
+
+.dropdown a {
+  padding: 10px 20px 10px 30px;
+  font-size: 15px;
+}
+
+.dropdown-arrow {
+  float: right;
+}
+
+.nav-item.mobile-active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+.nav-right {
+    display: none !important;
+  }
+
+
+
+  /* 1️⃣ REMOVE ALL 3D / HEAVY ANIMATIONS */
+  .about-body .mission-visual,
+  .about-body .vision-visual,
+  .about-body .circle-design,
+  .about-body .geometric-layer,
+  .about-body .dot-grid,
+  .about-body .floating-bar,
+  .about-body .orbit-element,
+  .about-body .central-element,
+  .about-body .central-inner,
+  .about-body .network-container,
+  .about-body .network-node,
+  .about-body .network-line,
+  .about-body .particle,
+  .about-body .glow-orb {
+    display: none !important;
+  }
+
+  /* 2️⃣ REMOVE THE SPACE THEY WERE TAKING (THIS IS KEY) */
+  .about-body .mission-visual,
+  .about-body .vision-visual {
+    height: 0 !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* 3️⃣ STACK CONTENT PROPERLY */
+  .about-body .mission-container,
+  .about-body .vision-container {
+    grid-template-columns: 1fr !important;
+    gap: 32px !important;
+    margin-bottom: 48px !important;
+    align-items: flex-start !important;
+  }
+
+  /* 4️⃣ FIX MISSION STATS (2 IN ONE ROW) */
+  .about-body .mission-stats {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    justify-items: center;
+  }
+
+  .about-body .stat-item {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* 5️⃣ TYPOGRAPHY OPTIMIZED FOR MOBILE */
+  .about-body .mv-title {
+    font-size: 1.6rem;
+    line-height: 1.3;
+  }
+
+  .about-body .mv-description {
+    font-size: 0.95rem;
+  }
+
+  /* 6️⃣ KEEP TRANSITIONS & SCROLL EFFECTS */
+  .about-body .vision-point,
+  .about-body .dropdown,
+  .about-body nav a {
+    transition: all 0.3s ease;
+  }
+
+  .about-body .mission-stats {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .about-body .stat-item {
+    width: 100%;
+    text-align: center;
+  }
+
+  .about-body .stat-number {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  .about-body .stat-label {
+    font-size: 1.2rem;
+    white-space: nowrap;
+  }
+
+}
+
 
   nav a {
     width: 100%;
@@ -863,6 +1003,14 @@ header {
     flex-direction: column;
     text-align: center;
     gap: 15px;
+  }
+
+  .about-body .vision-container {
+    margin-bottom: 0 !important;
+  }
+
+  .about-body .mission-vision {
+    padding-bottom: 40px; /* controlled spacing */
   }
 }
 
