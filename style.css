@@ -252,9 +252,9 @@ nav a:hover {
   position: relative;
   background: linear-gradient(135deg, var(--primary) 0%, #004080 100%);
   overflow: hidden;
-  min-height: 85vh;
+  min-height: 50vh;
   height: auto;
-  max-height: none;
+  max-height: 100vh;
 }
 
 
@@ -303,7 +303,7 @@ nav a:hover {
   position: relative;
   max-width: 1520px;
   margin: 0 auto;
-  padding: 0 40px;
+  padding: 0 20px;
   height: 100%;
   display: flex;
   align-items: center;
@@ -314,6 +314,8 @@ nav a:hover {
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 .hero-text h1 {
@@ -1071,7 +1073,7 @@ nav a:hover {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1280px) {
   body {
     padding-top: 0;
   }
@@ -1110,20 +1112,24 @@ nav a:hover {
   }
 
   .hero-text h1 {
-    font-size: 32px;
+    font-size: 400%;
   }
 
   .hero-text h2 {
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 250%;
     white-space: nowrap;
   }
 
   .hero-text p {
-    margin-top: 40px;
+    margin-top: 20px;
     justify-content:left;
-    font-size: 15px;
+    font-size: 120%;
     max-width: 100%;
+  }
+
+  .hero-buttons {
+    font-size: 100%;
   }
 
   /* Hide right buttons on mobile - they'll be in the menu */
@@ -1144,7 +1150,7 @@ nav a:hover {
     padding: 100px 30px 30px 30px;
     gap: 0 !important;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    transition: transform 2s ease-out;
     z-index: 1000;
     overflow-y: auto;
   }
@@ -1373,12 +1379,15 @@ nav a:hover {
   }
 }
 
-@media (max-width: 576px) {
-  .subscribe-form {
-    flex-direction: column;
+@media (min-width: 481px) and (max-width: 575px) {
+  .hero-text h2 {
+    margin-top: 20px;
+    font-size: 250%;
+    white-space: wrap;
   }
 
-  .subscribe-form button {
+  .hero-buttons {
+    flex-direction: column;
     width: 100%;
   }
 }
@@ -1408,6 +1417,16 @@ nav a:hover {
     padding: 12px 16px !important;
   }
 
+  
+  .hero-text h1 {
+    font-size: 300%;
+  }
+
+  .hero-text h2 {
+    margin-top: 20px;
+    font-size: 250%;
+    white-space: wrap;
+  }
 
   .hero-buttons {
     flex-direction: column;
@@ -1437,6 +1456,8 @@ nav a:hover {
   justify-content: flex-start;
   flex-direction: column;
   flex: 1;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .hero-visual {
@@ -1505,6 +1526,12 @@ nav a:hover {
   left: 40%;
   animation-delay: 4s;
   border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%;
+}
+
+@media(max-width:381px){
+  .hero{
+    max-height: 140vh;
+  }
 }
 
 @keyframes float {

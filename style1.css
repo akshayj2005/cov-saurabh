@@ -91,17 +91,17 @@ header {
             position: absolute;
             top: 100%;
             left: 50%;
-            transform: translateX(-50%);
+            /* transform: translateX(-50%); */
             background: #fff;
             border-radius: 12px;
             box-shadow: 0 8px 25px rgba(0, 43, 91, .15);
             min-width: 220px;
             opacity: 0;
             visibility: hidden;
-            transition: all .3s cubic-bezier(.68, -.55, .265, 1.55);
+            transition: transform 2s ease-out;
             z-index: 1100;
             margin-top: 10px;
-            overflow: hidden
+            overflow: hidden;
         }
 
         .nav-item:hover .dropdown {
@@ -163,10 +163,10 @@ header {
 
         .login-btn {
             padding: 8px 20px;
-            background-color: rgb(10, 8, 94);
+            background-color: var(--accent-teal);
             color: #fff;
             border: none;
-            border-radius: 25px;
+            border-radius: 12px;
             cursor: pointer;
             font-size: 16px;
             font-weight: 600;
@@ -772,7 +772,7 @@ header {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1280px) {
   .header-content {
     padding: 15px 20px;
     flex-wrap: wrap;
@@ -789,7 +789,6 @@ header {
     margin-left: auto;
   }
 
-  @media (max-width: 768px) {
   nav {
     position: fixed;
     top: 0;
@@ -806,8 +805,8 @@ header {
     z-index: 1000;
     overflow-y: auto;
     transform: translateX(100%);
-    transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    will-change: transform;
+    transition: transform 0.35 ease-out;
+
   }
 
   nav.active {
@@ -948,7 +947,7 @@ header {
     white-space: nowrap;
   }
 
-}
+
 
 
   nav a {
@@ -1014,20 +1013,7 @@ header {
   }
 }
 
-@media (max-width: 576px) {
-  .subscribe-form {
-    flex-direction: column;
-  }
 
-  .subscribe-form button {
-    width: 100%;
-  }
-
-  .mission-stats {
-    flex-direction: column;
-    gap: 20px;
-  }
-}
 
 @media (max-width: 480px) {
   #logo {

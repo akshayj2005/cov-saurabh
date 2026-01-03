@@ -109,7 +109,7 @@
             min-width: 220px;
             opacity: 0;
             visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transition: transform 2s ease-out;
             z-index: 1100;
             margin-top: 10px;
             overflow: hidden;
@@ -407,6 +407,7 @@
         }
 
         .tab-content h3 {
+            text-align: center;
             font-size: 26px;
             font-weight: 700;
             color: var(--primary);
@@ -449,6 +450,7 @@
         }
 
         .register-btn {
+            width: 100%;
             padding: 14px 40px;
             background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
             color: white;
@@ -460,6 +462,7 @@
             transition: all 0.3s ease;
             display: inline-block;
             text-decoration: none;
+            text-align: center;
         }
 
         .register-btn:hover {
@@ -567,7 +570,7 @@
         }
 
         /* ===== RESPONSIVE DESIGN ===== */
-        @media (max-width: 768px) {
+        @media (max-width: 1280px) {
             .header-content {
                 padding: 15px 20px;
                 flex-wrap: wrap;
@@ -601,7 +604,7 @@
                 padding: 100px 30px 30px 30px;
                 gap: 0 !important;
                 box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-                transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                transition: transform 2s ease-out;
                 z-index: 1000;
                 overflow-y: auto;
             }
@@ -712,10 +715,7 @@
                 font-size: 14px;
             }
 
-            .benefits-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
+           
 
             .footer-content {
                 flex-direction: column;
@@ -724,15 +724,22 @@
             }
         }
 
-        @media (max-width: 1200px) {
+        @media(min-width:480px) and (max-width:1280px){
             .benefits-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: repeat(2,1fr);
+                gap: 25px;
             }
         }
 
         @media (max-width: 480px) {
             #logo {
                 height: 45px;
+            }
+
+          
+             .benefits-grid {
+                grid-template-columns: 1fr;
+                margin: 0;
             }
 
             .hamburger {
