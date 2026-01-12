@@ -40,6 +40,8 @@
                     <div class="dropdown">
                         <a href="about.html#our-story">Our Story</a>
                         <a href="BOD.html">Board of Directors</a>
+                        <a href="committee.html">Committee</a>
+                        <a href="#" id="bylawsLink">By Laws</a>
                     </div>
                 </div>
                 <a href="covsphere.html">COV Sphere</a>
@@ -57,29 +59,7 @@
 
     <div class="menu-overlay" id="menuOverlay"></div>
 
-    <!-- Menu Overlay -->
-    <!-- <div class="menu-overlay" id="menuOverlay"></div> -->
-
     <!-- Hero Section -->
-    <!-- <section class="hero">
-        <div class="hero-pattern"></div>
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1>Empowering the Valuation Profession</h1>
-                <h2 id="changingText">Excellence & Innovation</h2>
-                <p>
-                    Join a premier professional body dedicated to advancing the valuation profession
-                    in India and globally through international standards, ethical practices, and
-                    continuous development.
-                </p>
-                <div class="hero-buttons">
-                    <button class="btn-primary">Become a Member</button>
-                    <button class="btn-secondary">Explore Services</button>
-                </div>
-            </div>
-        </div>
-    </section> -->
-<!-- Hero Section -->
     <section class="hero">
         <div class="hero-pattern"></div>
         <div class="hero-content">
@@ -107,6 +87,7 @@
             </div>
         </div>
     </section>
+
     <!-- Quick Links -->
     <section class="quick-links">
         <div class="quick-links-container">
@@ -179,6 +160,7 @@
             </div>
         </div>
     </section>
+
     <section class="osp-section">
         <div class="osp-container">
             <h2>One Stop Platform (OSP)</h2>
@@ -215,6 +197,7 @@
             </div>
         </div>
     </section>
+
     <!-- valuation ecosystem  -->
     <section class="ecosystem-section">
         <div class="ecosystem-container">
@@ -260,6 +243,7 @@
             </div>
         </div>
     </section>
+
     <!-- CONTACT SECTION -->
     <section class="contact-section">
         <div class="contact-container">
@@ -312,8 +296,6 @@
                         <p>info@mysite.com</p>
                     </div>
                 </div>
-
-
             </div>
         </div>
     </section>
@@ -333,6 +315,53 @@
         </div>
     </footer>
 
+    <!-- ==================== PDF MODAL ==================== -->
+    <div class="pdf-modal-overlay" id="pdfModalOverlay">
+        <div class="pdf-modal">
+            <!-- Header -->
+            <div class="pdf-modal-header">
+                <h3 class="pdf-modal-title">By Laws - COV India Forum</h3>
+                <button class="pdf-modal-close" id="closePdfModal">&times;</button>
+            </div>
+
+            <!-- Controls -->
+            <div class="pdf-controls">
+                <button class="pdf-control-btn" id="prevPage">
+                    ← Previous
+                </button>
+                <span class="pdf-page-info">
+                    Page <span id="currentPage">1</span> of <span id="totalPages">0</span>
+                </span>
+                <button class="pdf-control-btn" id="nextPage">
+                    Next →
+                </button>
+                
+                <div class="pdf-zoom-control">
+                    <button class="pdf-control-btn" id="zoomOut">−</button>
+                    <span class="pdf-page-info"><span id="zoomLevel">100</span>%</span>
+                    <button class="pdf-control-btn" id="zoomIn">+</button>
+                </div>
+
+                <button class="pdf-control-btn" id="downloadPdf">
+                    ⬇ Download
+                </button>
+            </div>
+
+            <!-- PDF Viewer -->
+            <div class="pdf-viewer-container" id="pdfViewerContainer">
+                <div class="pdf-loading active" id="pdfLoading">
+                    <div class="spinner"></div>
+                    <div>Loading PDF...</div>
+                </div>
+                <div class="pdf-canvas-wrapper">
+                    <canvas id="pdfCanvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include PDF.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <script src="script.js"></script>
 
 </body>
