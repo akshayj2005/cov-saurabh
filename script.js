@@ -69,185 +69,188 @@ if (navRight && window.innerWidth <= 768 && !navMenu.classList.contains('buttons
 }
 
 // ==================== PDF VIEWER FUNCTIONALITY ====================
-// Initialize PDF.js
-pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+// Check if PDF.js is loaded before initializing
+if (typeof pdfjsLib !== 'undefined') {
+    // Initialize PDF.js
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
 
-let pdfDoc = null;
-let pageNum = 1;
-let pageRendering = false;
-let pageNumPending = null;
-let scale = 1.5;
-// You need to replace this with the actual path to your PDF file
-let pdfUrl = './assets/By-Laws COV India Forum (1).pdf';
+    let pdfDoc = null;
+    let pageNum = 1;
+    let pageRendering = false;
+    let pageNumPending = null;
+    let scale = 1.5;
+    let pdfUrl = './assets/By-Laws COV India Forum (1).pdf';
 
-// Get elements
-const modal = document.getElementById('pdfModalOverlay');
-const closeBtn = document.getElementById('closePdfModal');
-const canvas = document.getElementById('pdfCanvas');
-const ctx = canvas.getContext('2d');
-const prevBtn = document.getElementById('prevPage');
-const nextBtn = document.getElementById('nextPage');
-const currentPageSpan = document.getElementById('currentPage');
-const totalPagesSpan = document.getElementById('totalPages');
-const zoomInBtn = document.getElementById('zoomIn');
-const zoomOutBtn = document.getElementById('zoomOut');
-const zoomLevelSpan = document.getElementById('zoomLevel');
-const downloadBtn = document.getElementById('downloadPdf');
-const loading = document.getElementById('pdfLoading');
-const bylawsLink = document.getElementById('bylawsLink');
+    // Get elements
+    const modal = document.getElementById('pdfModalOverlay');
+    const closeBtn = document.getElementById('closePdfModal');
+    const canvas = document.getElementById('pdfCanvas');
+    const ctx = canvas ? canvas.getContext('2d') : null;
+    const prevBtn = document.getElementById('prevPage');
+    const nextBtn = document.getElementById('nextPage');
+    const currentPageSpan = document.getElementById('currentPage');
+    const totalPagesSpan = document.getElementById('totalPages');
+    const zoomInBtn = document.getElementById('zoomIn');
+    const zoomOutBtn = document.getElementById('zoomOut');
+    const zoomLevelSpan = document.getElementById('zoomLevel');
+    const downloadBtn = document.getElementById('downloadPdf');
+    const loading = document.getElementById('pdfLoading');
+    const bylawsLink = document.getElementById('bylawsLink');
 
-// Function to render page
-function renderPage(num) {
-    pageRendering = true;
-    loading.classList.add('active');
+    // Function to render page
+    function renderPage(num) {
+        if (!ctx) return;
+        pageRendering = true;
+        loading.classList.add('active');
 
-    pdfDoc.getPage(num).then(page => {
-        const viewport = page.getViewport({ scale: scale });
-        canvas.height = viewport.height;
-        canvas.width = viewport.width;
+        pdfDoc.getPage(num).then(page => {
+            const viewport = page.getViewport({ scale: scale });
+            canvas.height = viewport.height;
+            canvas.width = viewport.width;
 
-        const renderContext = {
-            canvasContext: ctx,
-            viewport: viewport
-        };
+            const renderContext = {
+                canvasContext: ctx,
+                viewport: viewport
+            };
 
-        const renderTask = page.render(renderContext);
+            const renderTask = page.render(renderContext);
 
-        renderTask.promise.then(() => {
-            pageRendering = false;
-            loading.classList.remove('active');
-            
-            if (pageNumPending !== null) {
-                renderPage(pageNumPending);
-                pageNumPending = null;
+            renderTask.promise.then(() => {
+                pageRendering = false;
+                loading.classList.remove('active');
+                
+                if (pageNumPending !== null) {
+                    renderPage(pageNumPending);
+                    pageNumPending = null;
+                }
+            });
+        });
+
+        currentPageSpan.textContent = num;
+        updateButtons();
+    }
+
+    // Queue page rendering
+    function queueRenderPage(num) {
+        if (pageRendering) {
+            pageNumPending = num;
+        } else {
+            renderPage(num);
+        }
+    }
+
+    // Update button states
+    function updateButtons() {
+        prevBtn.disabled = pageNum <= 1;
+        nextBtn.disabled = pageNum >= pdfDoc.numPages;
+    }
+
+    // Previous page
+    function onPrevPage() {
+        if (pageNum <= 1) return;
+        pageNum--;
+        queueRenderPage(pageNum);
+    }
+
+    // Next page
+    function onNextPage() {
+        if (pageNum >= pdfDoc.numPages) return;
+        pageNum++;
+        queueRenderPage(pageNum);
+    }
+
+    // Zoom in
+    function onZoomIn() {
+        scale += 0.25;
+        if (scale > 3) scale = 3;
+        zoomLevelSpan.textContent = Math.round(scale * 100);
+        queueRenderPage(pageNum);
+    }
+
+    // Zoom out
+    function onZoomOut() {
+        scale -= 0.25;
+        if (scale < 0.5) scale = 0.5;
+        zoomLevelSpan.textContent = Math.round(scale * 100);
+        queueRenderPage(pageNum);
+    }
+
+    // Download PDF
+    function onDownload() {
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = 'COV-By-Laws.pdf';
+        link.click();
+    }
+
+    // Open PDF Modal
+    function openPdfModal() {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Load PDF if not already loaded
+        if (!pdfDoc) {
+            loading.classList.add('active');
+            pdfjsLib.getDocument(pdfUrl).promise.then(doc => {
+                pdfDoc = doc;
+                totalPagesSpan.textContent = doc.numPages;
+                renderPage(pageNum);
+            }).catch(error => {
+                console.error('Error loading PDF:', error);
+                loading.innerHTML = '<div>Error loading PDF. Please try again.</div>';
+            });
+        }
+    }
+
+    // Close PDF Modal
+    function closePdfModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    // Event listeners for PDF viewer
+    if (bylawsLink) {
+        bylawsLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            openPdfModal();
+        });
+    }
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', closePdfModal);
+    }
+
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                closePdfModal();
             }
         });
-    });
-
-    currentPageSpan.textContent = num;
-    updateButtons();
-}
-
-// Queue page rendering
-function queueRenderPage(num) {
-    if (pageRendering) {
-        pageNumPending = num;
-    } else {
-        renderPage(num);
     }
-}
 
-// Update button states
-function updateButtons() {
-    prevBtn.disabled = pageNum <= 1;
-    nextBtn.disabled = pageNum >= pdfDoc.numPages;
-}
+    if (prevBtn) prevBtn.addEventListener('click', onPrevPage);
+    if (nextBtn) nextBtn.addEventListener('click', onNextPage);
+    if (zoomInBtn) zoomInBtn.addEventListener('click', onZoomIn);
+    if (zoomOutBtn) zoomOutBtn.addEventListener('click', onZoomOut);
+    if (downloadBtn) downloadBtn.addEventListener('click', onDownload);
 
-// Previous page
-function onPrevPage() {
-    if (pageNum <= 1) return;
-    pageNum--;
-    queueRenderPage(pageNum);
-}
-
-// Next page
-function onNextPage() {
-    if (pageNum >= pdfDoc.numPages) return;
-    pageNum++;
-    queueRenderPage(pageNum);
-}
-
-// Zoom in
-function onZoomIn() {
-    scale += 0.25;
-    if (scale > 3) scale = 3;
-    zoomLevelSpan.textContent = Math.round(scale * 100);
-    queueRenderPage(pageNum);
-}
-
-// Zoom out
-function onZoomOut() {
-    scale -= 0.25;
-    if (scale < 0.5) scale = 0.5;
-    zoomLevelSpan.textContent = Math.round(scale * 100);
-    queueRenderPage(pageNum);
-}
-
-// Download PDF
-function onDownload() {
-    const link = document.createElement('a');
-    link.href = pdfUrl;
-    link.download = 'COV-By-Laws.pdf';
-    link.click();
-}
-
-// Open PDF Modal
-function openPdfModal() {
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
-    
-    // Load PDF if not already loaded
-    if (!pdfDoc) {
-        loading.classList.add('active');
-        pdfjsLib.getDocument(pdfUrl).promise.then(doc => {
-            pdfDoc = doc;
-            totalPagesSpan.textContent = doc.numPages;
-            renderPage(pageNum);
-        }).catch(error => {
-            console.error('Error loading PDF:', error);
-            loading.innerHTML = '<div>Error loading PDF. Please try again.</div>';
-        });
-    }
-}
-
-// Close PDF Modal
-function closePdfModal() {
-    modal.classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-// Event listeners for PDF viewer
-if (bylawsLink) {
-    bylawsLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        openPdfModal();
-    });
-}
-
-if (closeBtn) {
-    closeBtn.addEventListener('click', closePdfModal);
-}
-
-if (modal) {
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-            closePdfModal();
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+        if (!modal || !modal.classList.contains('active')) return;
+        
+        switch(e.key) {
+            case 'Escape':
+                closePdfModal();
+                break;
+            case 'ArrowLeft':
+                onPrevPage();
+                break;
+            case 'ArrowRight':
+                onNextPage();
+                break;
         }
     });
 }
-
-if (prevBtn) prevBtn.addEventListener('click', onPrevPage);
-if (nextBtn) nextBtn.addEventListener('click', onNextPage);
-if (zoomInBtn) zoomInBtn.addEventListener('click', onZoomIn);
-if (zoomOutBtn) zoomOutBtn.addEventListener('click', onZoomOut);
-if (downloadBtn) downloadBtn.addEventListener('click', onDownload);
-
-// Keyboard navigation
-document.addEventListener('keydown', (e) => {
-    if (!modal.classList.contains('active')) return;
-    
-    switch(e.key) {
-        case 'Escape':
-            closePdfModal();
-            break;
-        case 'ArrowLeft':
-            onPrevPage();
-            break;
-        case 'ArrowRight':
-            onNextPage();
-            break;
-    }
-});
 
 // ==================== HERO SECTION TEXT ANIMATION ====================
 const texts = [
@@ -333,7 +336,8 @@ const fadeObserverOptions = {
 const fadeInObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in-visible');
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
             fadeInObserver.unobserve(entry.target);
         }
     });
@@ -344,8 +348,9 @@ window.addEventListener('load', () => {
     // Quick Link Cards
     const quickLinkCards = document.querySelectorAll('.quick-link-card');
     quickLinkCards.forEach((card, index) => {
-        card.classList.add('fade-in-element');
-        card.style.animationDelay = `${index * 0.15}s`;
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = `all 0.8s ease ${index * 0.15}s`;
         fadeInObserver.observe(card);
     });
 
@@ -375,7 +380,9 @@ window.addEventListener('load', () => {
     
     // Animate image container
     if (aboutImage) {
-        aboutImage.classList.add('fade-in-element', 'fade-in-left');
+        aboutImage.style.opacity = '0';
+        aboutImage.style.transform = 'translateX(-40px)';
+        aboutImage.style.transition = 'all 0.8s ease';
         fadeInObserver.observe(aboutImage);
     }
     
@@ -421,13 +428,18 @@ window.addEventListener('load', () => {
     // Stats Section
     const statsTitle = document.querySelector('.stats-title');
     const statBoxes = document.querySelectorAll('.stat-box');
+    
     if (statsTitle) {
-        statsTitle.classList.add('fade-in-element');
+        statsTitle.style.opacity = '0';
+        statsTitle.style.transform = 'translateY(30px)';
+        statsTitle.style.transition = 'all 0.8s ease';
         fadeInObserver.observe(statsTitle);
     }
+    
     statBoxes.forEach((box, index) => {
-        box.classList.add('fade-in-element');
-        box.style.animationDelay = `${index * 0.1}s`;
+        box.style.opacity = '0';
+        box.style.transform = 'translateY(30px)';
+        box.style.transition = `all 0.8s ease ${index * 0.1}s`;
         fadeInObserver.observe(box);
     });
 
@@ -438,12 +450,16 @@ window.addEventListener('load', () => {
     const ospBtn = document.querySelector('.osp-steps .cta-btn');
     
     if (ospTitle) {
-        ospTitle.classList.add('fade-in-element');
+        ospTitle.style.opacity = '0';
+        ospTitle.style.transform = 'translateY(30px)';
+        ospTitle.style.transition = 'all 0.8s ease';
         fadeInObserver.observe(ospTitle);
     }
     
     if (ospVisual) {
-        ospVisual.classList.add('fade-in-element', 'fade-in-left');
+        ospVisual.style.opacity = '0';
+        ospVisual.style.transform = 'translateX(-40px)';
+        ospVisual.style.transition = 'all 0.8s ease';
         fadeInObserver.observe(ospVisual);
     }
     
@@ -495,11 +511,16 @@ window.addEventListener('load', () => {
     const ecosystemItems = document.querySelectorAll('.ecosystem-item');
     
     if (ecosystemTitle) {
-        ecosystemTitle.classList.add('fade-in-element');
+        ecosystemTitle.style.opacity = '0';
+        ecosystemTitle.style.transform = 'translateY(30px)';
+        ecosystemTitle.style.transition = 'all 0.8s ease';
         fadeInObserver.observe(ecosystemTitle);
     }
+    
     if (ecosystemSubtitle) {
-        ecosystemSubtitle.classList.add('fade-in-element');
+        ecosystemSubtitle.style.opacity = '0';
+        ecosystemSubtitle.style.transform = 'translateY(30px)';
+        ecosystemSubtitle.style.transition = 'all 0.8s ease 0.2s';
         fadeInObserver.observe(ecosystemSubtitle);
     }
     
@@ -560,12 +581,18 @@ window.addEventListener('load', () => {
     // Contact Section
     const subscribeColumn = document.querySelector('.subscribe-column');
     const contactColumn = document.querySelector('.contact-column');
+    
     if (subscribeColumn) {
-        subscribeColumn.classList.add('fade-in-element', 'fade-in-left');
+        subscribeColumn.style.opacity = '0';
+        subscribeColumn.style.transform = 'translateX(-40px)';
+        subscribeColumn.style.transition = 'all 0.8s ease';
         fadeInObserver.observe(subscribeColumn);
     }
+    
     if (contactColumn) {
-        contactColumn.classList.add('fade-in-element', 'fade-in-right');
+        contactColumn.style.opacity = '0';
+        contactColumn.style.transform = 'translateX(40px)';
+        contactColumn.style.transition = 'all 0.8s ease';
         fadeInObserver.observe(contactColumn);
     }
 });
@@ -593,8 +620,6 @@ const animateCounter = (counter) => {
         duration = 1500; // Slowest for very small numbers
     }
     
-    const increment = numericValue / (duration / 16);
-    let current = 0;
     let startTime = null;
 
     const updateCounter = (timestamp) => {
@@ -607,7 +632,7 @@ const animateCounter = (counter) => {
             ? 2 * easingProgress * easingProgress
             : 1 - Math.pow(-2 * easingProgress + 2, 2) / 2;
         
-        current = numericValue * easedValue;
+        const current = numericValue * easedValue;
         
         if (progress < duration) {
             counter.textContent = Math.floor(current) + (hasPlus ? '+' : '') + (hasPercent ? '%' : '');

@@ -110,7 +110,7 @@
             min-width: 220px;
             opacity: 0;
             visibility: hidden;
-            transition: transform 2s ease-out;
+            transition: all .3s cubic-bezier(.68, -.55, .265, 1.55);
             z-index: 1100;
             margin-top: 10px;
             overflow: hidden
@@ -467,7 +467,17 @@
             gap: 20px
         }
 
-        
+        /* Hide scrollbars but keep functionality */
+        ::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            background: transparent;
+        }
+
+        * {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
 
         @media (max-width:1280px) {
             body {
@@ -703,31 +713,6 @@
                 padding: 10px 20px
             }
         }
-
-        /* ::-webkit-scrollbar{width:0;height:0}*{scrollbar-width:none;-ms-overflow-style:none} */
-        /* ===== REGISTRATION PAGE: FIX HIDDEN RIGHT CONTENT ===== */
-
-        /* Allow horizontal scroll where tables exist */
-        /* .qualification-section {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-} */
-
-        .qualification-section::-webkit-scrollbar-thumb {
-            background: #1a7a9e;
-            border-radius: 4px;
-        }
-
-        /* Firefox */
-        .qualification-section {
-            scrollbar-width: thin;
-            scrollbar-color: #1a7a9e #e8f4f8;
-        }
-
-        /* Prevent page-level horizontal scroll */
-        body {
-            overflow-x: hidden;
-        }
     </style>
 </head>
 
@@ -747,17 +732,21 @@
                     <div class="dropdown">
                         <a href="about.html#our-story">Our Story</a>
                         <a href="BOD.html">Board of Directors</a>
+                        <a href="committee.html">Committee</a>
+                        <a href="bylaws.html" id="">By Laws</a>
                     </div>
                 </div>
                 <a href="covsphere.html">COV Sphere</a>
                 <a href="contact.html">Contact</a>
             </nav>
+
             <div class="nav-right">
                 <a href="reg1.html" class="register-btn">Register Now</a>
                 <button class="login-btn">Login</button>
             </div>
         </div>
     </header>
+
     <div class="menu-overlay" id="menuOverlay"></div>
     <div class="container">
         <h1 class="page-title">Registration Form</h1>

@@ -778,9 +778,6 @@
                 padding: 15px 12px
             }
 
-
-            
-
             .section-title {
                 font-size: 16px
             }
@@ -830,32 +827,39 @@
                     <img id='logo' src="assets/Logo.avif" height="70px" alt="COV Logo">
                 </a>
             </div>
+
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
+
             <nav id="navMenu">
                 <a href="membership.html">Membership</a>
                 <a href="#training">Training & Courses</a>
                 <a href="#events">Events</a>
                 <div class="nav-item">
-                    <a href="about.html">About Us <span class="dropdown-arrow">▼</span></a>
+                    <a>About Us <span class="dropdown-arrow">▼</span></a>
                     <div class="dropdown">
                         <a href="about.html#our-story">Our Story</a>
                         <a href="BOD.html">Board of Directors</a>
+                        <a href="committee.html">Committee</a>
+                        <a href="bylaws.html">By Laws</a>
                     </div>
                 </div>
                 <a href="covsphere.html">COV Sphere</a>
                 <a href="contact.html">Contact</a>
             </nav>
+
             <div class="nav-right">
                 <a href="reg1.html" class="register-btn">Register Now</a>
                 <button class="login-btn">Login</button>
             </div>
         </div>
     </header>
+
     <div class="menu-overlay" id="menuOverlay"></div>
+
     <div class="container">
         <h1 class="page-title">Registration Form</h1>
         <div class="tabs">
@@ -978,23 +982,4 @@
                 </div>
             </div>
             <div style="margin-top:25px;overflow:auto">
-                <button class="next-btn" onclick="window.location.href='reg2.html'">Next</button>
-            </div>
-        </div>
-    </div>
-    <footer class="footer">
-        <div class="footer-content">
-            <p class="copyright">© 2025 Confederation of Valuers — All Rights Reserved</p>
-            <div class="footer-legal">
-                <a href="faq.html">FAQ</a>
-                <a href="TandC.html">Terms & Conditions</a>
-                <a href="policy.html">Policy</a>
-            </div>
-        </div>
-    </footer>
-    <script>
-        const hamburger = document.getElementById("hamburger"), navMenu = document.getElementById("navMenu"), menuOverlay = document.getElementById("menuOverlay"); hamburger.addEventListener("click", function () { this.classList.toggle("active"), navMenu.classList.toggle("active"), menuOverlay.classList.toggle("active"), document.body.style.overflow = this.classList.contains("active") ? "hidden" : "" }), menuOverlay.addEventListener("click", function () { hamburger.classList.remove("active"), navMenu.classList.remove("active"), this.classList.remove("active"), document.body.style.overflow = "" }), navMenu.querySelectorAll("a").forEach(e => { e.addEventListener("click", function (e) { window.innerWidth <= 768 && this.parentElement.classList.contains("nav-item") || (hamburger.classList.remove("active"), navMenu.classList.remove("active"), menuOverlay.classList.remove("active"), document.body.style.overflow = "") }) }); if (window.innerWidth <= 768) { const e = document.querySelector(".nav-item"); if (e) { e.querySelector("a").addEventListener("click", function (t) { t.preventDefault(), e.classList.toggle("mobile-active") }) } } const navRight = document.querySelector(".nav-right"); if (navRight && window.innerWidth <= 768) { const e = navRight.querySelector(".register-btn").cloneNode(!0), t = navRight.querySelector(".login-btn").cloneNode(!0); navMenu.appendChild(e), navMenu.appendChild(t) } function previewImage(e, t) { const n = document.getElementById(t), a = e.files[0]; if (a) { const e = new FileReader; e.onload = function (e) { n.innerHTML = `<img src="${e.target.result}" alt="Preview">` }, e.readAsDataURL(a) } } document.getElementById("sameAddress").addEventListener("change", function () { });
-    </script>
-</body>
-
-</html>
+                <button class="next

@@ -16,9 +16,6 @@
             --highlight: #38b6ff;
             --text-dark: #012a4a;
             --white: #ffffff;
-            --light-gray: #e8f4f8;
-            --hero-height: min(85vh, 600px);
-            --header-offset: 100px;
         }
 
         * {
@@ -35,15 +32,11 @@
             line-height: 1.6;
         }
 
-        /* ==================== HEADER STYLES - BOD MATCH ==================== */
+        /* ==================== HEADER ==================== */
         header {
             background: var(--white);
             box-shadow: 0 2px 10px rgba(0, 43, 91, 0.1);
             position: relative;
-            top: 0;
-            left: 0;
-            right: 0;
-            width: 100%;
             z-index: 1000;
         }
 
@@ -55,7 +48,6 @@
             justify-content: space-between;
             align-items: center;
             gap: 20px;
-            width: 100%;
         }
 
         .logo-container {
@@ -109,7 +101,7 @@
             min-width: 220px;
             opacity: 0;
             visibility: hidden;
-            transition: transform 2s ease-out;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             z-index: 1100;
             margin-top: 10px;
             overflow: hidden;
@@ -284,9 +276,12 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0) scale(1);
             }
+
             50% {
                 transform: translateY(-30px) scale(1.05);
             }
@@ -400,6 +395,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -569,7 +565,7 @@
             gap: 20px;
         }
 
-        
+
 
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 1280px) {
@@ -717,7 +713,7 @@
                 font-size: 14px;
             }
 
-           
+
 
             .footer-content {
                 flex-direction: column;
@@ -726,9 +722,9 @@
             }
         }
 
-        @media(min-width:480px) and (max-width:1280px){
+        @media(min-width:480px) and (max-width:1280px) {
             .benefits-grid {
-                grid-template-columns: repeat(2,1fr);
+                grid-template-columns: repeat(2, 1fr);
                 gap: 25px;
             }
         }
@@ -738,8 +734,8 @@
                 height: 45px;
             }
 
-          
-             .benefits-grid {
+
+            .benefits-grid {
                 grid-template-columns: 1fr;
                 margin: 0;
             }
@@ -753,35 +749,36 @@
                 width: 260px;
                 padding: 90px 25px 25px 25px;
             }
-            
 
-        /* Modal spacing on mobile */
-    .eligibility-modal {
-        width: 95vw;
-        padding: 16px;
-    }
 
-    /* Scroll container */
-    .eligibility-scroll {
-        overflow-x: auto;
-        overflow-y: auto;
-        max-height: 70vh;
-    }
+            /* Modal spacing on mobile */
+            .eligibility-modal {
+                width: 95vw;
+                padding: 16px;
+            }
 
-    /* THIS creates the left & right gap */
-    #eligibilityDynamicContent {
-        padding: 0 16px;   /* ← KEY LINE */
-      
-    }
+            /* Scroll container */
+            .eligibility-scroll {
+                overflow-x: auto;
+                overflow-y: auto;
+                max-height: 70vh;
+            }
 
-    /* Close button stays pinned */
-    .close-modal {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        font-size: 28px;
-        z-index: 1;
-    }
+            /* THIS creates the left & right gap */
+            #eligibilityDynamicContent {
+                padding: 0 16px;
+                /* ← KEY LINE */
+
+            }
+
+            /* Close button stays pinned */
+            .close-modal {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 28px;
+                z-index: 1;
+            }
 
         }
 
@@ -796,114 +793,114 @@
         }
 
 
-.popup {
-    display: block;
-        width: fit-content;
-    margin: 20px auto 10px auto;
-    padding: 12px 22px;
-    
-
-    font-size: 15px;
-    font-weight: 600;
-    text-decoration: none;
-
-    color: #002b5b;
-    background: transparent;
-    border: 2px solid #002b5b;
-    border-radius: 6px;
-
-    transition: all 0.3s ease;
-}
-
-.popup:hover {
-    background: #002b5b;
-    color: #ffffff;
-    transform: translateY(-2px);
-}
-
-.popup:active {
-    transform: translateY(0);
-}
-
-/* ===== ELIGIBILITY TABLE ===== */
-.eligibility-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.45);
-    backdrop-filter: blur(6px);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1;
-}
-
-.eligibility-overlay.active {
-    display: flex;
-}
-.eligibility-modal {
-    background: #ffffff;
-    padding: 40px;
-    max-width: 520px;
-    width: 90%;
-    border-radius: 12px;
-    position: relative;
-    animation: scaleIn 0.3s ease;
-}
-
-.eligibility-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-.eligibility-table th,
-.eligibility-table td {
-    border: 1px solid #dcdcdc;
-    padding: 12px;
-    vertical-align: top;
-}
-
-.eligibility-table th {
-    background: #002b5b;
-    color: #ffffff;
-    text-align: left;
-}
-
-.eligibility-table tr:nth-child(even) {
-    background: #f5f8fc;
-}
-
-.close-modal {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    background: transparent;
-    border: none;
-    font-size: 30px;
-    cursor: pointer;
-    color: #002b5b;
-}
-
-/* mobile scroll */
-.eligibility-modal {
-    max-height: 85vh;
-    overflow-y: auto;
-}
-
-/* animation */
-@keyframes modalScaleIn {
-    from {
-        opacity: 0;
-        transform: scale(0.92);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
-}
+        .popup {
+            display: block;
+            width: fit-content;
+            margin: 20px auto 10px auto;
+            padding: 12px 22px;
 
 
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+
+            color: #002b5b;
+            background: transparent;
+            border: 2px solid #002b5b;
+            border-radius: 6px;
+
+            transition: all 0.3s ease;
+        }
+
+        .popup:hover {
+            background: #002b5b;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .popup:active {
+            transform: translateY(0);
+        }
+
+        /* ===== ELIGIBILITY TABLE ===== */
+        .eligibility-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(6px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .eligibility-overlay.active {
+            display: flex;
+        }
+
+        .eligibility-modal {
+            background: #ffffff;
+            padding: 40px;
+            max-width: 520px;
+            width: 90%;
+            border-radius: 12px;
+            position: relative;
+            animation: scaleIn 0.3s ease;
+        }
+
+        .eligibility-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .eligibility-table th,
+        .eligibility-table td {
+            border: 1px solid #dcdcdc;
+            padding: 12px;
+            vertical-align: top;
+        }
+
+        .eligibility-table th {
+            background: #002b5b;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .eligibility-table tr:nth-child(even) {
+            background: #f5f8fc;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #002b5b;
+        }
+
+        /* mobile scroll */
+        .eligibility-modal {
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        /* animation */
+        @keyframes modalScaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.92);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
     </style>
 </head>
 
@@ -916,14 +913,12 @@
                     <img id='logo' src="assets/Logo.avif" height="70px" alt="COV Logo">
                 </a>
             </div>
-
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-
-            <nav id="navMenu">
+             <nav id="navMenu">
                 <a href="membership.html">Membership</a>
                 <a href="#training">Training & Courses</a>
                 <a href="#events">Events</a>
@@ -932,6 +927,8 @@
                     <div class="dropdown">
                         <a href="about.html#our-story">Our Story</a>
                         <a href="BOD.html">Board of Directors</a>
+                        <a href="committee.html">Committee</a>
+                        <a href="bylaws.html" id="">By Laws</a>
                     </div>
                 </div>
                 <a href="covsphere.html">COV Sphere</a>
@@ -1217,7 +1214,7 @@
 
             // Benefit Cards Animation
             const benefitCards = document.querySelectorAll('.benefit-card');
-            
+
             const observerOptions = {
                 threshold: 0.15,
                 rootMargin: '0px 0px -50px 0px'
@@ -1228,12 +1225,12 @@
                     if (entry.isIntersecting) {
                         const card = entry.target;
                         const index = Array.from(benefitCards).indexOf(card);
-                        
+
                         setTimeout(() => {
                             card.style.transition = 'all 0.8s ease';
                             card.classList.add('fade-in-visible');
                         }, index * 150);
-                        
+
                         cardObserver.unobserve(card);
                     }
                 });
@@ -1251,265 +1248,274 @@
 
 
     <!-- ELIGIBILITY MODAL -->
-<div class="eligibility-overlay" id="eligibilityOverlay">
-    <div class="eligibility-modal">
-        <button class="close-modal" id="closeEligibility">&times;</button>
+    <div class="eligibility-overlay" id="eligibilityOverlay">
+        <div class="eligibility-modal">
+            <button class="close-modal" id="closeEligibility">&times;</button>
 
-        <!-- ONLY THIS DIV SCROLLS -->
-        <div class="eligibility-scroll">
-            <div id="eligibilityDynamicContent"></div>
+            <!-- ONLY THIS DIV SCROLLS -->
+            <div class="eligibility-scroll">
+                <div id="eligibilityDynamicContent"></div>
+            </div>
         </div>
     </div>
-</div>
 
 
 
-<!-- HIDDEN ELIGIBILITY TABLES -->
-<div style="display:none;">
- 
-    
-    <div id="eligibility-student">
-        <h4>Student Member – Eligibility Criteria</h4>
-        <table class="eligibility-table">
-            <thead>
-                <tr>
-                    <th>Asset Class</th>
-                    <th>Education</th>
-                    <th>Experience</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Plant, Equipment & Infrastructure</td>
-                    <td>
-                        Undergraduate or student pursuing Mechanical, Electrical,
-                        Electronics & Communication, Electronics & Instrumentation,
-                        Production, Chemical, Textiles, Leather, Metallurgy,
-                        or Aeronautical Engineering.
-                    </td>
-                    <td>No experience required</td>
-                </tr>
-                <tr>
-                    <td>Land and Building</td>
-                    <td>
-                        Undergraduate or student pursuing Civil Engineering,
-                        Architecture, or Town Planning.
-                    </td>
-                    <td>No experience required</td>
-                </tr>
-                <tr>
-                    <td>Business Valuation</td>
-                    <td>
-                        Undergraduate or student pursuing Finance,
-                        Economics, or Business Administration.
-                    </td>
-                    <td>No experience required</td>
-                </tr>
-                <tr>
-                    <td>Financial Instruments</td>
-                    <td>
-                        Undergraduate or student pursuing Finance,
-                        Economics, or Accounting.
-                    </td>
-                    <td>No experience required</td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- HIDDEN ELIGIBILITY TABLES -->
+    <div style="display:none;">
+
+
+        <div id="eligibility-student">
+            <h4>Student Member – Eligibility Criteria</h4>
+            <table class="eligibility-table">
+                <thead>
+                    <tr>
+                        <th>Asset Class</th>
+                        <th>Education</th>
+                        <th>Experience</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Plant, Equipment & Infrastructure</td>
+                        <td>
+                            Undergraduate or student pursuing Mechanical, Electrical,
+                            Electronics & Communication, Electronics & Instrumentation,
+                            Production, Chemical, Textiles, Leather, Metallurgy,
+                            or Aeronautical Engineering.
+                        </td>
+                        <td>No experience required</td>
+                    </tr>
+                    <tr>
+                        <td>Land and Building</td>
+                        <td>
+                            Undergraduate or student pursuing Civil Engineering,
+                            Architecture, or Town Planning.
+                        </td>
+                        <td>No experience required</td>
+                    </tr>
+                    <tr>
+                        <td>Business Valuation</td>
+                        <td>
+                            Undergraduate or student pursuing Finance,
+                            Economics, or Business Administration.
+                        </td>
+                        <td>No experience required</td>
+                    </tr>
+                    <tr>
+                        <td>Financial Instruments</td>
+                        <td>
+                            Undergraduate or student pursuing Finance,
+                            Economics, or Accounting.
+                        </td>
+                        <td>No experience required</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+        <div id="eligibility-affiliate">
+            <h4>Affiliate Member – Eligibility Criteria</h4>
+            <table class="eligibility-table">
+                <thead>
+                    <tr>
+                        <th>Asset Class</th>
+                        <th>Education</th>
+                        <th>Experience</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Plant, Equipment & Infrastructure</td>
+                        <td>
+                            Graduate or Diploma in Mechanical, Electrical,
+                            Electronics & Communication, Electronics & Instrumentation,
+                            Production, Chemical, Textiles, Leather, Metallurgy, or Aeronautical Engineering.
+                        </td>
+                        <td>No experience required</td>
+                    </tr>
+                    <tr>
+                        <td>Land and Building</td>
+                        <td>
+                            Graduate or Diploma in Civil Engineering,
+                            Architecture, or Town Planning.
+                        </td>
+                        <td>No experience required</td>
+                    </tr>
+                    <tr>
+                        <td>Business Valuation</td>
+                        <td>
+                            Graduate or Diploma in Finance, Economics,
+                            or Business Administration.
+                        </td>
+                        <td>No experience required</td>
+                    </tr>
+                    <tr>
+                        <td>Financial Instruments</td>
+                        <td>
+                            Graduate or Diploma in Finance, Economics,
+                            or Accounting.
+                        </td>
+                        <td>No experience required</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+        <div id="eligibility-chartered">
+            <h4>Chartered Member – Eligibility Criteria</h4>
+            <table class="eligibility-table">
+                <thead>
+                    <tr>
+                        <th>Asset Class</th>
+                        <th>Education</th>
+                        <th>Experience</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Plant, Equipment & Infrastructure</td>
+                        <td>
+                            Graduate in Mechanical, Electrical, Electronics & Communication,
+                            Electronics & Instrumentation, Production, Chemical, Textiles, Leather,
+                            Metallurgy, or Aeronautical Engineering, OR Postgraduate in these fields or
+                            Valuation of Plant and Machinery.
+                        </td>
+                        <td>Minimum of 2 years in valuation; 1 year with postgraduate degree.</td>
+                    </tr>
+                    <tr>
+                        <td>Land and Building</td>
+                        <td>
+                            Graduate in Civil Engineering, Architecture, or Town Planning,
+                            OR Postgraduate in these fields or Real Estate Valuation.
+                        </td>
+                        <td>No experience required</td>
+                    </tr>
+                    <tr>
+                        <td>Business Valuation</td>
+                        <td>
+                            Member of ICAI, ICSI, or ICWAI, OR MBA (Finance), Graduate in Finance,
+                            Economics, or Business Administration, OR Postgraduate in these fields or Business
+                            Valuation.
+                        </td>
+                        <td>No experience required</td>
+                    </tr>
+                    <tr>
+                        <td>Financial Instruments</td>
+                        <td>
+                            Member of ICAI, ICSI, or ICWAI, OR MBA (Finance), OR Postgraduate in Finance or Financial
+                            Instruments.
+                        </td>
+                        <td>No experience required</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+        <div id="eligibility-fellow">
+            <h4>Fellow Member – Eligibility Criteria</h4>
+            <table class="eligibility-table">
+                <thead>
+                    <tr>
+                        <th>Asset Class</th>
+                        <th>Education</th>
+                        <th>Experience</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Plant, Equipment & Infrastructure</td>
+                        <td>
+                            Advanced degree in relevant engineering disciplines
+                            or Valuation of Plant and Machinery OR recognized expertise in the field.
+                        </td>
+                        <td>Associate Member in Plant, Equipment & Infrastructure who has been in continuous practice in
+                            India for at least five years</td>
+                    </tr>
+                    <tr>
+                        <td>Land and Building</td>
+                        <td>
+                            Advanced degree in Civil Engineering, Architecture, Town Planning, or Real Estate Valuation
+                            OR recognized expertise
+                        </td>
+                        <td>Associate Member in Land and Building who has been in continuous practice in India for at
+                            least five years</td>
+                    </tr>
+                    <tr>
+                        <td>Business Valuation</td>
+                        <td>
+                            Member of ICAI, ICSI, or ICWAI, OR MBA (Finance), Advanced degree in Finance, Economics,
+                            Business Administration, or
+                            Business Valuation OR recognized expertise in the field
+                        </td>
+                        <td>Associate Member in Business Valuation who has been in continuous practice in India for at
+                            least five years</td>
+                    </tr>
+                    <tr>
+                        <td>Financial Instruments</td>
+                        <td>
+                            Member of ICAI, ICSI, or ICWAI, OR MBA (Finance), OR Postgraduate in Finance or Financial
+                            Instruments.
+                        </td>
+                        <td>Associate Member in Financial Instruments who has been in continuous practice in India for
+                            at least five years</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+        <div id="eligibility-institutional">
+            <h4>Corporate & Institutional Member – Eligibility Criteria</h4>
+
+            <div class="institutional-eligibility">
+                <p>
+                    Valuation firms, institutions, and organizations aligned with the Institution’s goals
+                    and the Membership committee will issue Corporate and Institution Membership case to case.
+                </p>
+            </div>
+        </div>
     </div>
 
 
 
-    
-    <div id="eligibility-affiliate">
-        <h4>Affiliate Member – Eligibility Criteria</h4>
-        <table class="eligibility-table">
-            <thead>
-                <tr>
-                    <th>Asset Class</th>
-                    <th>Education</th>
-                    <th>Experience</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Plant, Equipment & Infrastructure</td>
-                    <td>
-                        Graduate or Diploma in Mechanical, Electrical,
-                        Electronics & Communication, Electronics & Instrumentation,
-                        Production, Chemical, Textiles, Leather, Metallurgy, or Aeronautical Engineering.
-                    </td>
-                    <td>No experience required</td>
-                </tr>
-                <tr>
-                    <td>Land and Building</td>
-                    <td>
-                        Graduate or Diploma in Civil Engineering,
-                        Architecture, or Town Planning.
-                    </td>
-                    <td>No experience required</td>
-                </tr>
-                <tr>
-                    <td>Business Valuation</td>
-                    <td>
-                        Graduate or Diploma in Finance, Economics,
-                        or Business Administration.
-                    </td>
-                    <td>No experience required</td>
-                </tr>
-                <tr>
-                    <td>Financial Instruments</td>
-                    <td>
-                        Graduate or Diploma in Finance, Economics,
-                        or Accounting.
-                    </td>
-                    <td>No experience required</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
+    <script>
+        const overlay = document.getElementById('eligibilityOverlay');
+        const modalContent = document.getElementById('eligibilityDynamicContent');
+        const closeBtn = document.getElementById('closeEligibility');
 
+        document.querySelectorAll('.popup').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const type = btn.dataset.eligibility;
+                const template = document.getElementById(`eligibility-${type}`);
 
-    
-
-    <div id="eligibility-chartered">
-        <h4>Chartered Member – Eligibility Criteria</h4>
-        <table class="eligibility-table">
-            <thead>
-                <tr>
-                    <th>Asset Class</th>
-                    <th>Education</th>
-                    <th>Experience</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Plant, Equipment & Infrastructure</td>
-                    <td>
-                        Graduate in Mechanical, Electrical, Electronics & Communication,
-                        Electronics & Instrumentation, Production, Chemical, Textiles, Leather,
-                        Metallurgy, or Aeronautical Engineering, OR Postgraduate in these fields or
-                        Valuation of Plant and Machinery.
-                    </td>
-                    <td>Minimum of 2 years in valuation; 1 year with postgraduate degree.</td>
-                </tr>
-                <tr>
-                    <td>Land and Building</td>
-                    <td>
-                       Graduate in Civil Engineering, Architecture, or Town Planning,
-                       OR Postgraduate in these fields or Real Estate Valuation.
-                    </td>
-                    <td>No experience required</td>
-                </tr>
-                <tr>
-                    <td>Business Valuation</td>
-                    <td>
-                        Member of ICAI, ICSI, or ICWAI, OR MBA (Finance), Graduate in Finance,
-                        Economics, or Business Administration, OR Postgraduate in these fields or Business Valuation.
-                    </td>
-                    <td>No experience required</td>
-                </tr>
-                <tr>
-                    <td>Financial Instruments</td>
-                    <td>
-                        Member of ICAI, ICSI, or ICWAI, OR MBA (Finance), OR Postgraduate in Finance or Financial Instruments.
-                    </td>
-                    <td>No experience required</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-
-    
-
-    <div id="eligibility-fellow">
-        <h4>Fellow Member – Eligibility Criteria</h4>
-        <table class="eligibility-table">
-            <thead>
-                <tr>
-                    <th>Asset Class</th>
-                    <th>Education</th>
-                    <th>Experience</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Plant, Equipment & Infrastructure</td>
-                    <td>
-                        Advanced degree in relevant engineering disciplines
-                        or Valuation of Plant and Machinery OR recognized expertise in the field.
-                    </td>
-                    <td>Associate Member in Plant, Equipment & Infrastructure who has been in continuous practice in India for at least five years</td>
-                </tr>
-                <tr>
-                    <td>Land and Building</td>
-                    <td>
-                       Advanced degree in Civil Engineering, Architecture, Town Planning, or Real Estate Valuation OR recognized expertise
-                    </td>
-                    <td>Associate Member in Land and Building who has been in continuous practice in India for at least five years</td>
-                </tr>
-                <tr>
-                    <td>Business Valuation</td>
-                    <td>
-                        Member of ICAI, ICSI, or ICWAI, OR MBA (Finance), Advanced degree in Finance, Economics, Business Administration, or
-                        Business Valuation OR recognized expertise in the field
-                    </td>
-                    <td>Associate Member in Business Valuation who has been in continuous practice in India for at least five years</td>
-                </tr>
-                <tr>
-                    <td>Financial Instruments</td>
-                    <td>
-                        Member of ICAI, ICSI, or ICWAI, OR MBA (Finance), OR Postgraduate in Finance or Financial Instruments.
-                    </td>
-                    <td>Associate Member in Financial Instruments who has been in continuous practice in India for at least five years</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-
-    <div id="eligibility-institutional">
-    <h4>Corporate & Institutional Member – Eligibility Criteria</h4>
-
-    <div class="institutional-eligibility">
-        <p>
-            Valuation firms, institutions, and organizations aligned with the Institution’s goals
-            and the Membership committee will issue Corporate and Institution Membership case to case. 
-        </p>
-    </div>
-</div>
-</div>
-
-
-
-<script>
-    const overlay = document.getElementById('eligibilityOverlay');
-    const modalContent = document.getElementById('eligibilityDynamicContent');
-    const closeBtn = document.getElementById('closeEligibility');
-
-    document.querySelectorAll('.popup').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const type = btn.dataset.eligibility;
-            const template = document.getElementById(`eligibility-${type}`);
-
-            if (template) {
-                modalContent.innerHTML = template.innerHTML;
-                overlay.classList.add('active');
-                document.body.style.overflow = 'hidden';
-            }
+                if (template) {
+                    modalContent.innerHTML = template.innerHTML;
+                    overlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
         });
-    });
 
-    closeBtn.addEventListener('click', closeModal);
-    overlay.addEventListener('click', e => {
-        if (e.target === overlay) closeModal();
-    });
+        closeBtn.addEventListener('click', closeModal);
+        overlay.addEventListener('click', e => {
+            if (e.target === overlay) closeModal();
+        });
 
-    function closeModal() {
-        overlay.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-</script>
+        function closeModal() {
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    </script>
 
 
 
