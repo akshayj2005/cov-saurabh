@@ -41,7 +41,7 @@
                         <a href="about.html#our-story">Our Story</a>
                         <a href="BOD.html">Board of Directors</a>
                         <a href="committee.html">Committee</a>
-                        <a href="#" id="bylawsLink">By Laws</a>
+                        <a href="bylaws.html" id="">By Laws</a>
                     </div>
                 </div>
                 <a href="covsphere.html">COV Sphere</a>
@@ -314,56 +314,6 @@
             </div>
         </div>
     </footer>
-
-    <!-- ==================== PDF MODAL ==================== -->
-    <div class="pdf-modal-overlay" id="pdfModalOverlay">
-        <div class="pdf-modal">
-            <!-- Header -->
-            <div class="pdf-modal-header">
-                <h3 class="pdf-modal-title">By Laws - COV India Forum</h3>
-                <button class="pdf-modal-close" id="closePdfModal">&times;</button>
-            </div>
-
-            <!-- Controls -->
-            <div class="pdf-controls">
-                <button class="pdf-control-btn" id="prevPage">
-                    ← Previous
-                </button>
-                <span class="pdf-page-info">
-                    Page <span id="currentPage">1</span> of <span id="totalPages">0</span>
-                </span>
-                <button class="pdf-control-btn" id="nextPage">
-                    Next →
-                </button>
-                
-                <div class="pdf-zoom-control">
-                    <button class="pdf-control-btn" id="zoomOut">−</button>
-                    <span class="pdf-page-info"><span id="zoomLevel">100</span>%</span>
-                    <button class="pdf-control-btn" id="zoomIn">+</button>
-                </div>
-
-                <button class="pdf-control-btn" id="downloadPdf">
-                    ⬇ Download
-                </button>
-            </div>
-
-            <!-- PDF Viewer -->
-            <div class="pdf-viewer-container" id="pdfViewerContainer">
-                <div class="pdf-loading active" id="pdfLoading">
-                    <div class="spinner"></div>
-                    <div>Loading PDF...</div>
-                </div>
-                <div class="pdf-canvas-wrapper">
-                    <canvas id="pdfCanvas"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Include PDF.js -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-    <script src="script.js"></script>
-
 </body>
 
 </html>
