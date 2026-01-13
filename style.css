@@ -1719,8 +1719,8 @@ nav a:hover {
 
 .hero-content {
   position: relative;
-  max-width: 100%;
-  margin: 0 10px auto;
+  max-width: 1520px;
+  margin: 0 auto;
   padding: 0 20px;
   height: 100%;
   display: flex;
@@ -1730,7 +1730,7 @@ nav a:hover {
 }
 
 .hero-text {
-  max-width: 100%;
+  max-width: 750px;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
