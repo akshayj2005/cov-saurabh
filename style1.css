@@ -194,28 +194,33 @@ header {
         }
 
         .register-btn {
-            padding: 8px 16px;
+            padding: 6px 17px;
             background-color: transparent;
             color: rgb(10, 8, 94);
             text-decoration: none;
-            border-radius: 20px;
-            font-size: 18px;
-            font-weight: 400;
+            border-radius: 25px;
+            border: 2px solid rgb(10, 8, 94);
+            font-size: 16px;
+            font-weight: 600;
             transition: .3s ease-in-out;
-            white-space: nowrap
+            white-space: nowrap;
+            display: inline-block;
+            line-height: 1.2;
         }
 
         .register-btn:hover {
-            background-color: rgba(10, 8, 94, .12);
-            transform: translateY(-2px)
+            background-color: rgb(10, 8, 94);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
         }
 
         .login-btn {
             padding: 8px 20px;
-            background-color: var(--accent-teal);
+            background-color: rgb(10, 8, 94);
             color: #fff;
             border: none;
-            border-radius: 12px;
+            border-radius: 25px;
             cursor: pointer;
             font-size: 16px;
             font-weight: 600;
@@ -283,20 +288,7 @@ header {
   opacity: 1;
 }
 
-/* Hero Section */
-/* .about-hero {
-  background: linear-gradient(
-    135deg,
-    var(--primary) 0%,
-    var(--accent-teal) 100%
-  );
-  color: white;
-  padding: 160px 40px 80px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-} */
+/* Hero Section - FIXED FOR VERTICAL CENTERING */
 .about-hero {
   background: linear-gradient(
     135deg,
@@ -304,12 +296,17 @@ header {
     var(--accent-teal) 100%
   );
   color: white;
-  padding: 160px 40px 80px;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
   position: relative;
   overflow: hidden;
-  margin-top: 0;
+  margin-top: 100px;
+  padding: 0 40px;
 }
+
 .about-hero::before {
   content: "";
   position: absolute;
@@ -350,13 +347,12 @@ header {
   position: relative;
   z-index: 2;
   max-width: 900px;
-  margin: 0 auto;
-  height: 111px;
+  width: 100%;
 }
 
 .about-hero h1 {
   font-size: 2.8em;
-  margin-bottom: 20px;
+  margin: 0;
   font-weight: 700;
   letter-spacing: -1px;
   animation: fadeInUp 0.8s ease;
@@ -1389,15 +1385,9 @@ body::-webkit-scrollbar {
   66% {
     transform: translate(0, -60px) rotate(240deg);
   }
-}/* Vision Visual - Network Node Animation */
-.vision-visual {
-  position: relative;
-  height: 450px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
+/* Vision Visual - Network Node Animation */
 .network-container {
   position: relative;
   width: 100%;

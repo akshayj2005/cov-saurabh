@@ -157,20 +157,33 @@
         }
 
         .register-btn {
-            padding: 8px 16px;
+            padding: 6px 17px;
             background-color: transparent;
             color: rgb(10, 8, 94);
             text-decoration: none;
-            border-radius: 20px;
-            font-size: 18px;
-            font-weight: 400;
-            transition: .3s ease-in-out;
-            white-space: nowrap
+            border-radius: 25px;
+            border: 2px solid rgb(10, 8, 94);
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s ease-in-out;
+            white-space: nowrap;
+            display: inline-block;
+            line-height: 1.2;
         }
 
         .register-btn:hover {
-            background-color: rgba(10, 8, 94, .12);
-            transform: translateY(-2px)
+            background-color: rgb(10, 8, 94);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
+        }
+
+        .register-btn:visited {
+            color: rgb(10, 8, 94);
+        }
+
+        .register-btn:visited:hover {
+            color: white;
         }
 
         .login-btn {
@@ -724,8 +737,8 @@
             }
         }
 
-        @media(max-width:768px){
-            .form-grid{
+        @media(max-width:768px) {
+            .form-grid {
                 grid-template-columns: 1fr;
             }
         }
@@ -974,12 +987,4 @@
                             GST</button><input type="file" id="gstInput" accept=".pdf,.jpg,.png"></div>
                     <div class="doc-upload-item"><input type="text" placeholder="Passport Number" readonly><button
                             class="doc-upload-btn" onclick="document.getElementById('passportInput').click()">Upload
-                            Passport</button><input type="file" id="passportInput" accept=".pdf,.jpg,.png"></div>
-                </div>
-                <div class="checkbox-group">
-                    <input type="checkbox" id="sameAddress">
-                    <label for="sameAddress">Correspondence Address same as Permanent Address</label>
-                </div>
-            </div>
-            <div style="margin-top:25px;overflow:auto">
-                <button class="next
+                            Passport</button><input type="file" id="passportInput" accept=".

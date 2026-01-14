@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>By-Laws - Confederation of Valuers</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
@@ -17,8 +18,6 @@
             --text-dark: #012a4a;
             --white: #ffffff;
             --light-gray: #e8f4f8;
-            --hero-height: min(85vh, 600px);
-            --header-offset: 100px;
         }
 
         * {
@@ -35,7 +34,7 @@
             line-height: 1.6;
         }
 
-        /* ==================== HEADER STYLES - BOD MATCH ==================== */
+        /* ==================== HEADER STYLES ==================== */
         header {
             background: var(--white);
             box-shadow: 0 2px 10px rgba(0, 43, 91, 0.1);
@@ -109,7 +108,7 @@
             min-width: 220px;
             opacity: 0;
             visibility: hidden;
-            transition: transform 2s ease-out;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
             z-index: 1100;
             margin-top: 10px;
             overflow: hidden;
@@ -140,8 +139,9 @@
         .dropdown-arrow {
             display: inline-block;
             margin-left: 5px;
-            font-size: 12px;
+            font-size: 10px;
             transition: transform 0.3s ease;
+            vertical-align: middle;
         }
 
         .nav-item:hover .dropdown-arrow {
@@ -155,40 +155,53 @@
             flex-shrink: 0;
         }
 
-        .register-btn-header {
-            padding: 8px 16px;
-            background-color: transparent;
-            color: rgb(10, 8, 94);
-            text-decoration: none;
-            border-radius: 20px;
-            font-size: 18px;
-            font-weight: 400;
-            transition: 0.3s ease-in-out;
-            white-space: nowrap;
-        }
+       
+.register-btn-header {
+    padding: 6px 17px;
+    background-color: transparent;
+    color: rgb(10, 8, 94);
+    text-decoration: none;
+    border-radius: 25px;
+    border: 2px solid rgb(10, 8, 94);
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    white-space: nowrap;
+    display: inline-block;
+    line-height: 1.2;
+}
 
-        .register-btn-header:hover {
-            background-color: rgba(10, 8, 94, 0.12);
-            transform: translateY(-2px);
-        }
+.register-btn-header:hover {
+    background-color: rgb(10, 8, 94);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
+}
 
-        .login-btn {
-            padding: 8px 20px;
-            background-color: rgb(10, 8, 94);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
+.register-btn-header:visited {
+    color: rgb(10, 8, 94);
+}
 
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
-        }
+.register-btn-header:visited:hover {
+    color: white;
+}
+       .login-btn {
+    padding: 8px 20px;
+    background-color: rgb(10, 8, 94);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
+}
 
         .hamburger {
             display: none;
@@ -309,7 +322,7 @@
             letter-spacing: -1px;
         }
 
-        /* PDF Viewer Section */
+        /* ===== PDF SECTION WITH CUSTOM CONTROLS ===== */
         .pdf-section {
             padding: 60px 40px;
             background: var(--soft-bg);
@@ -323,27 +336,98 @@
             border-radius: 12px;
             box-shadow: 0 4px 20px rgba(0, 43, 91, 0.1);
             overflow: hidden;
+            border: 2px solid rgba(0, 166, 166, 0.15);
         }
 
-        .pdf-viewer {
+        /* Custom PDF Controls Bar */
+        .pdf-controls {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-teal) 100%);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .pdf-controls-left,
+        .pdf-controls-center,
+        .pdf-controls-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pdf-controls button {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .pdf-controls button:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-1px);
+        }
+
+        .pdf-controls button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .pdf-info {
+            color: white;
+            font-size: 14px;
+            padding: 5px 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+        }
+
+        .zoom-level {
+            color: white;
+            font-size: 14px;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        /* PDF Canvas Container */
+        .pdf-canvas-container {
             width: 100%;
-            height: 800px;
-            border: none;
-            background: #f5f5f5;
+            height: 750px;
+            background: linear-gradient(135deg, var(--soft-bg) 0%, #ffffff 100%);
+            overflow: auto;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 20px;
+        }
+
+        #pdfCanvas {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            max-width: 100%;
+            height: auto;
         }
 
         .download-section {
-            padding: 20px;
+            padding: 25px;
             text-align: center;
-            background: var(--soft-bg);
+            background: linear-gradient(135deg, var(--soft-bg) 0%, #ffffff 100%);
+            border-top: 2px solid rgba(0, 166, 166, 0.1);
         }
 
         .download-btn {
             background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
             color: white;
             border: none;
-            padding: 12px 30px;
-            border-radius: 6px;
+            padding: 14px 35px;
+            border-radius: 8px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
@@ -351,11 +435,16 @@
             display: inline-flex;
             align-items: center;
             gap: 10px;
+            box-shadow: 0 4px 15px rgba(0, 166, 166, 0.2);
         }
 
         .download-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 166, 166, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 166, 166, 0.4);
+        }
+
+        .download-btn i {
+            font-size: 18px;
         }
 
         /* ===== FOOTER ===== */
@@ -416,7 +505,7 @@
             nav {
                 position: fixed;
                 top: 0;
-                right: -100%;
+                right: 0;
                 width: 280px;
                 height: 100vh;
                 background: linear-gradient(135deg, #f2f9ff 0%, #ffffff 100%);
@@ -426,13 +515,14 @@
                 padding: 100px 30px 30px 30px;
                 gap: 0 !important;
                 box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-                transition: transform 2s ease-out;
                 z-index: 1000;
                 overflow-y: auto;
+                transform: translateX(100%);
+                transition: transform 0.35s ease-out;
             }
 
             nav.active {
-                right: 0;
+                transform: translateX(0);
             }
 
             nav a {
@@ -493,25 +583,24 @@
                 transform: rotate(180deg);
             }
 
-            .register-btn-header {
-                width: 100% !important;
-                margin: 15px 0 0 0 !important;
-                padding: 15px 20px !important;
-                border-radius: 12px;
-                font-size: 16px;
-                text-align: center;
-                display: block !important;
+            .nav-item:hover .dropdown-arrow {
+                transform: none;
             }
 
-            .login-btn {
-                width: 100% !important;
-                margin: 10px 0 0 0 !important;
-                padding: 15px 20px !important;
-                border-radius: 12px;
-                font-size: 16px;
-                background-color: var(--accent-teal);
-                transition: all 0.3s ease;
-                display: block !important;
+            .nav-item.mobile-active:hover .dropdown-arrow {
+                transform: rotate(180deg);
+            }
+
+            .pdf-controls {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .pdf-controls-left,
+            .pdf-controls-center,
+            .pdf-controls-right {
+                width: 100%;
+                justify-content: center;
             }
 
             .hero-section {
@@ -523,7 +612,7 @@
                 padding: 40px 20px;
             }
 
-            .pdf-viewer {
+            .pdf-canvas-container {
                 height: 600px;
             }
 
@@ -549,14 +638,18 @@
                 padding: 90px 25px 25px 25px;
             }
 
-            .pdf-viewer {
+            .pdf-canvas-container {
                 height: 500px;
+            }
+
+            .pdf-controls button {
+                padding: 6px 10px;
+                font-size: 12px;
             }
         }
 
-        ::-webkit-scrollbar {
-            width: 0;
-            height: 0;
+        body::-webkit-scrollbar {
+            display: none;
         }
 
         * {
@@ -582,7 +675,7 @@
                 <span></span>
             </button>
 
-           <nav id="navMenu">
+            <nav id="navMenu">
                 <a href="membership.html">Membership</a>
                 <a href="#training">Training & Courses</a>
                 <a href="#events">Events</a>
@@ -592,7 +685,7 @@
                         <a href="about.html#our-story">Our Story</a>
                         <a href="BOD.html">Board of Directors</a>
                         <a href="committee.html">Committee</a>
-                        <a href="bylaws.html" id="">By Laws</a>
+                        <a href="bylaws.html">By Laws</a>
                     </div>
                 </div>
                 <a href="covsphere.html">COV Sphere</a>
@@ -617,12 +710,30 @@
 
     <section class="pdf-section">
         <div class="pdf-container">
-            <iframe 
-                id="pdfViewer" 
-                class="pdf-viewer" 
-                src="assets\By-Laws COV India Forum (1).pdf"
-                type="application/pdf">
-            </iframe>
+            <!-- Custom PDF Controls -->
+            <div class="pdf-controls">
+                <div class="pdf-controls-left">
+                    <button id="prevPage"><i class="fas fa-chevron-left"></i> Previous</button>
+                    <span class="pdf-info">Page <span id="pageNum">1</span> / <span id="pageCount">0</span></span>
+                    <button id="nextPage">Next <i class="fas fa-chevron-right"></i></button>
+                </div>
+                
+                <div class="pdf-controls-center">
+                    <button id="zoomOut"><i class="fas fa-search-minus"></i></button>
+                    <span class="zoom-level"><span id="zoomLevel">100</span>%</span>
+                    <button id="zoomIn"><i class="fas fa-search-plus"></i></button>
+                </div>
+                
+                <div class="pdf-controls-right">
+                    <button id="rotatePage"><i class="fas fa-rotate-right"></i> Rotate</button>
+                    <button id="fullscreen"><i class="fas fa-expand"></i> Fullscreen</button>
+                </div>
+            </div>
+
+            <!-- PDF Canvas -->
+            <div class="pdf-canvas-container" id="canvasContainer">
+                <canvas id="pdfCanvas"></canvas>
+            </div>
 
             <div class="download-section">
                 <button class="download-btn" id="downloadBtn">
@@ -647,6 +758,123 @@
     </footer>
 
     <script>
+        // PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+        let pdfDoc = null;
+        let pageNum = 1;
+        let pageRendering = false;
+        let pageNumPending = null;
+        let scale = 1.5;
+        let rotation = 0;
+        const canvas = document.getElementById('pdfCanvas');
+        const ctx = canvas.getContext('2d');
+
+        // Load PDF
+        const url = 'assets/By-Laws COV India Forum (1).pdf';
+
+        pdfjsLib.getDocument(url).promise.then(function(pdfDoc_) {
+            pdfDoc = pdfDoc_;
+            document.getElementById('pageCount').textContent = pdfDoc.numPages;
+            renderPage(pageNum);
+        });
+
+        function renderPage(num) {
+            pageRendering = true;
+            pdfDoc.getPage(num).then(function(page) {
+                const viewport = page.getViewport({ scale: scale, rotation: rotation });
+                canvas.height = viewport.height;
+                canvas.width = viewport.width;
+
+                const renderContext = {
+                    canvasContext: ctx,
+                    viewport: viewport
+                };
+
+                const renderTask = page.render(renderContext);
+
+                renderTask.promise.then(function() {
+                    pageRendering = false;
+                    if (pageNumPending !== null) {
+                        renderPage(pageNumPending);
+                        pageNumPending = null;
+                    }
+                });
+            });
+
+            document.getElementById('pageNum').textContent = num;
+            updateButtons();
+        }
+
+        function queueRenderPage(num) {
+            if (pageRendering) {
+                pageNumPending = num;
+            } else {
+                renderPage(num);
+            }
+        }
+
+        function updateButtons() {
+            document.getElementById('prevPage').disabled = (pageNum <= 1);
+            document.getElementById('nextPage').disabled = (pageNum >= pdfDoc.numPages);
+        }
+
+        // Previous page
+        document.getElementById('prevPage').addEventListener('click', function() {
+            if (pageNum <= 1) return;
+            pageNum--;
+            queueRenderPage(pageNum);
+        });
+
+        // Next page
+        document.getElementById('nextPage').addEventListener('click', function() {
+            if (pageNum >= pdfDoc.numPages) return;
+            pageNum++;
+            queueRenderPage(pageNum);
+        });
+
+        // Zoom In
+        document.getElementById('zoomIn').addEventListener('click', function() {
+            scale += 0.25;
+            document.getElementById('zoomLevel').textContent = Math.round(scale * 100);
+            queueRenderPage(pageNum);
+        });
+
+        // Zoom Out
+        document.getElementById('zoomOut').addEventListener('click', function() {
+            if (scale > 0.5) {
+                scale -= 0.25;
+                document.getElementById('zoomLevel').textContent = Math.round(scale * 100);
+                queueRenderPage(pageNum);
+            }
+        });
+
+        // Rotate
+        document.getElementById('rotatePage').addEventListener('click', function() {
+            rotation = (rotation + 90) % 360;
+            queueRenderPage(pageNum);
+        });
+
+        // Fullscreen
+        document.getElementById('fullscreen').addEventListener('click', function() {
+            const container = document.getElementById('canvasContainer');
+            if (container.requestFullscreen) {
+                container.requestFullscreen();
+            } else if (container.webkitRequestFullscreen) {
+                container.webkitRequestFullscreen();
+            } else if (container.msRequestFullscreen) {
+                container.msRequestFullscreen();
+            }
+        });
+
+        // Download
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            const link = document.createElement('a');
+            link.href = 'assets/By-Laws COV India Forum (1).pdf';
+            link.download = 'COV-By-Laws.pdf';
+            link.click();
+        });
+
         // Hamburger menu
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
@@ -669,7 +897,7 @@
         const navLinks = navMenu.querySelectorAll('a');
         navLinks.forEach(link => {
             link.addEventListener('click', function (e) {
-                if (window.innerWidth <= 768 && this.parentElement.classList.contains('nav-item')) {
+                if (window.innerWidth <= 1280 && this.parentElement.classList.contains('nav-item')) {
                     return;
                 }
                 hamburger.classList.remove('active');
@@ -680,37 +908,17 @@
         });
 
         // Mobile dropdown toggle
-        if (window.innerWidth <= 768) {
+        document.addEventListener('DOMContentLoaded', function() {
             const navItem = document.querySelector('.nav-item');
             if (navItem) {
                 const navItemLink = navItem.querySelector('a');
                 navItemLink.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    navItem.classList.toggle('mobile-active');
+                    if (window.innerWidth <= 1280) {
+                        e.preventDefault();
+                        navItem.classList.toggle('mobile-active');
+                    }
                 });
             }
-        }
-
-        // Clone right buttons into mobile menu
-        const navRight = document.querySelector('.nav-right');
-        if (navRight && window.innerWidth <= 768) {
-            const registerBtn = navRight.querySelector('.register-btn-header');
-            const loginBtn = navRight.querySelector('.login-btn');
-            if (registerBtn && loginBtn) {
-                const registerClone = registerBtn.cloneNode(true);
-                const loginClone = loginBtn.cloneNode(true);
-                navMenu.appendChild(registerClone);
-                navMenu.appendChild(loginClone);
-            }
-        }
-
-        // Download button
-        const downloadBtn = document.getElementById('downloadBtn');
-        downloadBtn.addEventListener('click', () => {
-            const link = document.createElement('a');
-            link.href = '1768279305805_COV-By-Laws.pdf';
-            link.download = 'COV-By-Laws.pdf';
-            link.click();
         });
     </script>
 

@@ -157,21 +157,35 @@ nav a:hover {
   flex-shrink: 0;
 }
 
+/* Updated Register Button - Matching Membership Page */
 .register-btn {
-  padding: 8px 16px;
+  padding: 6px 17px;
   background-color: transparent;
   color: rgb(10, 8, 94);
   text-decoration: none;
-  border-radius: 20px;
-  font-size: 18px;
-  font-weight: 400;
+  border-radius: 25px;
+  border: 2px solid rgb(10, 8, 94);
+  font-size: 16px;
+  font-weight: 600;
   transition: 0.3s ease-in-out;
   white-space: nowrap;
+  display: inline-block;
+  line-height: 1.2;
 }
 
 .register-btn:hover {
-  background-color: rgba(10, 8, 94, 0.12);
+  background-color: rgb(10, 8, 94);
+  color: white;
   transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
+}
+
+.register-btn:visited {
+  color: rgb(10, 8, 94);
+}
+
+.register-btn:visited:hover {
+  color: white;
 }
 
 .login-btn {

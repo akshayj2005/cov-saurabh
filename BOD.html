@@ -168,22 +168,38 @@
             flex-shrink: 0;
         }
 
-        .register-btn {
-            padding: 8px 16px;
-            background-color: transparent;
-            color: rgb(10, 8, 94);
-            text-decoration: none;
-            border-radius: 20px;
-            font-size: 18px;
-            font-weight: 400;
-            transition: 0.3s ease-in-out;
-            white-space: nowrap;
-        }
+       /* Replace the .register-btn section in your BOD page CSS (around line 197-207) */
 
-        .register-btn:hover {
-            background-color: rgba(10, 8, 94, 0.12);
-            transform: translateY(-2px);
-        }
+.register-btn {
+    padding: 6px 17px;
+    background-color: transparent;
+    color: rgb(10, 8, 94);
+    text-decoration: none;
+    border-radius: 25px;
+    border: 2px solid rgb(10, 8, 94);
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    white-space: nowrap;
+    display: inline-block;
+    line-height: 1.2;
+}
+
+.register-btn:hover {
+    background-color: rgb(10, 8, 94);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
+}
+
+/* Also add this to prevent visited link color issues */
+.register-btn:visited {
+    color: rgb(10, 8, 94);
+}
+
+.register-btn:visited:hover {
+    color: white;
+}
 
         .login-btn {
             padding: 8px 20px;

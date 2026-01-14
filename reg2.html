@@ -155,23 +155,37 @@
             gap: 15px;
             flex-shrink: 0
         }
+/* FIND THIS SECTION (around line 166-177) and REPLACE with: */
 
-        .register-btn {
-            padding: 8px 16px;
-            background-color: transparent;
-            color: rgb(10, 8, 94);
-            text-decoration: none;
-            border-radius: 20px;
-            font-size: 18px;
-            font-weight: 400;
-            transition: .3s ease-in-out;
-            white-space: nowrap
-        }
+.register-btn {
+    padding: 6px 17px;
+    background-color: transparent;
+    color: rgb(10, 8, 94);
+    text-decoration: none;
+    border-radius: 25px;
+    border: 2px solid rgb(10, 8, 94);
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    white-space: nowrap;
+    display: inline-block;
+    line-height: 1.2;
+}
 
-        .register-btn:hover {
-            background-color: rgba(10, 8, 94, .12);
-            transform: translateY(-2px)
-        }
+.register-btn:hover {
+    background-color: rgb(10, 8, 94);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
+}
+
+.register-btn:visited {
+    color: rgb(10, 8, 94);
+}
+
+.register-btn:visited:hover {
+    color: white;
+}
 
         .login-btn {
             padding: 8px 20px;
