@@ -797,7 +797,10 @@ nav a:hover {
   font-size: 16px;
   margin-bottom: 25px;
 }
-
+.about-content p .highlight-cov {
+  color: var(--accent-teal) !important;
+  font-weight: 600 !important;
+}
 /* ==================== STATS SECTION ==================== */
 
 .stats-section {
@@ -1114,7 +1117,7 @@ nav a:hover {
 .ecosystem-number {
   font-size: 3rem;
   font-weight: 800;
-  color: var(--soft-bg);
+  color: var(--accent-teal);
   line-height: 1;
   min-width: 80px;
   flex-shrink: 0;
@@ -1122,7 +1125,7 @@ nav a:hover {
 }
 
 .ecosystem-item:hover .ecosystem-number {
-  color: rgba(0, 166, 166, 0.2);
+  color: var(--primary);
   transform: scale(1.1);
 }
 
