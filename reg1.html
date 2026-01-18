@@ -495,17 +495,38 @@
             font-size: 13px
         }
 
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            gap: 15px
+        }
+
+        .back-btn,
         .next-btn {
             padding: 14px 50px;
-            background: linear-gradient(135deg, #1a7a9e, #4db8b8);
-            color: #fff;
             border: none;
             border-radius: 6px;
             font-size: 15px;
             font-weight: 600;
             cursor: pointer;
-            float: right;
             transition: all .3s ease
+        }
+
+        .back-btn {
+            background: #fff;
+            color: #1a7a9e;
+            border: 2px solid #1a7a9e
+        }
+
+        .back-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px)
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #1a7a9e, #4db8b8);
+            color: #fff
         }
 
         .next-btn:hover {
@@ -725,7 +746,11 @@
                 flex-wrap: wrap
             }
 
-            .next-btn {
+            .action-buttons {
+                flex-direction: column
+            }
+
+            .next-btn,.back-btn {
                 float: none;
                 width: 100%
             }
@@ -988,3 +1013,25 @@
                     <div class="doc-upload-item"><input type="text" placeholder="Passport Number" readonly><button
                             class="doc-upload-btn" onclick="document.getElementById('passportInput').click()">Upload
                             Passport</button><input type="file" id="passportInput" accept=".
+                            pdf,.jpg,.png">
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button class="back-btn" onclick="window.location.href='index.html'">Back</button>
+                <button class="next-btn" onclick="window.location.href='reg2.html'">Next</button>
+            </div>
+
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">© 2025 Confederation of Valuers — All Rights Reserved</p>
+            <div class="footer-legal">
+                <a href="faq.html">FAQ</a>
+                <a href="TandC.html">Terms & Conditions</a>
+                <a href="policy.html">Policy</a>
+            </div>
+        </div>
+    </footer>

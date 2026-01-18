@@ -981,9 +981,102 @@
                                     checked><label for="q3-no">No</label></div>
                         </div>
                     </li>
+                    
                     <li><span>Have you ever been restrained by any public sector bank / any other institution to conduct
                             valuation services and subsequently de-panelled from their panel</span>
                         <div class="radio-group">
                             <div class="radio-option"><input type="radio" id="q4-yes" name="question4"
                                     value="yes"><label for="q4-yes">Yes</label></div>
-                            <div class="radio-option"><input type="radio" id="q4-no" name="question4
+                            <div class="radio-option"><input type="radio" id="q4-no" name="question4" value="no"
+                                    checked><label for="q4-no">No</label></div>
+                        </div>
+                    </li>
+                    <li><span>Whether any disciplinary proceeding are pending or any disciplinary action has been taken
+                            at any time in the preceding three years against you by the institution / body of which you
+                            are a member</span>
+                        <div class="radio-group">
+                            <div class="radio-option"><input type="radio" id="q5-yes" name="question5"
+                                    value="yes"><label for="q5-yes">Yes</label></div>
+                            <div class="radio-option"><input type="radio" id="q5-no" name="question5" value="no"
+                                    checked><label for="q5-no">No</label></div>
+                        </div>
+                    </li>
+                    <li><span>Whether you had an unblemished service with the last employer in case of
+                            employment?</span>
+                        <div class="radio-group">
+                            <div class="radio-option"><input type="radio" id="q6-yes" name="question6" value="yes"
+                                    checked><label for="q6-yes">Yes</label></div>
+                            <div class="radio-option"><input type="radio" id="q6-no" name="question6" value="no"><label
+                                    for="q6-no">No</label></div>
+                        </div>
+                    </li>
+                    <li><span>Whether your name appears in the database of MCA regarding:</span>
+                        <div class="radio-group">
+                            <div class="radio-option"><input type="radio" id="q7-yes" name="question7"
+                                    value="yes"><label for="q7-yes">Yes</label></div>
+                            <div class="radio-option"><input type="radio" id="q7-no" name="question7" value="no"
+                                    checked><label for="q7-no">No</label></div>
+                        </div>
+                    </li>
+                    <li class="no-counter" style="margin-left:35px">
+                        <ul class="sub-list">
+                            <li><span>Directors disqualified under section 164 of companies act 2013</span>
+                                <div class="radio-group">
+                                    <div class="radio-option"><input type="radio" id="q8a-yes" name="question8a"
+                                            value="yes"><label for="q8a-yes">Yes</label></div>
+                                    <div class="radio-option"><input type="radio" id="q8a-no" name="question8a"
+                                            value="no" checked><label for="q8a-no">No</label></div>
+                                </div>
+                            </li>
+                            <li><span>Proclaimed Offenders under section 82 of the code of Criminal Procedure,
+                                    1973?</span>
+                                <div class="radio-group">
+                                    <div class="radio-option"><input type="radio" id="q8b-yes" name="question8b"
+                                            value="yes"><label for="q8b-yes">Yes</label></div>
+                                    <div class="radio-option"><input type="radio" id="q8b-no" name="question8b"
+                                            value="no" checked><label for="q8b-no">No</label></div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><span>Whether you have been penalised by a market regulator (SEBI or CCI) in the last 3
+                            years?</span>
+                        <div class="radio-group">
+                            <div class="radio-option"><input type="radio" id="q9-yes" name="question9"
+                                    value="yes"><label for="q9-yes">Yes</label></div>
+                            <div class="radio-option"><input type="radio" id="q9-no" name="question9" value="no"
+                                    checked><label for="q9-no">No</label></div>
+                        </div>
+                    </li>
+                    <li><span>Whether your name appears in the list of defaulters of RBI?</span>
+                        <div class="radio-group">
+                            <div class="radio-option"><input type="radio" id="q10-yes" name="question10"
+                                    value="yes"><label for="q10-yes">Yes</label></div>
+                            <div class="radio-option"><input type="radio" id="q10-no" name="question10" value="no"
+                                    checked><label for="q10-no">No</label></div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="action-buttons">
+                <button class="back-btn" onclick="window.location.href='reg2.html'">Back</button>
+                <button class="next-btn" onclick="alert('Form Submitted!')">Submit</button>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">© 2025 Confederation of Valuers — All Rights Reserved</p>
+            <div class="footer-legal">
+                <a href="faq.html">FAQ</a>
+                <a href="TandC.html">Terms & Conditions</a>
+                <a href="policy.html">Policy</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        let expRowCount = 2; function addExperienceRow() { expRowCount++; const t = document.getElementById("experienceTableBody"), e = document.createElement("tr"); e.innerHTML = `<td><select><option value="">Select</option><option value="employment">Employment</option><option value="practice">Practice</option></select></td><td><input type="text" placeholder="Year"></td><td><input type="text" placeholder="From"></td><td><input type="text" placeholder="To"></td><td><input type="text" placeholder="Employer"></td><td><input type="text" placeholder="Designation"></td><td><input type="text" placeholder="Area"></td><td><button class="upload-btn" onclick="document.getElementById('expUpload${expRowCount}').click()">Upload</button><input type="file" id="expUpload${expRowCount}" accept=".pdf,.jpg,.png"></td>`, t.appendChild(e) } const hamburger = document.getElementById("hamburger"), navMenu = document.getElementById("navMenu"), menuOverlay = document.getElementById("menuOverlay"); hamburger.addEventListener("click", function () { this.classList.toggle("active"), navMenu.classList.toggle("active"), menuOverlay.classList.toggle("active"), document.body.style.overflow = this.classList.contains("active") ? "hidden" : "" }), menuOverlay.addEventListener("click", function () { hamburger.classList.remove("active"), navMenu.classList.remove("active"), this.classList.remove("active"), document.body.style.overflow = "" }), navMenu.querySelectorAll("a").forEach(t => { t.addEventListener("click", function (t) { window.innerWidth <= 768 && this.parentElement.classList.contains("nav-item") || (hamburger.classList.remove("active"), navMenu.classList.remove("active"), menuOverlay.classList.remove("active"), document.body.style.overflow = "") }) }); if (window.innerWidth <= 768) { const t = document.querySelector(".nav-item"); if (t) { t.querySelector("a").addEventListener("click", function (e) { e.preventDefault(), t.classList.toggle("mobile-active") }) } } const navRight = document.querySelector(".nav-right"); if (navRight && window.innerWidth <= 768) { const t = navRight.querySelector(".register-btn").cloneNode(!0), e = navRight.querySelector(".login-btn").cloneNode(!0); navMenu.appendChild(t), navMenu.appendChild(e) }
+    </script>
+</body>
+
+</html>
