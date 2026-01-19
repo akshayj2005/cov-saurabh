@@ -511,8 +511,98 @@ textarea {
   font-family: "Poppins", sans-serif;
 }
 
+/* Bank Details Section */
+.bank-details-section {
+  background: white;
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 43, 91, 0.1);
+  margin-bottom: 60px;
+}
+
+.bank-details-section h2 {
+  font-family: "Poppins", sans-serif;
+  font-size: clamp(26px, 4vw, 36px);
+  color: var(--primary);
+  text-align: center;
+  margin-bottom: 28px;
+  font-weight: 700;
+}
+
+.bank-card {
+  background: linear-gradient(135deg, var(--soft-bg) 0%, #fff 100%);
+  border: 2px solid #e0f2f7;
+  border-radius: 16px;
+  padding: 10px;
+  max-width: 90%;
+  margin: 0 auto;
+  box-shadow: 0 5px 20px rgba(0, 166, 166, 0.08);
+}
+
+.bank-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid rgba(0, 166, 166, 0.2);
+}
+
+.bank-header i {
+  font-size: 3em;
+  color: var(--accent-teal);
+  background: white;
+  padding: 5px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 166, 166, 0.15);
+}
+
+.bank-header h3 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5em;
+  color: var(--primary);
+  font-weight: 600;
+  margin: 0;
+}
+
+.bank-info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.bank-info-item {
+  background: white;
+  padding: 18px;
+  border-radius: 12px;
+  border-left: 4px solid var(--accent-teal);
+  transition: all 0.3s ease;
+}
+
+.bank-info-item:hover {
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(0, 166, 166, 0.1);
+}
+
+.bank-label {
+  font-family: "Poppins", sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #666;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.bank-value {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary);
+}
+
 /* Social Section */
-.social-section {
+/* .social-section {
   background: white;
   padding: 50px 40px;
   text-align: center;
@@ -563,17 +653,179 @@ textarea {
   color: white;
   transform: translateY(-5px);
   border-color: var(--accent-teal);
+} */
+
+/* ===== CONTACT SECTION ===== */
+.contact-section {
+  background: var(--primary);
+  padding: 80px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  position: relative;
+}
+
+.subscribe-column h2,
+.contact-column h2 {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+  padding-bottom: 12px;
+  position: relative;
+}
+
+.subscribe-column h2::after,
+.contact-column h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--highlight));
+}
+
+.subscribe-text {
+  color: var(--highlight);
+  margin-bottom: 20px;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 10px;
+}
+
+.subscribe-form input {
+  flex: 1;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 8px;
+}
+
+.subscribe-form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.subscribe-form input:focus {
+  outline: none;
+  border-color: var(--accent-teal);
+}
+
+.subscribe-form button {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+  color: white;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: 0.3s;
+}
+
+.subscribe-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 166, 166, 0.3);
+}
+
+.no-spam {
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  background: var(--accent-teal);
+  border-color: var(--accent-teal);
+  transform: translateY(-3px);
+}
+
+.office-title {
+  color: var(--highlight);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 18px;
+  transition: 0.3s;
+}
+
+.contact-item:hover {
+  transform: translateX(5px);
+}
+
+.contact-icon {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+  color: white;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+
+/* ==================== horizontal line ==================== */
+.footer-divider-wrapper {
+  background: #002b5b;      
+}
+
+.footer-divider-inner {
+  max-width: 1520px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-divider {
+  border: none;
+  height: 1px;
+  background: #0f3e6a;
 }
 
 /* ==================== FOOTER ==================== */
 
 .footer {
-  background: #001a33;
+  background: var(--primary);
   padding: 25px 40px;
 }
 
 .footer-content {
-  max-width: 1520px;
+  max-width: 1440px;
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -581,11 +833,9 @@ textarea {
 }
 
 .footer-content a {
-  font-family: "Poppins", sans-serif;
   color: white;
   text-decoration: none;
   transition: color 0.3s ease;
-  font-weight: 400;
 }
 
 .footer-content a:hover {
@@ -593,13 +843,7 @@ textarea {
 }
 
 .footer-content p {
-  font-family: "Poppins", sans-serif;
   color: white;
-  font-weight: 400;
-}
-
-.copyright {
-  font-family: "Poppins", sans-serif;
 }
 
 .footer-legal {
@@ -607,10 +851,15 @@ textarea {
   gap: 20px;
 }
 
+
+
 /* ==================== RESPONSIVE DESIGN ==================== */
 
 @media (max-width: 1024px) {
   .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .bank-info-grid {
     grid-template-columns: 1fr;
   }
 }
@@ -760,19 +1009,49 @@ textarea {
   .contact-form-section,
   .contact-info-section,
   .map-section,
-  .social-section {
+  .bank-details-section {
     padding: 30px 20px;
+  }
+
+  .bank-card {
+    padding: 25px 20px;
+  }
+
+  .bank-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .bank-header i {
+    font-size: 2em;
+  }
+
+  .bank-header h3 {
+    font-size: 1.3em;
   }
 
   .map-container {
     height: 280px;
   }
 
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-    gap: 15px;
+  .contact-container {
+      grid-template-columns: 1fr;
+      gap: 40px;
   }
+
+
+  .footer-content {
+      flex-direction: column;
+      text-align: center;
+      gap: 15px;
+  }
+
+  .contact-section,
+  .footer {
+      padding-left: 20px;
+      padding-right: 20px;
+  }
+
 }
 
 @media (max-width: 480px) {

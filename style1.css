@@ -821,9 +821,27 @@ header {
   border-radius: 8px;
 }
 
-/* FOOTER - CONSISTENT WITH HOME PAGE */
+/* ==================== horizontal line ==================== */
+.footer-divider-wrapper {
+  background: #002b5b;      /* SAME as footer */
+}
+
+.footer-divider-inner {
+  max-width: 1520px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-divider {
+  border: none;
+  height: 1px;
+  background: #11416d;
+}
+
+
+/* FOOTER */
 .footer {
-  background: #001a33;
+  background: var(--primary);
   padding: 25px 40px;
 }
 

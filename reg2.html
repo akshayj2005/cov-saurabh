@@ -448,38 +448,201 @@
             display: none
         }
 
-        .footer {
-            background: #001a33;
-            padding: 25px 40px;
-            margin-top: 40px
-        }
+        /* ===== CONTACT SECTION ===== */
+.contact-section {
+  background: var(--primary);
+  padding: 80px 40px;
+  position: relative;
+  overflow: hidden;
+}
 
-        .footer-content {
-            max-width: 1440px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center
-        }
+.contact-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  position: relative;
+}
 
-        .footer-content a {
-            color: #fff;
-            text-decoration: none;
-            transition: color .3s ease
-        }
+.subscribe-column h2,
+.contact-column h2 {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+  padding-bottom: 12px;
+  position: relative;
+}
 
-        .footer-content a:hover {
-            color: var(--accent-teal)
-        }
+.subscribe-column h2::after,
+.contact-column h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--highlight));
+}
 
-        .footer-content p {
-            color: #fff
-        }
+.subscribe-text {
+  color: var(--highlight);
+  margin-bottom: 20px;
+}
 
-        .footer-legal {
-            display: flex;
-            gap: 20px
-        }
+.subscribe-form {
+  display: flex;
+  gap: 10px;
+}
+
+.subscribe-form input {
+  flex: 1;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 8px;
+}
+
+.subscribe-form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.subscribe-form input:focus {
+  outline: none;
+  border-color: var(--accent-teal);
+}
+
+.subscribe-form button {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+  color: white;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: 0.3s;
+}
+
+.subscribe-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 166, 166, 0.3);
+}
+
+.no-spam {
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  background: var(--accent-teal);
+  border-color: var(--accent-teal);
+  transform: translateY(-3px);
+}
+
+.office-title {
+  color: var(--highlight);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 18px;
+  transition: 0.3s;
+}
+
+.contact-item:hover {
+  transform: translateX(5px);
+}
+
+.contact-icon {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+  color: white;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+
+/* ==================== horizontal line ==================== */
+.footer-divider-wrapper {
+  background: #002b5b;      
+}
+
+.footer-divider-inner {
+  max-width: 1520px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-divider {
+  border: none;
+  height: 1px;
+  background: #0f3e6a;
+}
+
+/* ==================== FOOTER ==================== */
+
+.footer {
+  background: var(--primary);
+  padding: 25px 40px;
+}
+
+.footer-content {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-content a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-content a:hover {
+  color: var(--accent-teal);
+}
+
+.footer-content p {
+  color: white;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 20px;
+}
 
         /* Hide scrollbars but keep functionality */
         ::-webkit-scrollbar {
@@ -660,10 +823,22 @@
                 flex-wrap: wrap
             }
 
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+
             .footer-content {
                 flex-direction: column;
                 text-align: center;
-                gap: 15px
+                gap: 15px;
+            }
+
+            .contact-section,
+            .footer {
+                padding-left: 20px;
+                padding-right: 20px;
             }
         }
 
@@ -868,16 +1043,86 @@
             </div>
         </div>
     </div>
+    
+    <!-- CONTACT SECTION -->
+    <section class="contact-section">
+        <div class="contact-container">
+
+            <!-- Subscribe -->
+            <div class="subscribe-column">
+                <h2>STAY CONNECTED</h2>
+                <p class="subscribe-text">Subscribe to our newsletter for the latest updates and opportunities.</p>
+
+                <form class="subscribe-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+
+                <p class="no-spam">We respect your privacy. No spam!</p>
+
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-column">
+                <h2>REACH US</h2>
+
+                <h3 class="office-title">Registered Office</h3>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-solid fa-location-arrow"></i></div>
+                    <div class="contact-info">
+                        <p>26/A, First Cross, First Main Canara Bank Colony,<br>Subramanyapura, Bengaluru-560061,
+                            Karnataka</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="contact-info">
+                        <p>+91 98888 58111</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
+                    <div class="contact-info">
+                        <p>info@mysite.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- horizontal line -->
+    <div class="footer-divider-wrapper">
+        <div class="footer-divider-inner">
+            <hr class="footer-divider">
+        </div>
+    </div>
+
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-content">
-            <p class="copyright">© 2025 Confederation of Valuers — All Rights Reserved</p>
+            <p class="copyright">
+                © 2025 Confederation of Valuers — All Rights Reserved
+            </p>
+
             <div class="footer-legal">
-                <a href="faq.html">FAQ</a>
+                <a href="refund.html">Refund Policy</a>
                 <a href="TandC.html">Terms & Conditions</a>
-                <a href="policy.html">Policy</a>
+                <a href="privacy.html">Privacy Policy</a>
             </div>
         </div>
     </footer>
+
     <script>
         let eduRowCount = 2, proRowCount = 2; function addEducationalRow() { eduRowCount++; const t = document.getElementById("educationalTableBody"), e = document.createElement("tr"); e.innerHTML = `<td><select class="qualification-select"><option value="">Select</option><option value="10th">10th</option><option value="12th">12th</option><option value="graduate">Graduate</option><option value="postgraduate">Postgraduate</option></select></td><td><input type="text" placeholder="Year"></td><td><input type="text" placeholder="Marks %"></td><td><input type="text" placeholder="Board/Univ"></td><td><input type="text" placeholder="College/University"></td><td><button class="upload-btn" onclick="document.getElementById('eduUpload${eduRowCount}').click()">Upload</button><input type="file" id="eduUpload${eduRowCount}" accept=".pdf,.jpg,.png"></td>`, t.appendChild(e) } function addProfessionalRow() { proRowCount++; const t = document.getElementById("professionalTableBody"), e = document.createElement("tr"); e.innerHTML = `<td><input type="text" placeholder="Qualification"></td><td><input type="text" placeholder="Institute Name"></td><td><input type="text" placeholder="Membership No."></td><td><input type="text" placeholder="Year"></td><td><input type="text" placeholder="Validity"></td><td><button class="upload-btn" onclick="document.getElementById('proUpload${proRowCount}').click()">Upload</button><input type="file" id="proUpload${proRowCount}" accept=".pdf,.jpg,.png"></td>`, t.appendChild(e) } const hamburger = document.getElementById("hamburger"), navMenu = document.getElementById("navMenu"), menuOverlay = document.getElementById("menuOverlay"); hamburger.addEventListener("click", function () { this.classList.toggle("active"), navMenu.classList.toggle("active"), menuOverlay.classList.toggle("active"), document.body.style.overflow = this.classList.contains("active") ? "hidden" : "" }), menuOverlay.addEventListener("click", function () { hamburger.classList.remove("active"), navMenu.classList.remove("active"), this.classList.remove("active"), document.body.style.overflow = "" }), navMenu.querySelectorAll("a").forEach(t => { t.addEventListener("click", function (t) { window.innerWidth <= 768 && this.parentElement.classList.contains("nav-item") || (hamburger.classList.remove("active"), navMenu.classList.remove("active"), menuOverlay.classList.remove("active"), document.body.style.overflow = "") }) }); if (window.innerWidth <= 768) { const t = document.querySelector(".nav-item"); if (t) { t.querySelector("a").addEventListener("click", function (e) { e.preventDefault(), t.classList.toggle("mobile-active") }) } } const navRight = document.querySelector(".nav-right"); if (navRight && window.innerWidth <= 768) { const t = navRight.querySelector(".register-btn").cloneNode(!0), e = navRight.querySelector(".login-btn").cloneNode(!0); navMenu.appendChild(t), navMenu.appendChild(e) }
     </script>

@@ -1,38 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>The Hive - Knowledge Hub</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <title>Privacy Policy - COV</title>
     <style>
-        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
-
-        :root {
-            --primary: #002b5b;
-            --accent-teal: #00a6a6;
-            --soft-bg: #f2f9ff;
-            --highlight: #38b6ff;
-            --text-dark: #012a4a;
-            --white: #ffffff;
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            overflow-x: hidden;
-            color: var(--text-dark);
-            background: var(--white);
-            line-height: 1.6;
+        :root {
+            --primary: #002B5B;        
+            --accent-teal: #00A6A6;   
+            --soft-bg: #F2F9FF;        
+            --highlight: #38B6FF;      
+            --text-dark: #012A4A;
         }
 
-        /* ==================== HEADER ==================== */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--text-dark);
+            background: var(--soft-bg);
+            line-height: 1.7;
+        }
+
+         /* ==================== HEADER ==================== */
         header {
             background: var(--white);
             box-shadow: 0 2px 10px rgba(0, 43, 91, 0.1);
@@ -147,36 +142,42 @@
             flex-shrink: 0;
         }
 
-        
-.register-btn-header {
-    padding: 6px 17px;
-    background-color: transparent;
-    color: rgb(10, 8, 94);
-    text-decoration: none;
-    border-radius: 25px;
-    border: 2px solid rgb(10, 8, 94);
-    font-size: 16px;
-    font-weight: 600;
-    transition: 0.3s ease-in-out;
-    white-space: nowrap;
-    display: inline-block;
-    line-height: 1.2;
-}
+        /* Replace the .register-btn-header section in your membership page CSS (around line 152-164) */
+        /* Replace the .register-btn section in your membership page CSS (around line 485-498) */
 
-.register-btn-header:hover {
-    background-color: rgb(10, 8, 94);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
-}
+        /* Replace the .register-btn-header section in your membership page CSS */
 
-.register-btn-header:visited {
-    color: rgb(10, 8, 94);
-}
+        .register-btn-header {
+            padding: 6px 17px;
+            background-color: transparent;
+            color: rgb(10, 8, 94);
+            text-decoration: none;
+            border-radius: 25px;
+            border: 2px solid rgb(10, 8, 94);
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s ease-in-out;
+            white-space: nowrap;
+            display: inline-block;
+            line-height: 1.2;
+        }
 
-.register-btn-header:visited:hover {
-    color: white;
-}
+        .register-btn-header:hover {
+            background-color: rgb(10, 8, 94);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
+        }
+
+        /* Also add this to remove default link styling */
+        .register-btn-header:visited {
+            color: rgb(10, 8, 94);
+        }
+
+        .register-btn-header:visited:hover {
+            color: white;
+        }
+
         .login-btn {
             padding: 8px 20px;
             background-color: rgb(10, 8, 94);
@@ -249,293 +250,280 @@
             opacity: 1;
         }
 
-        /* ==================== HERO BANNER ==================== */
-        .hero-section {
+
+        /* Hero Section */
+        .policy-hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent-teal) 100%);
             color: white;
-            padding: 80px 40px;
+            padding: 80px 20px 60px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 250px;
+        }
+
+        .policy-hero h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .last-updated {
+            font-size: 1em;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        /* Main Content */
+        .policy-container {
+            max-width: 900px;
+            margin: 60px auto 80px;
+            padding: 0 20px;
+        }
+
+        .policy-content {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 43, 91, 0.08);
+        }
+
+        .intro-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+            color: var(--text-dark);
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 2px solid var(--soft-bg);
+        }
+
+        .policy-section {
+            margin-bottom: 40px;
+        }
+
+        .policy-section h2 {
+            color: var(--primary);
+            font-size: 1.6em;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
+            gap: 12px;
+        }
+
+        .section-number {
+            display: inline-flex;
+            align-items: center;
             justify-content: center;
-        }
-
-        .hero-section::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .hero-section::after {
-            content: "";
-            position: absolute;
-            bottom: -30%;
-            left: -5%;
-            width: 400px;
-            height: 400px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0) scale(1);
-            }
-
-            50% {
-                transform: translateY(-30px) scale(1.05);
-            }
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-section h1 {
-            font-size: clamp(32px, 5vw, 48px);
-            color: var(--white);
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+            color: white;
+            border-radius: 8px;
+            font-size: 0.9em;
             font-weight: 700;
-            margin-bottom: 20px;
-            letter-spacing: -1px;
-            opacity: 0;
-            transform: translateY(30px);
+            flex-shrink: 0;
         }
 
-        .hero-section p {
-            font-size: clamp(16px, 2vw, 20px);
-            color: rgba(255, 255, 255, 0.9);
+        .policy-section p {
+            font-size: 1.05em;
             line-height: 1.8;
-            max-width: 900px;
-            margin: 0 auto;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-
-        /* ==================== HIVE SECTION ==================== */
-        .hive-section {
-            padding: 80px 40px;
-            max-width: 1440px;
-            margin: 0 auto;
-        }
-
-        .cards-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
-        }
-
-        .card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0, 43, 91, 0.12);
-            transition: all 0.3s ease;
-            border-top: 4px solid var(--accent-teal);
-            opacity: 0;
-            transform: translateY(40px);
-        }
-
-        .card.fade-in-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 15px 40px rgba(0, 166, 166, 0.2);
-        }
-
-        .card-title {
-            font-size: 24px;
-            font-weight: 600;
-            color: var(--primary);
+            color: var(--text-dark);
             margin-bottom: 15px;
         }
 
-        .card-description {
-            font-size: 16px;
+        .policy-section ul {
+            list-style: none;
+            margin: 15px 0;
+            padding: 0;
+        }
+
+        .policy-section li {
+            padding: 12px 0 12px 35px;
+            position: relative;
+            font-size: 1.05em;
             color: var(--text-dark);
-            line-height: 1.7;
-            margin-bottom: 20px;
         }
 
-        .card-cta {
-            display: inline-block;
-            padding: 10px 25px;
-            background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
-            color: white;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .card-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 166, 166, 0.4);
-        }
-
-        /* ==================== CONTACT SECTION ==================== */
-        .contact-section {
-            background: var(--primary);
-            padding: 80px 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-container {
-            max-width: 1440px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 60px;
-        }
-
-        .subscribe-column h2,
-        .contact-column h2 {
-            color: white;
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            font-weight: 600;
-            padding-bottom: 12px;
-            position: relative;
-        }
-
-        .subscribe-column h2::after,
-        .contact-column h2::after {
-            content: "";
+        .policy-section li::before {
+            content: "✓";
             position: absolute;
-            bottom: 0;
             left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-teal), var(--highlight));
+            color: var(--accent-teal);
+            font-weight: 700;
+            font-size: 1.2em;
         }
 
-        .subscribe-text {
-            color: var(--highlight);
-            margin-bottom: 20px;
-        }
-
-        .subscribe-form {
-            display: flex;
-            gap: 10px;
-        }
-
-        .subscribe-form input {
-            flex: 1;
-            padding: 14px 18px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            border-radius: 8px;
-        }
-
-        .subscribe-form input::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        .subscribe-form input:focus {
-            outline: none;
-            border-color: var(--accent-teal);
-        }
-
-        .subscribe-form button {
-            padding: 14px 20px;
-            border: none;
-            border-radius: 8px;
-            background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
-            color: white;
-            cursor: pointer;
-            font-size: 1.1em;
-            transition: 0.3s;
-        }
-
-        .subscribe-form button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 166, 166, 0.3);
-        }
-
-        .no-spam {
-            color: rgba(255, 255, 255, 0.6);
-            margin-top: 10px;
-            font-size: 0.85rem;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 12px;
+        /* Contact Box */
+        .contact-box {
+            background: var(--soft-bg);
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-teal);
             margin-top: 20px;
         }
 
-        .social-icons a {
-            width: 40px;
-            height: 40px;
-            display: flex;
-            border-radius: 8px;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: white;
-            transition: 0.3s;
+        .contact-box h3 {
+            color: var(--primary);
+            font-size: 1.3em;
+            margin-bottom: 15px;
+        }
+
+        .contact-box p {
+            margin: 8px 0;
+            font-size: 1.05em;
+        }
+
+        .contact-box a {
+            color: var(--accent-teal);
             text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
 
-        .social-icons a:hover {
-            background: var(--accent-teal);
-            border-color: var(--accent-teal);
-            transform: translateY(-3px);
-        }
-
-        .office-title {
+        .contact-box a:hover {
             color: var(--highlight);
-            font-size: 1.2rem;
-            margin-bottom: 20px;
         }
 
-        .contact-item {
-            display: flex;
-            gap: 15px;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 18px;
-            transition: 0.3s;
-        }
+        /* ===== CONTACT SECTION ===== */
+.contact-section {
+  background: var(--primary);
+  padding: 80px 40px;
+  position: relative;
+  overflow: hidden;
+}
 
-        .contact-item:hover {
-            transform: translateX(5px);
-        }
+.contact-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  position: relative;
+}
 
-        .contact-icon {
-            width: 45px;
-            height: 45px;
-            background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
-            color: white;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 8px;
-        }
+.subscribe-column h2,
+.contact-column h2 {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+  padding-bottom: 12px;
+  position: relative;
+}
 
-        .contact-info p {
-            font-size: 15px;
-            line-height: 1.7;
-        }
+.subscribe-column h2::after,
+.contact-column h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--highlight));
+}
+
+.subscribe-text {
+  color: var(--highlight);
+  margin-bottom: 20px;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 10px;
+}
+
+.subscribe-form input {
+  flex: 1;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 8px;
+}
+
+.subscribe-form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.subscribe-form input:focus {
+  outline: none;
+  border-color: var(--accent-teal);
+}
+
+.subscribe-form button {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+  color: white;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: 0.3s;
+}
+
+.subscribe-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 166, 166, 0.3);
+}
+
+.no-spam {
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  background: var(--accent-teal);
+  border-color: var(--accent-teal);
+  transform: translateY(-3px);
+}
+
+.office-title {
+  color: var(--highlight);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 18px;
+  transition: 0.3s;
+}
+
+.contact-item:hover {
+  transform: translateX(5px);
+}
+
+.contact-icon {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+  color: white;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
 
 
 /* ==================== horizontal line ==================== */
@@ -555,44 +543,46 @@
   background: #0f3e6a;
 }
 
+/* ==================== FOOTER ==================== */
 
-        /* ==================== FOOTER ==================== */
-        .footer {
-            background: var(--primary);
-            padding: 25px 40px;
-        }
+.footer {
+  background: var(--primary);
+  padding: 25px 40px;
+}
 
-        .footer-content {
-            max-width: 1440px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+.footer-content {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-        .footer-content a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
+.footer-content a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
 
-        .footer-content a:hover {
-            color: var(--accent-teal);
-        }
+.footer-content a:hover {
+  color: var(--accent-teal);
+}
 
-        .footer-content p {
-            color: white;
-        }
+.footer-content p {
+  color: white;
+}
 
-        .footer-legal {
-            display: flex;
-            gap: 20px;
-        }
+.footer-legal {
+  display: flex;
+  gap: 20px;
+}
 
-        /* ==================== RESPONSIVE ==================== */
+        /* Responsive */
         @media (max-width: 1280px) {
-            .header-content {
+             .header-content {
                 padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 20px;
             }
 
             #logo {
@@ -639,9 +629,20 @@
                 font-size: 16px;
                 text-align: left;
                 border-left: 3px solid transparent;
+                transition: all 0.3s ease;
+            }
+
+            nav a:hover {
+                background-color: rgba(0, 166, 166, 0.1);
+                border-left-color: var(--accent-teal);
+                transform: translateX(5px);
             }
 
             .nav-item {
+                width: 100%;
+            }
+
+            .nav-item>a {
                 width: 100%;
             }
 
@@ -656,6 +657,7 @@
                 opacity: 0;
                 visibility: visible;
                 overflow: hidden;
+                transition: all 0.3s ease;
             }
 
             .nav-item.mobile-active .dropdown {
@@ -681,6 +683,8 @@
                 width: 100% !important;
                 margin: 15px 0 0 0 !important;
                 padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
                 text-align: center;
                 display: block !important;
             }
@@ -689,17 +693,29 @@
                 width: 100% !important;
                 margin: 10px 0 0 0 !important;
                 padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
                 background-color: var(--accent-teal);
+                transition: all 0.3s ease;
                 display: block !important;
             }
 
-            .hero-section {
-                padding: 60px 20px;
-                min-height: 200px;
+            .policy-hero h1 {
+                font-size: 2em;
             }
 
-            .hive-section {
-                padding: 60px 20px;
+            .policy-content {
+                padding: 30px 25px;
+            }
+
+            .policy-section h2 {
+                font-size: 1.3em;
+            }
+
+            .section-number {
+                width: 30px;
+                height: 30px;
+                font-size: 0.85em;
             }
 
             .contact-container {
@@ -707,46 +723,62 @@
                 gap: 40px;
             }
 
-            .subscribe-form {
-                flex-direction: column;
-            }
-
-            .subscribe-form button {
-                width: 100%;
-            }
 
             .footer-content {
                 flex-direction: column;
                 text-align: center;
                 gap: 15px;
             }
+
+            .contact-section,
+            .footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
         }
 
         @media (max-width: 480px) {
-            #logo {
+             #logo {
                 height: 45px;
+            }
+
+
+            .hamburger {
+                width: 28px;
+                height: 22px;
             }
 
             nav {
                 width: 260px;
                 padding: 90px 25px 25px 25px;
             }
-        }
 
-        ::-webkit-scrollbar {
-            width: 0;
-            height: 0;
-        }
+            .policy-hero {
+                padding: 60px 20px 40px;
+            }
 
-        * {
-            scrollbar-width: none;
-            -ms-overflow-style: none;
+            .policy-hero h1 {
+                font-size: 1.8em;
+            }
+
+            .policy-content {
+                padding: 25px 20px;
+            }
+
+            .intro-text {
+                font-size: 1em;
+            }
+
+            .policy-section p,
+            .policy-section li {
+                font-size: 0.98em;
+            }
         }
     </style>
 </head>
-
 <body>
-
+    <!-- HEADER -->
     <header>
         <div class="header-content">
             <div class="logo-container">
@@ -754,14 +786,12 @@
                     <img id='logo' src="assets/Logo.avif" height="70px" alt="COV Logo">
                 </a>
             </div>
-
             <button class="hamburger" id="hamburger">
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
-
-    <nav id="navMenu">
+            <nav id="navMenu">
                 <a href="membership.html">Membership</a>
                 <a href="#training">Training & Courses</a>
                 <a href="#events">Events</a>
@@ -786,37 +816,115 @@
     </header>
 
     <div class="menu-overlay" id="menuOverlay"></div>
-
-    <section class="hero-section">
-        <div class="hero-content">
-            <h1>The Hive</h1>
-        </div>
+    <!-- Hero Section -->
+    <section class="policy-hero">
+        <h1>Privacy Policy</h1>
+        <p class="last-updated">Last Updated: January 19, 2026</p>
     </section>
 
-    <section class="hive-section">
-        <div class="cards-container">
-            <article class="card">
-                <h2 class="card-title">Articles & Journals</h2>
-                <p class="card-description">Latest insights from practitioners, global valuation trends</p>
-                <span class="card-cta">Coming Soon</span>
-            </article>
+    <!-- Main Content -->
+    <div class="policy-container">
+        <div class="policy-content">
+            <p class="intro-text">
+                At Confederation of Valuers (COV), your privacy is extremely important to us. This Privacy Policy explains how we collect, use, and protect your information when you interact with our platform and services.
+            </p>
 
-            <article class="card">
-                <h2 class="card-title">Standards & Manuals</h2>
-                <p class="card-description">Downloadable guidance notes, standards (IVS, Indian), practice aids</p>
-                <a href="#" class="card-cta">Read More</a>
-            </article>
+            <!-- Section 1 -->
+            <div class="policy-section">
+                <h2><span class="section-number">1</span> Information We Collect</h2>
+                <p>We may collect the following types of information:</p>
+                <ul>
+                    <li>Name and contact information</li>
+                    <li>Email address and phone number</li>
+                    <li>Professional credentials and qualifications</li>
+                    <li>Payment transaction ID (not card/UPI details)</li>
+                    <li>Service preferences and usage data</li>
+                </ul>
+            </div>
 
-            <article class="card">
-                <h2 class="card-title">Valuers' Blog</h2>
-                <p class="card-description">News, member updates, new training launches, personal journeys</p>
-                <a href="#" class="card-cta">Read More</a>
-            </article>
+            <!-- Section 2 -->
+            <div class="policy-section">
+                <h2><span class="section-number">2</span> How We Use Your Information</h2>
+                <p>Your data is used to:</p>
+                <ul>
+                    <li>Provide and manage our services effectively</li>
+                    <li>Process payments and membership registrations</li>
+                    <li>Communicate updates, confirmations, and important notices</li>
+                    <li>Improve website functionality and user experience</li>
+                    <li>Maintain security and prevent fraudulent activities</li>
+                </ul>
+            </div>
+
+            <!-- Section 3 -->
+            <div class="policy-section">
+                <h2><span class="section-number">3</span> Data Protection</h2>
+                <p>We are committed to protecting your personal information:</p>
+                <ul>
+                    <li>We use secure technologies and industry-standard encryption</li>
+                    <li>We do not sell, rent, or share personal data with third parties</li>
+                    <li>Access to data is restricted to authorized personnel only</li>
+                    <li>Regular security audits are conducted to ensure data safety</li>
+                </ul>
+            </div>
+
+            <!-- Section 4 -->
+            <div class="policy-section">
+                <h2><span class="section-number">4</span> Third-Party Services</h2>
+                <p>
+                    We use trusted third-party services such as payment gateways, email providers, and analytics tools that comply with standard security practices and data protection regulations. These services are carefully selected to ensure your data remains secure.
+                </p>
+            </div>
+
+            <!-- Section 5 -->
+            <div class="policy-section">
+                <h2><span class="section-number">5</span> Cookies</h2>
+                <p>
+                    Our website may use cookies to enhance user experience, remember preferences, and analyze site traffic. You can disable cookies in your browser settings, though this may affect certain website functionalities.
+                </p>
+            </div>
+
+            <!-- Section 6 -->
+            <div class="policy-section">
+                <h2><span class="section-number">6</span> Your Rights</h2>
+                <p>You have the right to:</p>
+                <ul>
+                    <li>Request access to your personal data</li>
+                    <li>Request correction or deletion of your information</li>
+                    <li>Withdraw consent at any time</li>
+                    <li>Object to processing of your data</li>
+                    <li>Request data portability</li>
+                </ul>
+            </div>
+
+            <!-- Section 7 -->
+            <div class="policy-section">
+                <h2><span class="section-number">7</span> Policy Updates</h2>
+                <p>
+                    This Privacy Policy may be updated periodically to reflect changes in our practices or legal requirements. We will notify users of any significant changes by posting the updated policy on this page with a revised "Last Updated" date.
+                </p>
+            </div>
+
+            <!-- Section 8 -->
+            <div class="policy-section">
+                <h2><span class="section-number">8</span> Contact Us</h2>
+                <p>
+                    If you have any questions, concerns, or requests regarding this Privacy Policy or how we handle your personal information, please feel free to contact us:
+                </p>
+                <div class="contact-box">
+                    <h3>Get in Touch</h3>
+                    <p>📧 Email: <a href="mailto:contact@cov.org.in">contact@cov.org.in</a></p>
+                    <p>📞 Phone: <a href="tel:+919888858111">+91 98888 58111</a></p>
+                    <p>📍 Address: 1st floor, Opp. Flyover Apartment, Junction of N.S. Phadke Marg, Andheri (East), Mumbai 400 069, India</p>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
 
+    <!-- CONTACT SECTION -->
     <section class="contact-section">
         <div class="contact-container">
+
+            <!-- Subscribe -->
             <div class="subscribe-column">
                 <h2>STAY CONNECTED</h2>
                 <p class="subscribe-text">Subscribe to our newsletter for the latest updates and opportunities.</p>
@@ -837,8 +945,10 @@
                 </div>
             </div>
 
+            <!-- Contact Info -->
             <div class="contact-column">
                 <h2>REACH US</h2>
+
                 <h3 class="office-title">Registered Office</h3>
 
                 <div class="contact-item">
@@ -866,6 +976,7 @@
         </div>
     </section>
 
+
     <!-- horizontal line -->
     <div class="footer-divider-wrapper">
         <div class="footer-divider-inner">
@@ -873,10 +984,13 @@
         </div>
     </div>
 
-
+    <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-content">
-            <p class="copyright">© 2025 Confederation of Valuers — All Rights Reserved</p>
+            <p class="copyright">
+                © 2025 Confederation of Valuers — All Rights Reserved
+            </p>
+
             <div class="footer-legal">
                 <a href="refund.html">Refund Policy</a>
                 <a href="TandC.html">Terms & Conditions</a>
@@ -885,7 +999,8 @@
         </div>
     </footer>
 
-    <script>
+     <script>
+        // Hamburger menu
         const hamburger = document.getElementById('hamburger');
         const navMenu = document.getElementById('navMenu');
         const menuOverlay = document.getElementById('menuOverlay');
@@ -917,6 +1032,7 @@
             });
         });
 
+        // Mobile dropdown toggle
         if (window.innerWidth <= 768) {
             const navItem = document.querySelector('.nav-item');
             if (navItem) {
@@ -928,6 +1044,7 @@
             }
         }
 
+        // Clone right buttons into mobile menu
         const navRight = document.querySelector('.nav-right');
         if (navRight && window.innerWidth <= 768) {
             const registerBtn = navRight.querySelector('.register-btn-header');
@@ -939,54 +1056,6 @@
                 navMenu.appendChild(loginClone);
             }
         }
-
-        window.addEventListener('load', () => {
-            const heroTitle = document.querySelector('.hero-section h1');
-            const heroParagraph = document.querySelector('.hero-section p');
-
-            if (heroTitle) {
-                setTimeout(() => {
-                    heroTitle.style.transition = 'all 0.8s ease';
-                    heroTitle.style.opacity = '1';
-                    heroTitle.style.transform = 'translateY(0)';
-                }, 100);
-            }
-
-            if (heroParagraph) {
-                setTimeout(() => {
-                    heroParagraph.style.transition = 'all 0.8s ease';
-                    heroParagraph.style.opacity = '1';
-                    heroParagraph.style.transform = 'translateY(0)';
-                }, 400);
-            }
-
-            const cards = document.querySelectorAll('.card');
-            const observerOptions = {
-                threshold: 0.15,
-                rootMargin: '0px 0px -50px 0px'
-            };
-
-            const cardObserver = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const card = entry.target;
-                        const index = Array.from(cards).indexOf(card);
-
-                        setTimeout(() => {
-                            card.style.transition = 'all 0.8s ease';
-                            card.classList.add('fade-in-visible');
-                        }, index * 150);
-
-                        cardObserver.unobserve(card);
-                    }
-                });
-            }, observerOptions);
-
-            cards.forEach(card => {
-                cardObserver.observe(card);
-            });
-        });
     </script>
 </body>
-
 </html>

@@ -1288,10 +1288,29 @@ nav a:hover {
   border-radius: 8px;
 }
 
+
+/* ==================== horizontal line ==================== */
+.footer-divider-wrapper {
+  background: #002b5b;      
+}
+
+.footer-divider-inner {
+  max-width: 1520px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-divider {
+  border: none;
+  height: 1px;
+  background: #0f3e6a;
+}
+
+
 /* ==================== FOOTER ==================== */
 
 .footer {
-  background: #001a33;
+  background: var(--primary);
   padding: 25px 40px;
 }
 

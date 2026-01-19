@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
-    <title>Terms & Conditions - COV</title>
+    <title>Refund & Cancellation Policy - COV</title>
     <style>
         * {
             margin: 0;
@@ -22,7 +22,6 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            overflow-x: hidden;
             color: var(--text-dark);
             background: var(--soft-bg);
             line-height: 1.7;
@@ -252,14 +251,14 @@
         }
 
         /* Hero Section */
-        .terms-hero {
+        .refund-hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent-teal) 100%);
             color: white;
             padding: 80px 20px 60px;
             text-align: center;
         }
 
-        .terms-hero h1 {
+        .refund-hero h1 {
             font-size: 2.8em;
             margin-bottom: 15px;
             font-weight: 700;
@@ -272,13 +271,13 @@
         }
 
         /* Main Content */
-        .terms-container {
+        .refund-container {
             max-width: 900px;
             margin: 60px auto 80px;
             padding: 0 20px;
         }
 
-        .terms-content {
+        .refund-content {
             background: white;
             padding: 50px;
             border-radius: 15px;
@@ -294,11 +293,11 @@
             border-bottom: 2px solid var(--soft-bg);
         }
 
-        .terms-section {
+        .refund-section {
             margin-bottom: 40px;
         }
 
-        .terms-section h2 {
+        .refund-section h2 {
             color: var(--primary);
             font-size: 1.6em;
             margin-bottom: 15px;
@@ -321,37 +320,63 @@
             flex-shrink: 0;
         }
 
-        .terms-section p {
+        .refund-section p {
             font-size: 1.05em;
             line-height: 1.8;
             color: var(--text-dark);
             margin-bottom: 15px;
         }
 
-        .terms-section ul {
+        .refund-section ul {
             list-style: none;
             margin: 15px 0;
             padding: 0;
         }
 
-        .terms-section li {
+        .refund-section li {
             padding: 12px 0 12px 35px;
             position: relative;
             font-size: 1.05em;
             color: var(--text-dark);
         }
 
-        .terms-section li::before {
-            content: "•";
+        /* Green checkmark for eligible cases */
+        .eligible-list li::before {
+            content: "✓";
             position: absolute;
-            left: 10px;
-            color: var(--accent-teal);
+            left: 0;
+            color: #00A6A6;
             font-weight: 700;
-            font-size: 1.5em;
+            font-size: 1.3em;
         }
 
-        /* Highlight Box */
-        .highlight-box {
+        /* Red X for non-refundable cases */
+        .non-refundable-list li::before {
+            content: "✗";
+            position: absolute;
+            left: 0;
+            color: #e74c3c;
+            font-weight: 700;
+            font-size: 1.3em;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .warning-box p {
+            color: #856404;
+            font-weight: 500;
+            margin: 0;
+        }
+
+        /* Info Box */
+        .info-box {
             background: var(--soft-bg);
             padding: 25px;
             border-radius: 12px;
@@ -359,14 +384,14 @@
             margin: 20px 0;
         }
 
-        .highlight-box p {
+        .info-box p {
             margin: 8px 0;
             font-weight: 500;
         }
 
         /* Contact Box */
         .contact-box {
-            background: linear-gradient(135deg, var(--primary), var(--accent-teal));
+            background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
             color: white;
             padding: 30px;
             border-radius: 12px;
@@ -594,7 +619,6 @@
 
         /* Responsive */
         @media (max-width: 1280px) {
-
             .header-content {
                 padding: 15px 20px;
                 flex-wrap: wrap;
@@ -716,15 +740,15 @@
                 display: block !important;
             }
 
-            .terms-hero h1 {
+            .refund-hero h1 {
                 font-size: 2em;
             }
 
-            .terms-content {
+            .refund-content {
                 padding: 30px 25px;
             }
 
-            .terms-section h2 {
+            .refund-section h2 {
                 font-size: 1.3em;
             }
 
@@ -751,14 +775,12 @@
                 padding-left: 20px;
                 padding-right: 20px;
             }
-
         }
 
         @media (max-width: 480px) {
-             #logo {
+            #logo {
                 height: 45px;
             }
-
 
             .hamburger {
                 width: 28px;
@@ -770,15 +792,15 @@
                 padding: 90px 25px 25px 25px;
             }
 
-            .terms-hero {
+            .refund-hero {
                 padding: 60px 20px 40px;
             }
 
-            .terms-hero h1 {
+            .refund-hero h1 {
                 font-size: 1.8em;
             }
 
-            .terms-content {
+            .refund-content {
                 padding: 25px 20px;
             }
 
@@ -786,8 +808,8 @@
                 font-size: 1em;
             }
 
-            .terms-section p,
-            .terms-section li {
+            .refund-section p,
+            .refund-section li {
                 font-size: 0.98em;
             }
         }
@@ -795,6 +817,7 @@
 </head>
 <body>
 
+    <!-- HEADER -->
     <header>
         <div class="header-content">
             <div class="logo-container">
@@ -835,134 +858,103 @@
 
 
     <!-- Hero Section -->
-    <section class="terms-hero">
-        <h1>Terms & Conditions</h1>
+    <section class="refund-hero">
+        <h1>Refund & Cancellation Policy</h1>
         <p class="last-updated">Last Updated: January 19, 2026</p>
     </section>
 
     <!-- Main Content -->
-    <div class="terms-container">
-        <div class="terms-content">
+    <div class="refund-container">
+        <div class="refund-content">
             <p class="intro-text">
-                Welcome to Confederation of Valuers (COV). By accessing or using our website and services, you agree to comply with and be bound by the following Terms and Conditions. Please read them carefully before making any payment or using our services.
+                This Refund & Cancellation Policy outlines the rules and procedures regarding payments made to Confederation of Valuers (COV) for services, memberships, and training programs. Please read this policy carefully before making any payment.
             </p>
 
             <!-- Section 1 -->
-            <div class="terms-section">
-                <h2><span class="section-number">1</span> Acceptance of Terms</h2>
+            <div class="refund-section">
+                <h2><span class="section-number">1</span> No Automatic Refunds</h2>
+                <div class="warning-box">
+                    <p><strong>Important:</strong> All payments made for services, consultations, memberships, training programs, or packages are non-refundable by default, except under specific conditions mentioned below.</p>
+                </div>
                 <p>
-                    By accessing this website or availing our services, you acknowledge that you have read, understood, and agreed to be legally bound by these Terms & Conditions. If you do not agree with any part of these terms, please refrain from using our services.
+                    By completing a payment, you acknowledge and agree to this policy. Please ensure you have reviewed all service details before making a purchase.
                 </p>
             </div>
 
             <!-- Section 2 -->
-            <div class="terms-section">
-                <h2><span class="section-number">2</span> Services</h2>
-                <p>Confederation of Valuers (COV) provides professional services including but not limited to:</p>
-                <ul>
-                    <li>Professional valuation consultancy services</li>
-                    <li>Training programs and certifications</li>
-                    <li>Membership and networking opportunities</li>
-                    <li>Digital platform access and tools</li>
-                    <li>Online bookings and event registrations</li>
-                    <li>Paid packages and subscription services</li>
+            <div class="refund-section">
+                <h2><span class="section-number">2</span> Eligible Refund Cases</h2>
+                <p>Refunds may be considered and approved only in the following circumstances:</p>
+                <ul class="eligible-list">
+                    <li>Payment has been deducted from your account, but the service or access has not been initiated by COV</li>
+                    <li>A duplicate payment has been made for the same service or transaction</li>
+                    <li>A technical error from our end prevents service delivery or platform access</li>
+                    <li>COV cancels or fails to deliver the service due to unforeseen circumstances</li>
                 </ul>
                 <p>
-                    Service details, pricing, and scope are clearly mentioned on the website and may be updated or changed without prior notice. It is your responsibility to review these terms periodically.
+                    To request a refund under these conditions, you must provide proof of payment and contact us within 7 days of the transaction.
                 </p>
             </div>
 
             <!-- Section 3 -->
-            <div class="terms-section">
-                <h2><span class="section-number">3</span> Payments</h2>
-                <div class="highlight-box">
-                    <p>All payments are processed through secure third-party payment gateways.</p>
-                    <p>Prices are listed in INR (Indian Rupees) unless stated otherwise.</p>
-                    <p>Payment must be completed in full before service delivery or access is granted.</p>
-                    <p>We do not store your card, UPI, or banking details on our servers.</p>
-                </div>
-                <p>
-                    All transactions are subject to verification. COV reserves the right to cancel or refund transactions that appear fraudulent or suspicious.
-                </p>
-            </div>
-
-            <!-- Section 4 -->
-            <div class="terms-section">
-                <h2><span class="section-number">4</span> User Responsibilities</h2>
-                <p>By using our website and services, you agree to:</p>
-                <ul>
-                    <li>Provide accurate, current, and complete information during registration</li>
-                    <li>Maintain the confidentiality of your account credentials</li>
-                    <li>Not misuse the website, services, or platform features</li>
-                    <li>Not attempt fraud, hacking, or unauthorized access to our systems</li>
-                    <li>Comply with all applicable laws and regulations</li>
-                    <li>Not engage in activities that harm COV's reputation or operations</li>
+            <div class="refund-section">
+                <h2><span class="section-number">3</span> Non-Refundable Cases</h2>
+                <p>Refunds will <strong>NOT</strong> be provided in the following situations:</p>
+                <ul class="non-refundable-list">
+                    <li>The service has already started, been delivered, or access has been granted</li>
+                    <li>Delay or cancellation occurs due to incomplete or incorrect information provided by you</li>
+                    <li>You change your mind or decide not to proceed after completing the payment</li>
+                    <li>Missed appointments, sessions, or events without prior notice (at least 24 hours in advance)</li>
+                    <li>Failure to attend training programs or webinars after registration</li>
+                    <li>Dissatisfaction with the service after it has been delivered</li>
                 </ul>
             </div>
 
-            <!-- Section 5 -->
-            <div class="terms-section">
-                <h2><span class="section-number">5</span> Intellectual Property</h2>
+            <!-- Section 4 -->
+            <div class="refund-section">
+                <h2><span class="section-number">4</span> Cancellation Policy</h2>
+                <div class="info-box">
+                    <p><strong>Cancellation Window:</strong> Cancellations must be requested at least 24 hours before the scheduled service, appointment, or event.</p>
+                    <p><strong>Late Cancellations:</strong> Requests made after this 24-hour period will not be eligible for refunds or rescheduling.</p>
+                </div>
                 <p>
-                    All content on this website, including but not limited to logos, text, graphics, images, videos, designs, software, and trademarks, are the exclusive property of Confederation of Valuers (COV) and are protected by intellectual property laws.
+                    To cancel a service, please contact us via email with your booking details and transaction ID. We will review your request and confirm eligibility within 2-3 business days.
                 </p>
+            </div>
+
+            <!-- Section 5 -->
+            <div class="refund-section">
+                <h2><span class="section-number">5</span> Refund Processing Time</h2>
+                <p>If your refund request is approved:</p>
+                <ul class="eligible-list">
+                    <li>Refunds will be processed within <strong>7–10 working days</strong> from the date of approval</li>
+                    <li>The refund amount will be credited to your original payment method (bank account, card, UPI, etc.)</li>
+                    <li>Processing time may vary depending on your bank or payment provider</li>
+                    <li>You will receive a confirmation email once the refund has been initiated</li>
+                </ul>
                 <p>
-                    You may not copy, reproduce, distribute, modify, or create derivative works from any content without prior written permission from COV.
+                    Please note that COV is not responsible for delays caused by third-party payment gateways or banks.
                 </p>
             </div>
 
             <!-- Section 6 -->
-            <div class="terms-section">
-                <h2><span class="section-number">6</span> Limitation of Liability</h2>
+            <div class="refund-section">
+                <h2><span class="section-number">6</span> How to Request a Refund</h2>
                 <p>
-                    COV shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from:
+                    To request a refund, please email us with the following details:
                 </p>
-                <ul>
-                    <li>Use or inability to use our services or website</li>
-                    <li>Unauthorized access to or alteration of your data</li>
-                    <li>Technical failures, interruptions, or errors</li>
-                    <li>Third-party content or services linked on our platform</li>
+                <ul class="eligible-list">
+                    <li>Full name and registered email address</li>
+                    <li>Transaction ID or payment receipt</li>
+                    <li>Date of payment and service details</li>
+                    <li>Reason for refund request with supporting evidence (if applicable)</li>
                 </ul>
-                <p>
-                    Our total liability shall not exceed the amount paid by you for the specific service in question.
-                </p>
-            </div>
-
-            <!-- Section 7 -->
-            <div class="terms-section">
-                <h2><span class="section-number">7</span> Termination</h2>
-                <p>
-                    We reserve the right to suspend, restrict, or terminate your access to our services at any time if you violate these Terms & Conditions or engage in unlawful, fraudulent, or harmful activities. Termination may occur without prior notice.
-                </p>
-            </div>
-
-            <!-- Section 8 -->
-            <div class="terms-section">
-                <h2><span class="section-number">8</span> Governing Law</h2>
-                <p>
-                    These Terms & Conditions shall be governed by and interpreted in accordance with the laws of India. Any disputes arising from these terms shall be subject to the exclusive jurisdiction of the courts in Mumbai, Maharashtra, India.
-                </p>
-            </div>
-
-            <!-- Section 9 -->
-            <div class="terms-section">
-                <h2><span class="section-number">9</span> Changes to Terms</h2>
-                <p>
-                    COV reserves the right to modify or update these Terms & Conditions at any time. Changes will be posted on this page with an updated "Last Updated" date. Your continued use of our services after such changes constitutes acceptance of the revised terms.
-                </p>
-            </div>
-
-            <!-- Section 10 -->
-            <div class="terms-section">
-                <h2><span class="section-number">10</span> Contact Information</h2>
-                <p>
-                    If you have any questions, concerns, or require clarification regarding these Terms & Conditions, please contact us:
-                </p>
                 <div class="contact-box">
-                    <h3>Get in Touch</h3>
+                    <h3>Contact Us for Refunds</h3>
                     <p>📧 Email: <a href="mailto:contact@cov.org.in">contact@cov.org.in</a></p>
                     <p>📞 Phone: <a href="tel:+919888858111">+91 98888 58111</a></p>
                     <p>📍 Address: 1st floor, Opp. Flyover Apartment, Junction of N.S. Phadke Marg, Andheri (East), Mumbai 400 069, India</p>
+                    <p style="margin-top: 15px; font-size: 0.95em; opacity: 0.9;">We aim to respond to all refund requests within 2-3 business days.</p>
                 </div>
             </div>
         </div>
@@ -1047,45 +1039,52 @@
         </div>
     </footer>
 
-    <script>
-	const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
-const menuOverlay = document.getElementById('menuOverlay');
+        <script>
+        // Hamburger menu
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('navMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
 
-hamburger.addEventListener('click', () => {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    menuOverlay.classList.toggle('active');
-    document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : '';
-});
-
-menuOverlay.addEventListener('click', () => {
-    hamburger.classList.remove('active');
-    navMenu.classList.remove('active');
-    menuOverlay.classList.remove('active');
-    document.body.style.overflow = '';
-});
-
-navMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', function () {
-        if (window.innerWidth <= 768 && this.parentElement.classList.contains('nav-item')) return;
-        hamburger.classList.remove('active');
-        navMenu.classList.remove('active');
-        menuOverlay.classList.remove('active');
-        document.body.style.overflow = '';
-    });
-});
-
-if (window.innerWidth <= 768) {
-    const navItem = document.querySelector('.nav-item');
-    if (navItem) {
-        navItem.querySelector('a').addEventListener('click', e => {
-            e.preventDefault();
-            navItem.classList.toggle('mobile-active');
+        hamburger.addEventListener('click', function () {
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            document.body.style.overflow = this.classList.contains('active') ? 'hidden' : '';
         });
-    }
-}
-// Clone right buttons into mobile menu
+
+        menuOverlay.addEventListener('click', function () {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            this.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function (e) {
+                if (window.innerWidth <= 768 && this.parentElement.classList.contains('nav-item')) {
+                    return;
+                }
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            const navItem = document.querySelector('.nav-item');
+            if (navItem) {
+                const navItemLink = navItem.querySelector('a');
+                navItemLink.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    navItem.classList.toggle('mobile-active');
+                });
+            }
+        }
+
+        // Clone right buttons into mobile menu
         const navRight = document.querySelector('.nav-right');
         if (navRight && window.innerWidth <= 768) {
             const registerBtn = navRight.querySelector('.register-btn-header');
@@ -1097,8 +1096,6 @@ if (window.innerWidth <= 768) {
                 navMenu.appendChild(loginClone);
             }
         }
-
-</script>
-
+    </script>
 </body>
 </html>
