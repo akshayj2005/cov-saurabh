@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <title>Committee Members - COV</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #002b5b;
+            --accent-teal: #00a6a6;
+            --soft-bg: #f2f9ff;
+            --highlight: #38b6ff;
+            --text-dark: #012a4a;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            color: var(--text-dark);
+            background: var(--soft-bg);
+            line-height: 1.6;
+        }
+
+        /* ==================== HEADER ==================== */
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 43, 91, 0.1);
+            position: relative;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1520px;
+            margin: 0 auto;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0;
+        }
+
+        #logo {
+            height: 70px;
+            display: block;
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: nowrap;
+            justify-content: center;
+            flex: 1;
+        }
+
+        nav a {
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: rgb(10, 8, 94);
+            font-size: 18px;
+            transition: 0.3s ease-in-out;
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            background-color: rgba(10, 8, 94, 0.12);
+            transform: translateY(-2px);
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 43, 91, 0.15);
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            z-index: 1100;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 15px;
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--primary);
+            font-size: 16px;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+
+        .dropdown a:hover {
+            background-color: rgba(0, 166, 166, 0.1);
+            border-left-color: var(--accent-teal);
+            transform: translateX(5px);
+        }
+
+        .dropdown-arrow {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 12px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0;
+        }
+
+        /* Replace the .register-btn-header section in your membership page CSS (around line 152-164) */
+        /* Replace the .register-btn section in your membership page CSS (around line 485-498) */
+
+        /* Replace the .register-btn-header section in your membership page CSS */
+
+        .register-btn-header {
+            padding: 6px 17px;
+            background-color: transparent;
+            color: rgb(10, 8, 94);
+            text-decoration: none;
+            border-radius: 25px;
+            border: 2px solid rgb(10, 8, 94);
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s ease-in-out;
+            white-space: nowrap;
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .register-btn-header:hover {
+            background-color: rgb(10, 8, 94);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
+        }
+
+        /* Also add this to remove default link styling */
+        .register-btn-header:visited {
+            color: rgb(10, 8, 94);
+        }
+
+        .register-btn-header:visited:hover {
+            color: white;
+        }
+
+        .login-btn {
+            padding: 8px 20px;
+            background-color: rgb(10, 8, 94);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+            position: relative;
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(10.5px) rotate(45deg);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-10.5px) rotate(-45deg);
+        }
+
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .menu-overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        /* Hero Section */
+        .committee-hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-teal) 100%);
+            color: white;
+            padding: 80px 20px 60px;
+            text-align: center;
+        }
+
+        .committee-hero h1 {
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .committee-hero p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        /* Main Container */
+        .committee-container {
+            max-width: 1200px;
+            margin: 60px auto 80px;
+            padding: 0 20px;
+        }
+
+        /* Committee Section */
+        .committee-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0, 43, 91, 0.08);
+            margin-bottom: 40px;
+        }
+
+        .committee-header {
+            background: linear-gradient(135deg, var(--primary), var(--accent-teal));
+            color: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .committee-header h2 {
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        .committee-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5em;
+        }
+
+        /* Members Grid */
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .member-card {
+            background: var(--soft-bg);
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--accent-teal);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 166, 166, 0.15);
+            border-left-color: var(--highlight);
+        }
+
+        .member-name {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        .member-role {
+            font-size: 0.95em;
+            color: var(--accent-teal);
+            font-weight: 500;
+        }
+
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, var(--soft-bg), white);
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid var(--accent-teal);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .info-box p {
+            font-size: 1.1em;
+            color: var(--text-dark);
+            line-height: 1.8;
+        }
+
+        /* ===== CONTACT SECTION ===== */
+.contact-section {
+  background: var(--primary);
+  padding: 80px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  position: relative;
+}
+
+.subscribe-column h2,
+.contact-column h2 {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+  padding-bottom: 12px;
+  position: relative;
+}
+
+.subscribe-column h2::after,
+.contact-column h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--highlight));
+}
+
+.subscribe-text {
+  color: var(--highlight);
+  margin-bottom: 20px;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 10px;
+}
+
+.subscribe-form input {
+  flex: 1;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 8px;
+}
+
+.subscribe-form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.subscribe-form input:focus {
+  outline: none;
+  border-color: var(--accent-teal);
+}
+
+.subscribe-form button {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+  color: white;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: 0.3s;
+}
+
+.subscribe-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 166, 166, 0.3);
+}
+
+.no-spam {
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  background: var(--accent-teal);
+  border-color: var(--accent-teal);
+  transform: translateY(-3px);
+}
+
+.office-title {
+  color: var(--highlight);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 18px;
+  transition: 0.3s;
+}
+
+.contact-item:hover {
+  transform: translateX(5px);
+}
+
+.contact-icon {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+  color: white;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+
+/* ==================== horizontal line ==================== */
+.footer-divider-wrapper {
+  background: #002b5b;      
+}
+
+.footer-divider-inner {
+  max-width: 1520px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-divider {
+  border: none;
+  height: 1px;
+  background: #0f3e6a;
+}
+
+/* ==================== FOOTER ==================== */
+
+.footer {
+  background: var(--primary);
+  padding: 25px 40px;
+}
+
+.footer-content {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-content a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-content a:hover {
+  color: var(--accent-teal);
+}
+
+.footer-content p {
+  color: white;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 20px;
+}
+
+        /* Responsive */
+        @media (max-width: 1280px) {
+            .header-content {
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            #logo {
+                height: 50px;
+                z-index: 1001;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+            }
+
+            .nav-right {
+                display: none;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: linear-gradient(135deg, #f2f9ff 0%, #ffffff 100%);
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                align-items: stretch !important;
+                padding: 100px 30px 30px 30px;
+                gap: 0 !important;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: transform 2s ease-out;
+                z-index: 1000;
+                overflow-y: auto;
+            }
+
+            nav.active {
+                right: 0;
+            }
+
+            nav a {
+                width: 100%;
+                padding: 15px 20px;
+                margin: 5px 0;
+                border-radius: 12px;
+                font-size: 16px;
+                text-align: left;
+                border-left: 3px solid transparent;
+                transition: all 0.3s ease;
+            }
+
+            nav a:hover {
+                background-color: rgba(0, 166, 166, 0.1);
+                border-left-color: var(--accent-teal);
+                transform: translateX(5px);
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-item>a {
+                width: 100%;
+            }
+
+            .dropdown {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background: rgba(0, 166, 166, 0.05);
+                margin: 5px 0;
+                border-radius: 8px;
+                max-height: 0;
+                opacity: 0;
+                visibility: visible;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .nav-item.mobile-active .dropdown {
+                max-height: 200px;
+                opacity: 1;
+                margin-top: 8px;
+            }
+
+            .dropdown a {
+                padding: 10px 20px 10px 30px;
+                font-size: 15px;
+            }
+
+            .dropdown-arrow {
+                float: right;
+            }
+
+            .nav-item.mobile-active .dropdown-arrow {
+                transform: rotate(180deg);
+            }
+
+            .register-btn-header {
+                width: 100% !important;
+                margin: 15px 0 0 0 !important;
+                padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
+                text-align: center;
+                display: block !important;
+            }
+
+            .login-btn {
+                width: 100% !important;
+                margin: 10px 0 0 0 !important;
+                padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
+                background-color: var(--accent-teal);
+                transition: all 0.3s ease;
+                display: block !important;
+            }
+
+            .committee-hero h1 {
+                font-size: 2em;
+            }
+
+            .committee-section {
+                padding: 25px 20px;
+            }
+
+            .committee-header {
+                padding: 18px 20px;
+            }
+
+            .committee-header h2 {
+                font-size: 1.4em;
+            }
+
+            .members-grid {
+                grid-template-columns: 1fr;
+            }
+             .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .contact-section,
+            .footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+             #logo {
+                height: 45px;
+            }
+
+
+            .hamburger {
+                width: 28px;
+                height: 22px;
+            }
+
+            nav {
+                width: 260px;
+                padding: 90px 25px 25px 25px;
+            }
+
+            .committee-hero {
+                padding: 60px 20px 40px;
+            }
+
+            .committee-hero h1 {
+                font-size: 1.8em;
+            }
+
+            .member-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <a href="index.html">
+                    <img id='logo' src="assets/Logo.avif" height="70px" alt="COV Logo">
+                </a>
+            </div>
+            <button class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav id="navMenu">
+                <a href="membership.html">Membership</a>
+                <a href="#training">Training & Courses</a>
+                <a href="#events">Events</a>
+                <div class="nav-item">
+                    <a>About Us <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown">
+                        <a href="about.html#our-story">Our Story</a>
+                        <a href="BOD.html">Board of Directors</a>
+                        <a href="committee.html">Committee</a>
+                        <a href="bylaws.html" id="">By Laws</a>
+                    </div>
+                </div>
+                <a href="covsphere.html">COV Sphere</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="nav-right">
+                <a href="reg0.html" class="register-btn-header">Register Now</a>
+                <button class="login-btn">Login</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Hero Section -->
+    <section class="committee-hero">
+        <h1>Committee Members</h1>
+        <p>Meet the dedicated professionals leading COV's mission</p>
+    </section>
+
+    <!-- Main Container -->
+    <div class="committee-container">
+
+        <!-- Membership Committee -->
+        <div class="committee-section">
+            <div class="committee-header">
+                <div class="committee-icon">👥</div>
+                <h2>Membership Committee</h2>
+            </div>
+            <div class="members-grid">
+                <div class="member-card">
+                    <div class="member-name">Elakkiya D</div>
+                    <div class="member-role">Member</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-name">Gurbinder Singh</div>
+                    <div class="member-role">Member</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-name">Simul Sarkar</div>
+                    <div class="member-role">Member</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-name">Sudhir Kumar Singh</div>
+                    <div class="member-role">Member</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Disciplinary Committee -->
+        <div class="committee-section">
+            <div class="committee-header">
+                <div class="committee-icon">⚖️</div>
+                <h2>Disciplinary Committee</h2>
+            </div>
+            <div class="members-grid">
+                <div class="member-card">
+                    <div class="member-name">Babu G</div>
+                    <div class="member-role">Member</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-name">Siddant Arora</div>
+                    <div class="member-role">Member</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-name">Chaitanya K Srivastava</div>
+                    <div class="member-role">Member</div>
+                </div>
+                <div class="member-card">
+                    <div class="member-name">Bhimrao Jaligama</div>
+                    <div class="member-role">Member</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact-section">
+        <div class="contact-container">
+
+            <!-- Subscribe -->
+            <div class="subscribe-column">
+                <h2>STAY CONNECTED</h2>
+                <p class="subscribe-text">Subscribe to our newsletter for the latest updates and opportunities.</p>
+
+                <form class="subscribe-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+
+                <p class="no-spam">We respect your privacy. No spam!</p>
+
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-column">
+                <h2>REACH US</h2>
+
+                <h3 class="office-title">Registered Office</h3>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-solid fa-location-arrow"></i></div>
+                    <div class="contact-info">
+                        <p>26/A, First Cross, First Main Canara Bank Colony,<br>Subramanyapura, Bengaluru-560061,
+                            Karnataka</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="contact-info">
+                        <p>+91 98888 58111</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
+                    <div class="contact-info">
+                        <p>info@mysite.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- horizontal line -->
+    <div class="footer-divider-wrapper">
+        <div class="footer-divider-inner">
+            <hr class="footer-divider">
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">
+                © 2025 Confederation of Valuers — All Rights Reserved
+            </p>
+
+            <div class="footer-legal">
+                <a href="faq.html">FAQ</a>
+                <a href="TandC.html">Terms & Conditions</i></a>
+                <a href="policy.html">Policy</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+	const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+const menuOverlay = document.getElementById('menuOverlay');
+
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    menuOverlay.classList.toggle('active');
+    document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : '';
+});
+
+menuOverlay.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+});
+
+navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function () {
+        if (window.innerWidth <= 768 && this.parentElement.classList.contains('nav-item')) return;
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+});
+
+if (window.innerWidth <= 768) {
+    const navItem = document.querySelector('.nav-item');
+    if (navItem) {
+        navItem.querySelector('a').addEventListener('click', e => {
+            e.preventDefault();
+            navItem.classList.toggle('mobile-active');
+        });
+    }
+}
+
+// Clone right buttons into mobile menu
+        const navRight = document.querySelector('.nav-right');
+        if (navRight && window.innerWidth <= 768) {
+            const registerBtn = navRight.querySelector('.register-btn-header');
+            const loginBtn = navRight.querySelector('.login-btn');
+            if (registerBtn && loginBtn) {
+                const registerClone = registerBtn.cloneNode(true);
+                const loginClone = loginBtn.cloneNode(true);
+                navMenu.appendChild(registerClone);
+                navMenu.appendChild(loginClone);
+            }
+        }
+
+</script>
+</body>
+</html>
