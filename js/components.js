@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const headerPath = "header.html";
-    const footerPath = "footer.html";
+    const headerPath = "components/header.html";
+    const footerPath = "components/footer.html";
 
     function loadComponent(id, path) {
         return fetch(path)
