@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Contact Us - Confederation of Valuers</title>
-    <link rel="stylesheet" href="style2.css">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <style>
         /* Fade-in animation styles */
@@ -55,49 +55,7 @@
 
 <body>
     <!-- ==================== HEADER - BOD STYLE ==================== -->
-    <header>
-        <div class="header-content">
-            <!-- Logo Section - Left -->
-            <div class="logo-container">
-                <a href="index.html">
-                    <img id='logo' src="assets/Logo.avif" height="70px" alt="COV Logo">
-                </a>
-            </div>
-
-            <!-- Hamburger Menu - Mobile Only -->
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <!-- Main Navigation - Center -->
-                        <nav id="navMenu">
-                <a href="membership.html">Membership</a>
-                 <a href="training.html">Training & Courses</a>
-                <a href="events.html">Events</a>
-                <div class="nav-item">
-                    <a>About Us <span class="dropdown-arrow">▼</span></a>
-                    <div class="dropdown">
-                        <a href="about.html#our-story">Our Story</a>
-                        <a href="BOD.html">Board of Directors</a>
-                        <a href="committee.html">Committee</a>
-                        <a href="bylaws.html" id="">By Laws</a>
-                    </div>
-                </div>
-                <a href="covsphere.html">COV Sphere</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-
-
-            <!-- Right Side Buttons -->
-            <div class="nav-right">
-                <a href="reg0.html" class="register-btn">Register Now</a>
-                <button class="login-btn">Login</button>
-            </div>
-        </div>
-    </header>
-    <!-- ==================== END HEADER ==================== -->
+    <div id="header-placeholder"></div>
 
     <!-- Menu Overlay -->
     <div class="menu-overlay" id="menuOverlay"></div>
@@ -225,146 +183,12 @@
         </div>
     </div>
 
-        <!-- CONTACT SECTION -->
-    <section class="contact-section">
-        <div class="contact-container">
+    <!-- CONTACT SECTION -->
+    <div id="footer-placeholder"></div>
 
-            <!-- Subscribe -->
-            <div class="subscribe-column">
-                <h2>STAY CONNECTED</h2>
-                <p class="subscribe-text">Subscribe to our newsletter for the latest updates and opportunities.</p>
-
-                <form class="subscribe-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                </form>
-
-                <p class="no-spam">We respect your privacy. No spam!</p>
-
-                <div class="social-icons">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                </div>
-            </div>
-
-            <!-- Contact Info -->
-            <div class="contact-column">
-                <h2>REACH US</h2>
-
-                <h3 class="office-title">Registered Office</h3>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-solid fa-location-arrow"></i></div>
-                    <div class="contact-info">
-                        <p>26/A, First Cross, First Main Canara Bank Colony,<br>Subramanyapura, Bengaluru-560061,
-                            Karnataka</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-                    <div class="contact-info">
-                        <p>+91 98888 58111</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
-                    <div class="contact-info">
-                        <p>info@mysite.com</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- horizontal line -->
-    <div class="footer-divider-wrapper">
-        <div class="footer-divider-inner">
-            <hr class="footer-divider">
-        </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p class="copyright">
-                © 2025 Confederation of Valuers — All Rights Reserved
-            </p>
-
-            <div class="footer-legal">
-                <a href="refund.html">Refund Policy</a>
-                <a href="TandC.html">Terms & Conditions</a>
-                <a href="privacy.html">Privacy Policy</a>
-            </div>
-        </div>
-    </footer>
-
+    <script src="components.js"></script>
+    <script src="script.js"></script>
     <script>
-        // ==================== NAVIGATION SCRIPT ====================
-        
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-
-        hamburger.addEventListener('click', function () {
-            this.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            menuOverlay.classList.toggle('active');
-            document.body.style.overflow = this.classList.contains('active') ? 'hidden' : '';
-        });
-
-        menuOverlay.addEventListener('click', function () {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            this.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        const navLinks = navMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function (e) {
-                // Don't close menu if clicking dropdown parent on mobile
-                if (window.innerWidth <= 768 && this.parentElement.classList.contains('nav-item')) {
-                    return;
-                }
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                menuOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-
-        // Mobile dropdown toggle
-        if (window.innerWidth <= 768) {
-            const navItem = document.querySelector('.nav-item');
-            if (navItem) {
-                const navItemLink = navItem.querySelector('a');
-                
-                navItemLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    navItem.classList.toggle('mobile-active');
-                });
-            }
-        }
-
-        // Clone right buttons into mobile menu
-        const navRight = document.querySelector('.nav-right');
-        if (navRight && window.innerWidth <= 768) {
-            const registerBtn = navRight.querySelector('.register-btn');
-            const loginBtn = navRight.querySelector('.login-btn');
-            
-            if (registerBtn && loginBtn) {
-                const registerClone = registerBtn.cloneNode(true);
-                const loginClone = loginBtn.cloneNode(true);
-                navMenu.appendChild(registerClone);
-                navMenu.appendChild(loginClone);
-            }
-        }
 
         // ==================== HERO SECTION FADE IN ====================
         window.addEventListener('load', () => {
@@ -389,22 +213,22 @@
                 }, 400);
             }
 
-        // ==================== FADE-IN ANIMATIONS ====================
-        
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px'
-        };
+            // ==================== FADE-IN ANIMATIONS ====================
+
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px'
+            };
 
             // Get both sections
             const contactGrid = document.querySelector('.contact-grid');
             const contactFormSection = document.querySelector('.contact-form-section');
             const contactInfoSection = document.querySelector('.contact-info-section');
-            
+
             const formTitle = contactFormSection ? contactFormSection.querySelector('h2') : null;
             const formGroups = document.querySelectorAll('.contact-form-section .form-group');
             const submitBtn = document.querySelector('.submit-btn');
-            
+
             const infoTitle = contactInfoSection ? contactInfoSection.querySelector('h2') : null;
             const infoItems = document.querySelectorAll('.info-item');
 
@@ -439,7 +263,7 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         // Animate both sections at the same time
-                        
+
                         // Form Title
                         if (formTitle) {
                             setTimeout(() => {
@@ -500,7 +324,7 @@
             if (mapSection) {
                 mapSection.style.opacity = '0';
                 mapSection.style.transform = 'translateY(40px)';
-                
+
                 const mapObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
@@ -511,25 +335,25 @@
                         }
                     });
                 }, observerOptions);
-                
+
                 mapObserver.observe(mapSection);
             }
 
             // Social Section - Fade Up
             const socialSection = document.querySelector('.social-section');
             const socialLinks = document.querySelectorAll('.social-links a');
-            
+
             if (socialSection) {
                 socialSection.style.opacity = '0';
                 socialSection.style.transform = 'translateY(40px)';
-                
+
                 const socialObserver = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             socialSection.style.transition = 'all 0.8s ease';
                             socialSection.style.opacity = '1';
                             socialSection.style.transform = 'translateY(0)';
-                            
+
                             // Animate social links
                             socialLinks.forEach((link, index) => {
                                 link.style.opacity = '0';
@@ -540,12 +364,12 @@
                                     link.style.transform = 'scale(1)';
                                 }, 300 + (index * 80));
                             });
-                            
+
                             socialObserver.unobserve(entry.target);
                         }
                     });
                 }, observerOptions);
-                
+
                 socialObserver.observe(socialSection);
             }
         });

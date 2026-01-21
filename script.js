@@ -1,72 +1,99 @@
 // ==================== NAVIGATION & HAMBURGER MENU ====================
-const hamburger = document.getElementById('hamburger');
-const navMenu = document.getElementById('navMenu');
-const menuOverlay = document.getElementById('menuOverlay');
+// ==================== NAVIGATION & HAMBURGER MENU ====================
+function initNavigation() {
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+    const menuOverlay = document.getElementById('menuOverlay');
 
-function toggleMenu() {
-    hamburger.classList.toggle('active');
-    navMenu.classList.toggle('active');
-    menuOverlay.classList.toggle('active');
-    
-    // Prevent body scroll when menu is open
-    if (navMenu.classList.contains('active')) {
-        document.body.style.overflow = 'hidden';
-    } else {
-        document.body.style.overflow = '';
-    }
-}
+    if (!hamburger || !navMenu || !menuOverlay) return;
 
-hamburger.addEventListener('click', toggleMenu);
-menuOverlay.addEventListener('click', toggleMenu);
+    function toggleMenu() {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+        menuOverlay.classList.toggle('active');
 
-// Close menu when clicking on a nav link (but not dropdown parent)
-const navLinks = navMenu.querySelectorAll('a');
-navLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        // Don't close menu if clicking dropdown parent on mobile
-        if (window.innerWidth <= 768 && link.parentElement.classList.contains('nav-item')) {
-            return; // Let the mobile dropdown toggle handle this
+        // Prevent body scroll when menu is open
+        if (navMenu.classList.contains('active')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
         }
-        
-        if (window.innerWidth <= 768) {
+    }
+
+    // Remove existing listeners if any (to prevent duplicates if re-initialized)
+    hamburger.removeEventListener('click', toggleMenu);
+    menuOverlay.removeEventListener('click', toggleMenu);
+
+    hamburger.addEventListener('click', toggleMenu);
+    menuOverlay.addEventListener('click', toggleMenu);
+
+    // Close menu when clicking on a nav link (but not dropdown parent)
+    const navLinks = navMenu.querySelectorAll('a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            // Don't close menu if clicking dropdown parent on mobile
+            if (window.innerWidth <= 768 && link.parentElement.classList.contains('nav-item')) {
+                return; // Let the mobile dropdown toggle handle this
+            }
+
+            if (window.innerWidth <= 768) {
+                toggleMenu();
+            }
+        });
+    });
+
+    // Close menu on window resize if open
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
             toggleMenu();
         }
     });
-});
 
-// Close menu on window resize if open
-window.addEventListener('resize', () => {
-    if (window.innerWidth > 768 && navMenu.classList.contains('active')) {
-        toggleMenu();
+    // ==================== MOBILE DROPDOWN TOGGLE ====================
+    // Mobile dropdown toggle for "About Us"
+    if (window.innerWidth <= 768) {
+        const navItem = document.querySelector('.nav-item');
+        if (navItem) {
+            const navItemLink = navItem.querySelector('a');
+
+            // Clone to remove old listener
+            const newNavItemLink = navItemLink.cloneNode(true);
+            navItemLink.parentNode.replaceChild(newNavItemLink, navItemLink);
+
+            newNavItemLink.addEventListener('click', function (e) {
+                e.preventDefault();
+                navItem.classList.toggle('mobile-active');
+            });
+        }
     }
-});
 
-// ==================== MOBILE DROPDOWN TOGGLE ====================
-// Mobile dropdown toggle for "About Us"
-if (window.innerWidth <= 768) {
-    const navItem = document.querySelector('.nav-item');
-    if (navItem) {
-        const navItemLink = navItem.querySelector('a');
-        
-        navItemLink.addEventListener('click', function(e) {
-            e.preventDefault();
-            navItem.classList.toggle('mobile-active');
-        });
-    }
-}
+    // Clone right buttons into mobile menu
+    const navRight = document.querySelector('.nav-right');
+    if (navRight && window.innerWidth <= 768 && !navMenu.classList.contains('buttons-added')) {
+        const registerBtn = navRight.querySelector('.register-btn');
+        const loginBtn = navRight.querySelector('.login-btn');
 
-// Clone right buttons into mobile menu
-const navRight = document.querySelector('.nav-right');
-if (navRight && window.innerWidth <= 768 && !navMenu.classList.contains('buttons-added')) {
-    const registerBtn = navRight.querySelector('.register-btn');
-    const loginBtn = navRight.querySelector('.login-btn');
-    
-    if (registerBtn && loginBtn) {
-        navMenu.appendChild(registerBtn.cloneNode(true));
-        navMenu.appendChild(loginBtn.cloneNode(true));
-        navMenu.classList.add('buttons-added');
+        if (registerBtn && loginBtn) {
+            navMenu.appendChild(registerBtn.cloneNode(true));
+            navMenu.appendChild(loginBtn.cloneNode(true));
+            navMenu.classList.add('buttons-added');
+        }
     }
 }
+
+// Initialize on components load
+document.addEventListener('componentsLoaded', () => {
+    initNavigation();
+    initFooterAnimations();
+});
+
+// Fallback for static pages
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.getElementById('hamburger')) {
+        initNavigation();
+    }
+});
+
 
 // ==================== PDF VIEWER FUNCTIONALITY ====================
 // Check if PDF.js is loaded before initializing
@@ -118,7 +145,7 @@ if (typeof pdfjsLib !== 'undefined') {
             renderTask.promise.then(() => {
                 pageRendering = false;
                 loading.classList.remove('active');
-                
+
                 if (pageNumPending !== null) {
                     renderPage(pageNumPending);
                     pageNumPending = null;
@@ -187,7 +214,7 @@ if (typeof pdfjsLib !== 'undefined') {
     function openPdfModal() {
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
-        
+
         // Load PDF if not already loaded
         if (!pdfDoc) {
             loading.classList.add('active');
@@ -237,8 +264,8 @@ if (typeof pdfjsLib !== 'undefined') {
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
         if (!modal || !modal.classList.contains('active')) return;
-        
-        switch(e.key) {
+
+        switch (e.key) {
             case 'Escape':
                 closePdfModal();
                 break;
@@ -358,12 +385,12 @@ window.addEventListener('load', () => {
     const aboutImage = document.querySelector('.about-image');
     const aboutBadge = document.querySelector('.about-badge');
     const aboutContent = document.querySelector('.about-content');
-    
+
     // Animate the badge separately with scale effect
     if (aboutBadge) {
         aboutBadge.style.opacity = '0';
         aboutBadge.style.transform = 'translateX(-40px) scale(0.9)';
-        
+
         const badgeObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -374,10 +401,10 @@ window.addEventListener('load', () => {
                 }
             });
         }, fadeObserverOptions);
-        
+
         badgeObserver.observe(aboutBadge);
     }
-    
+
     // Animate image container
     if (aboutImage) {
         aboutImage.style.opacity = '0';
@@ -385,7 +412,7 @@ window.addEventListener('load', () => {
         aboutImage.style.transition = 'all 0.8s ease';
         fadeInObserver.observe(aboutImage);
     }
-    
+
     // Animate content elements with stagger
     if (aboutContent) {
         // Select all child elements directly
@@ -393,9 +420,9 @@ window.addEventListener('load', () => {
         const aboutH3 = aboutContent.querySelector('h3');
         const aboutP = aboutContent.querySelector('p');
         const aboutBtn = aboutContent.querySelector('.btn-primary');
-        
+
         const aboutElements = [aboutH2, aboutH3, aboutP, aboutBtn];
-        
+
         // Set initial state for each element
         aboutElements.forEach((element, index) => {
             if (element) {
@@ -403,7 +430,7 @@ window.addEventListener('load', () => {
                 element.style.transform = 'translateX(40px)';
             }
         });
-        
+
         // Trigger animation when about content is visible
         const aboutContentObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -421,21 +448,21 @@ window.addEventListener('load', () => {
                 }
             });
         }, fadeObserverOptions);
-        
+
         aboutContentObserver.observe(aboutContent);
     }
 
     // Stats Section
     const statsTitle = document.querySelector('.stats-title');
     const statBoxes = document.querySelectorAll('.stat-box');
-    
+
     if (statsTitle) {
         statsTitle.style.opacity = '0';
         statsTitle.style.transform = 'translateY(30px)';
         statsTitle.style.transition = 'all 0.8s ease';
         fadeInObserver.observe(statsTitle);
     }
-    
+
     statBoxes.forEach((box, index) => {
         box.style.opacity = '0';
         box.style.transform = 'translateY(30px)';
@@ -448,26 +475,26 @@ window.addEventListener('load', () => {
     const ospVisual = document.querySelector('.osp-visual');
     const ospSteps = document.querySelectorAll('.osp-step');
     const ospBtn = document.querySelector('.osp-steps .cta-btn');
-    
+
     if (ospTitle) {
         ospTitle.style.opacity = '0';
         ospTitle.style.transform = 'translateY(30px)';
         ospTitle.style.transition = 'all 0.8s ease';
         fadeInObserver.observe(ospTitle);
     }
-    
+
     if (ospVisual) {
         ospVisual.style.opacity = '0';
         ospVisual.style.transform = 'translateX(-40px)';
         ospVisual.style.transition = 'all 0.8s ease';
         fadeInObserver.observe(ospVisual);
     }
-    
+
     // Animate each OSP step individually from right
     ospSteps.forEach((step, index) => {
         step.style.opacity = '0';
         step.style.transform = 'translateX(40px)';
-        
+
         const ospStepObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -480,15 +507,15 @@ window.addEventListener('load', () => {
                 }
             });
         }, fadeObserverOptions);
-        
+
         ospStepObserver.observe(step);
     });
-    
+
     // Animate CTA button
     if (ospBtn) {
         ospBtn.style.opacity = '0';
         ospBtn.style.transform = 'translateY(20px)';
-        
+
         const ospBtnObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -501,7 +528,7 @@ window.addEventListener('load', () => {
                 }
             });
         }, fadeObserverOptions);
-        
+
         ospBtnObserver.observe(ospBtn);
     }
 
@@ -509,40 +536,40 @@ window.addEventListener('load', () => {
     const ecosystemTitle = document.querySelector('.ecosystem-title');
     const ecosystemSubtitle = document.querySelector('.ecosystem-subtitle');
     const ecosystemItems = document.querySelectorAll('.ecosystem-item');
-    
+
     if (ecosystemTitle) {
         ecosystemTitle.style.opacity = '0';
         ecosystemTitle.style.transform = 'translateY(30px)';
         ecosystemTitle.style.transition = 'all 0.8s ease';
         fadeInObserver.observe(ecosystemTitle);
     }
-    
+
     if (ecosystemSubtitle) {
         ecosystemSubtitle.style.opacity = '0';
         ecosystemSubtitle.style.transform = 'translateY(30px)';
         ecosystemSubtitle.style.transition = 'all 0.8s ease 0.2s';
         fadeInObserver.observe(ecosystemSubtitle);
     }
-    
+
     // Animate each ecosystem item individually
     ecosystemItems.forEach((item, index) => {
         const number = item.querySelector('.ecosystem-number');
         const content = item.querySelector('.ecosystem-content');
-        
+
         // Set initial state
         item.style.opacity = '0';
         item.style.transform = 'translateY(40px)';
-        
+
         if (number) {
             number.style.opacity = '0';
             number.style.transform = 'scale(0.5)';
         }
-        
+
         if (content) {
             content.style.opacity = '0';
             content.style.transform = 'translateX(20px)';
         }
-        
+
         const ecosystemItemObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -551,7 +578,7 @@ window.addEventListener('load', () => {
                         item.style.transition = 'all 0.8s ease';
                         item.style.opacity = '1';
                         item.style.transform = 'translateY(0)';
-                        
+
                         // Animate number with scale
                         if (number) {
                             setTimeout(() => {
@@ -560,7 +587,7 @@ window.addEventListener('load', () => {
                                 number.style.transform = 'scale(1)';
                             }, 200);
                         }
-                        
+
                         // Animate content
                         if (content) {
                             setTimeout(() => {
@@ -574,28 +601,33 @@ window.addEventListener('load', () => {
                 }
             });
         }, fadeObserverOptions);
-        
+
         ecosystemItemObserver.observe(item);
     });
 
-    // Contact Section
+    // Contact Section logic moved to initFooterAnimations
+    initFooterAnimations();
+});
+
+function initFooterAnimations() {
     const subscribeColumn = document.querySelector('.subscribe-column');
     const contactColumn = document.querySelector('.contact-column');
-    
+
     if (subscribeColumn) {
         subscribeColumn.style.opacity = '0';
         subscribeColumn.style.transform = 'translateX(-40px)';
         subscribeColumn.style.transition = 'all 0.8s ease';
         fadeInObserver.observe(subscribeColumn);
     }
-    
+
     if (contactColumn) {
         contactColumn.style.opacity = '0';
         contactColumn.style.transform = 'translateX(40px)';
         contactColumn.style.transition = 'all 0.8s ease';
         fadeInObserver.observe(contactColumn);
     }
-});
+}
+
 
 // ==================== COUNTER ANIMATION ====================
 const statNumbers = document.querySelectorAll('.stat-number');
@@ -605,9 +637,9 @@ const animateCounter = (counter) => {
     const hasPlus = text.includes('+');
     const hasPercent = text.includes('%');
     const numericValue = parseInt(text.replace(/[^0-9]/g, ''));
-    
+
     if (isNaN(numericValue)) return;
-    
+
     // Dynamic duration based on magnitude
     let duration;
     if (numericValue >= 1000) {
@@ -619,21 +651,21 @@ const animateCounter = (counter) => {
     } else {
         duration = 1500; // Slowest for very small numbers
     }
-    
+
     let startTime = null;
 
     const updateCounter = (timestamp) => {
         if (!startTime) startTime = timestamp;
         const progress = timestamp - startTime;
-        
+
         // Easing function for smooth animation
         const easingProgress = Math.min(progress / duration, 1);
         const easedValue = easingProgress < 0.5
             ? 2 * easingProgress * easingProgress
             : 1 - Math.pow(-2 * easingProgress + 2, 2) / 2;
-        
+
         const current = numericValue * easedValue;
-        
+
         if (progress < duration) {
             counter.textContent = Math.floor(current) + (hasPlus ? '+' : '') + (hasPercent ? '%' : '');
             requestAnimationFrame(updateCounter);
@@ -641,7 +673,7 @@ const animateCounter = (counter) => {
             counter.textContent = numericValue + (hasPlus ? '+' : '') + (hasPercent ? '%' : '');
         }
     };
-    
+
     // Store original text and start from 0
     counter.setAttribute('data-original', text);
     counter.textContent = '0' + (hasPlus ? '+' : '') + (hasPercent ? '%' : '');
