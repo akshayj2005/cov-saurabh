@@ -61,8 +61,20 @@ function initNavigation() {
             navItemLink.parentNode.replaceChild(newNavItemLink, navItemLink);
 
             newNavItemLink.addEventListener('click', function (e) {
-                e.preventDefault();
-                navItem.classList.toggle('mobile-active');
+                // If clicking the arrow specifically, always toggle and prevent navigation
+                if (e.target.classList.contains('dropdown-arrow')) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    navItem.classList.toggle('mobile-active');
+                    return;
+                }
+
+                // If menu is closed, prevent default and open it
+                if (!navItem.classList.contains('mobile-active')) {
+                    e.preventDefault();
+                    navItem.classList.toggle('mobile-active');
+                }
+                // If menu is open, allow default behavior (navigation)
             });
         }
     }
