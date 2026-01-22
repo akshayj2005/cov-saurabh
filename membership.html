@@ -36,7 +36,7 @@
             height: 500px;
             background: rgba(255, 255, 255, 0.1);
             border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
+            animation: float 3s ease-in-out infinite;
         }
 
         .hero-section::after {
@@ -48,7 +48,7 @@
             height: 400px;
             background: rgba(255, 255, 255, 0.08);
             border-radius: 50%;
-            animation: float 8s ease-in-out infinite reverse;
+            animation: float 5s ease-in-out infinite reverse;
         }
 
         @keyframes float {
@@ -67,6 +67,7 @@
             max-width: 1200px;
             margin: 0 auto;
             position: relative;
+            display:block;
             z-index: 2;
         }
 
@@ -322,6 +323,129 @@
 
         /* ===== RESPONSIVE DESIGN ===== */
         @media (max-width: 1280px) {
+
+            .header-content {
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            #logo {
+                height: 50px;
+                z-index: 1001;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+            }
+
+            .nav-right {
+                display: none;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background: linear-gradient(135deg, #f2f9ff 0%, #ffffff 100%);
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                align-items: stretch !important;
+                padding: 100px 30px 30px 30px;
+                gap: 0 !important;
+                transform: translateX(100%);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: transform 0.4s ease-out;
+                z-index: 1000;
+                overflow-y: auto;
+            }
+
+            nav.active {
+                transform: translateX(0);
+            }
+
+            nav a {
+                width: 100%;
+                padding: 15px 20px;
+                margin: 5px 0;
+                border-radius: 12px;
+                font-size: 16px;
+                text-align: left;
+                border-left: 3px solid transparent;
+                transition: all 0.3s ease;
+            }
+
+            nav a:hover {
+                background-color: rgba(0, 166, 166, 0.1);
+                border-left-color: var(--accent-teal);
+                transform: translateX(5px);
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-item>a {
+                width: 100%;
+            }
+
+            .dropdown {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background: rgba(0, 166, 166, 0.05);
+                margin: 5px 0;
+                border-radius: 8px;
+                max-height: 0;
+                opacity: 0;
+                visibility: visible;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .nav-item.mobile-active .dropdown {
+                max-height: 200px;
+                opacity: 1;
+                margin-top: 8px;
+            }
+
+            .dropdown a {
+                padding: 10px 20px 10px 30px;
+                font-size: 15px;
+            }
+
+            .dropdown-arrow {
+                float: right;
+            }
+
+            .nav-item.mobile-active .dropdown-arrow {
+                transform: rotate(180deg);
+            }
+
+            .register-btn-header {
+                width: 100% !important;
+                margin: 15px 0 0 0 !important;
+                padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
+                text-align: center;
+                display: block !important;
+            }
+
+            .login-btn {
+                width: 100% !important;
+                margin: 10px 0 0 0 !important;
+                padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
+                background-color: var(--accent-teal);
+                transition: all 0.3s ease;
+                display: block !important;
+            }
+
             /* Navigation responsive styles inherited from css/style.css */
 
             .hero-section {
@@ -552,7 +676,7 @@
     <!-- HEADER -->
     <!-- HEADER -->
     <div id="header-placeholder"></div>
-    <div class="menu-overlay" id="menuOverlay"></div>
+
 
     <div class="menu-overlay" id="menuOverlay"></div>
 

@@ -20,7 +20,7 @@
 
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-    Ubuntu, Cantarell, sans-serif;
+  Ubuntu, Cantarell, sans-serif;
   overflow-x: hidden;
   color: var(--text-dark);
   background: var(--white);
@@ -894,7 +894,7 @@ nav a:hover {
 
 .osp-content {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 0.9fr 1.1fr;
   gap: 60px;
   align-items: center;
 }
@@ -945,7 +945,6 @@ nav a:hover {
   from {
     transform: translate(-50%, -50%) rotate(0deg);
   }
-
   to {
     transform: translate(-50%, -50%) rotate(360deg);
   }
@@ -992,12 +991,10 @@ nav a:hover {
 }
 
 @keyframes corePulse {
-
   0%,
   100% {
     transform: translate(-50%, -50%) scale(1);
   }
-
   50% {
     transform: translate(-50%, -50%) scale(1.1);
   }
@@ -1053,6 +1050,7 @@ nav a:hover {
   transform: translateY(-3px) scale(1.05);
   box-shadow: 0 12px 35px rgba(0, 166, 166, 0.6);
 }
+
 
 /* ==================== VALUATION ECOSYSTEM SECTION ==================== */
 
@@ -1371,7 +1369,7 @@ nav a:hover {
 }
 
 @media (max-width: 1280px) {
-  body {
+  body{
     padding-top: 0;
   }
 
@@ -1445,13 +1443,13 @@ nav a:hover {
     padding: 100px 30px 30px 30px;
     gap: 0 !important;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
-    transition: transform 2s ease-out;
+    transition: transform 0.4s ease-out;
     z-index: 1000;
     overflow-y: auto;
   }
 
   nav.active {
-    right: 0;
+    transform: translateX(0);
   }
 
   nav a {
@@ -1494,7 +1492,7 @@ nav a:hover {
   }
 
   .nav-item.mobile-active .dropdown {
-    max-height: 250px;
+    max-height: 200px;
     opacity: 1;
     margin-top: 8px;
   }
@@ -2187,7 +2185,7 @@ nav a:hover {
   text-align: center;
   position: relative;
   overflow: hidden;
-  margin-top: 100px;
+  /* margin-top: 100px; */
   padding: 0 40px;
 }
 

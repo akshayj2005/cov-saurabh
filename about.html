@@ -9,6 +9,241 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
 </head>
+<style>
+    .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-teal) 100%);
+            color: white;
+            padding: 80px 40px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 0;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            animation: float 5s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-30px) scale(1.05);
+            }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            /* margin: 0 auto; */
+            position: relative;
+            display:block;
+            z-index: 2;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            letter-spacing: -1px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-section p {
+            font-size: clamp(16px, 2vw, 20px);
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+         @media (max-width: 1280px) {
+
+            .header-content {
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            #logo {
+                height: 50px;
+                z-index: 1001;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+            }
+
+            .nav-right {
+                display: none;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background: linear-gradient(135deg, #f2f9ff 0%, #ffffff 100%);
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                align-items: stretch !important;
+                padding: 100px 30px 30px 30px;
+                gap: 0 !important;
+                transform: translateX(100%);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: transform 0.4s ease-out;
+                z-index: 1000;
+                overflow-y: auto;
+            }
+
+            nav.active {
+                transform: translateX(0);
+            }
+
+            nav a {
+                width: 100%;
+                padding: 15px 20px;
+                margin: 5px 0;
+                border-radius: 12px;
+                font-size: 16px;
+                text-align: left;
+                border-left: 3px solid transparent;
+                transition: all 0.3s ease;
+            }
+
+            nav a:hover {
+                background-color: rgba(0, 166, 166, 0.1);
+                border-left-color: var(--accent-teal);
+                transform: translateX(5px);
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-item>a {
+                width: 100%;
+            }
+
+            .dropdown {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background: rgba(0, 153, 153, 0.05);
+                margin: 5px 0;
+                border-radius: 8px;
+                max-height: 0;
+                opacity: 0;
+                visibility: visible;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .nav-item.mobile-active .dropdown {
+                max-height: 200px;
+                opacity: 1;
+                margin-top: 8px;
+            }
+
+            .dropdown a {
+                padding: 10px 20px 10px 30px;
+                font-size: 15px;
+            }
+
+            .dropdown-arrow {
+                float: right;
+            }
+
+            .nav-item.mobile-active .dropdown-arrow {
+                transform: rotate(180deg);
+            }
+
+            .register-btn-header {
+                width: 100% !important;
+                margin: 15px 0 0 0 !important;
+                padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
+                text-align: center;
+                display: block !important;
+            }
+
+            .login-btn {
+                width: 100% !important;
+                margin: 10px 0 0 0 !important;
+                padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
+                background-color: var(--accent-teal);
+                transition: all 0.3s ease;
+                display: block !important;
+            }
+
+            .login-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0, 166, 166, 0.3);
+            }
+        }
+
+         @media (max-width: 480px) {
+            #logo {
+                height: 45px;
+            }
+
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                margin: 0;
+            }
+
+            .hamburger {
+                width: 28px;
+                height: 22px;
+            }
+
+            nav {
+                width: 260px;
+                padding: 90px 25px 25px 25px;
+            }
+        }
+</style>
 
 <body class="about-body">
     <div id="header-placeholder"></div>
