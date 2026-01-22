@@ -7,23 +7,949 @@
     <title>COV Registration - Educational Details</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+        :root {
+            --primary: #002b5b;
+            --accent-teal: #00a6a6;
+            --soft-bg: #f2f9ff;
+            --highlight: #38b6ff;
+            --text-dark: #012a4a;
+            --white: #fff;
+            --light-gray: #e8f4f8
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #0d4d6d 0%, #1a7a9e 50%, #4db8b8 100%);
+            min-height: 100vh;
+            padding-top: 100px;
+            overflow-x: hidden;
+            color: var(--text-dark);
+            line-height: 1.6
+        }
+
+        body.modal-open {
+            overflow: hidden
+        }
+
+        header {
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0, 43, 91, .1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000
+        }
+
+        .header-content {
+            max-width: 1520px;
+            margin: 0 auto;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            flex-shrink: 0
+        }
+
+        #logo {
+            height: 70px;
+            display: block
+        }
+
+        nav {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: nowrap;
+            justify-content: center;
+            flex: 1
+        }
+
+        nav a {
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            color: rgb(10, 8, 94);
+            font-size: 18px;
+            transition: .3s ease-in-out;
+            white-space: nowrap
+        }
+
+        nav a:hover {
+            background-color: rgba(10, 8, 94, .12);
+            transform: translateY(-2px)
+        }
+
+        .nav-item {
+            position: relative
+        }
+
+        .dropdown {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 43, 91, .15);
+            min-width: 220px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .3s cubic-bezier(.68, -.55, .265, 1.55);
+            z-index: 1100;
+            margin-top: 10px;
+            overflow: hidden
+        }
+
+        .nav-item:hover .dropdown {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 15px
+        }
+
+        .dropdown a {
+            display: block;
+            padding: 12px 20px;
+            color: var(--primary);
+            font-size: 16px;
+            border-radius: 0;
+            transition: all .3s ease;
+            border-left: 3px solid transparent
+        }
+
+        .dropdown a:hover {
+            background-color: rgba(0, 166, 166, .1);
+            border-left-color: var(--accent-teal);
+            transform: translateX(5px)
+        }
+
+        .dropdown-arrow {
+            display: inline-block;
+            margin-left: 5px;
+            font-size: 12px;
+            transition: transform .3s ease
+        }
+
+        .nav-item:hover .dropdown-arrow {
+            transform: rotate(180deg)
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-shrink: 0
+        }
+/* FIND THIS SECTION (around line 166-177) and REPLACE with: */
+
+.register-btn {
+    padding: 6px 17px;
+    background-color: transparent;
+    color: rgb(10, 8, 94);
+    text-decoration: none;
+    border-radius: 25px;
+    border: 2px solid rgb(10, 8, 94);
+    font-size: 16px;
+    font-weight: 600;
+    transition: 0.3s ease-in-out;
+    white-space: nowrap;
+    display: inline-block;
+    line-height: 1.2;
+}
+
+.register-btn:hover {
+    background-color: rgb(10, 8, 94);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
+}
+
+.register-btn:visited {
+    color: rgb(10, 8, 94);
+}
+
+.register-btn:visited:hover {
+    color: white;
+}
+
+        .login-btn {
+            padding: 8px 20px;
+            background-color: rgb(10, 8, 94);
+            color: #fff;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all .3s ease;
+            white-space: nowrap
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(10, 8, 94, .4)
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 24px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+            position: relative
+        }
+
+        .hamburger span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 3px;
+            transition: all .3s ease;
+            transform-origin: center
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: translateY(10.5px) rotate(45deg)
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px)
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: translateY(-10.5px) rotate(-45deg)
+        }
+
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, .5);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity .3s ease
+        }
+
+        .menu-overlay.active {
+            display: block;
+            opacity: 1
+        }
+
+        .container {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, .2);
+            max-width: 1520px;
+            width: calc(100% - 80px);
+            margin: 20px auto 40px;
+            padding: 40px
+        }
+
+        .page-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #0d4d6d;
+            margin-bottom: 35px;
+            text-align: center
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap
+        }
+
+        .tab {
+            padding: 12px 28px;
+            border: none;
+            background: #e8e8e8;
+            color: #666;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            border-radius: 6px;
+            transition: all .3s ease;
+            text-decoration: none;
+            display: inline-block
+        }
+
+        .tab.active {
+            background: linear-gradient(135deg, #1a7a9e, #4db8b8);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(29, 122, 158, .3)
+        }
+
+        .tab:hover:not(.active) {
+            background: #d5d5d5
+        }
+
+        .content {
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 35px;
+            border: 2px solid #e0e0e0
+        }
+
+        .qualification-section {
+            background: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid #1a7a9e;
+            margin-bottom: 30px
+        }
+
+        .section-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0d4d6d;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #4db8b8
+        }
+
+        .qualification-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 15px
+        }
+
+        .qualification-table th {
+            background: linear-gradient(135deg, #1a7a9e, #4db8b8);
+            color: #fff;
+            padding: 12px 10px;
+            text-align: left;
+            font-size: 18px;
+            font-weight: 600
+        }
+
+        .qualification-table td {
+            padding: 10px;
+            border-bottom: 1px solid #e0e0e0
+        }
+
+        .qualification-table input[type=text],
+        .qualification-table select {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 18px;
+            background: #fff;
+            transition: all .3s ease
+        }
+
+        .qualification-table input[type=text]:focus,
+        .qualification-table select:focus {
+            outline: 0;
+            border-color: #1a7a9e;
+            box-shadow: 0 0 0 2px rgba(26, 122, 158, .1)
+        }
+
+        .upload-btn {
+            padding: 8px 20px;
+            background: linear-gradient(135deg, #1a7a9e, #4db8b8);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all .3s ease;
+            white-space: nowrap
+        }
+
+        .upload-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(26, 122, 158, .3)
+        }
+
+        .add-row-btn {
+            padding: 10px 24px;
+            background: #fff;
+            color: #1a7a9e;
+            border: 2px solid #1a7a9e;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .3s ease
+        }
+
+        .add-row-btn:hover {
+            background: #1a7a9e;
+            color: #fff
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            gap: 15px
+        }
+
+        .back-btn,
+        .next-btn {
+            padding: 14px 50px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .3s ease
+        }
+
+        .back-btn {
+            background: #fff;
+            color: #1a7a9e;
+            border: 2px solid #1a7a9e
+        }
+
+        .back-btn:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px)
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #1a7a9e, #4db8b8);
+            color: #fff
+        }
+
+        .next-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(26, 122, 158, .4)
+        }
+
+        input[type=file] {
+            display: none
+        }
+
+        /* ===== CONTACT SECTION ===== */
+.contact-section {
+  background: var(--primary);
+  padding: 80px 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  position: relative;
+}
+
+.subscribe-column h2,
+.contact-column h2 {
+  color: white;
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  font-weight: 600;
+  padding-bottom: 12px;
+  position: relative;
+}
+
+.subscribe-column h2::after,
+.contact-column h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent-teal), var(--highlight));
+}
+
+.subscribe-text {
+  color: var(--highlight);
+  margin-bottom: 20px;
+}
+
+.subscribe-form {
+  display: flex;
+  gap: 10px;
+}
+
+.subscribe-form input {
+  flex: 1;
+  padding: 14px 18px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 8px;
+}
+
+.subscribe-form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.subscribe-form input:focus {
+  outline: none;
+  border-color: var(--accent-teal);
+}
+
+.subscribe-form button {
+  padding: 14px 20px;
+  border: none;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+  color: white;
+  cursor: pointer;
+  font-size: 1.1em;
+  transition: 0.3s;
+}
+
+.subscribe-form button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 166, 166, 0.3);
+}
+
+.no-spam {
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+
+.social-icons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.social-icons a {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  transition: 0.3s;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  background: var(--accent-teal);
+  border-color: var(--accent-teal);
+  transform: translateY(-3px);
+}
+
+.office-title {
+  color: var(--highlight);
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.contact-item {
+  display: flex;
+  gap: 15px;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 18px;
+  transition: 0.3s;
+}
+
+.contact-item:hover {
+  transform: translateX(5px);
+}
+
+.contact-icon {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+  color: white;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+}
+
+
+/* ==================== horizontal line ==================== */
+.footer-divider-wrapper {
+  background: #002b5b;      
+}
+
+.footer-divider-inner {
+  max-width: 1520px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-divider {
+  border: none;
+  height: 1px;
+  background: #0f3e6a;
+}
+
+/* ==================== FOOTER ==================== */
+
+.footer {
+  background: var(--primary);
+  padding: 25px 40px;
+}
+
+.footer-content {
+  max-width: 1440px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-content a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-content a:hover {
+  color: var(--accent-teal);
+}
+
+.footer-content p {
+  color: white;
+}
+
+.footer-legal {
+  display: flex;
+  gap: 20px;
+}
+
+        /* Hide scrollbars but keep functionality */
+        ::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+            background: transparent;
+        }
+
+        * {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+        @media (max-width:1280px) {
+            body {
+                padding-top: 85px
+            }
+
+            .header-content {
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 20px
+            }
+
+            #logo {
+                height: 50px;
+                z-index: 1001
+            }
+
+            .hamburger {
+                display: flex;
+                margin-left: auto
+            }
+
+            .nav-right {
+                display: none
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 280px;
+                height: 100vh;
+                background: linear-gradient(135deg, #f2f9ff 0%, #fff 100%);
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                align-items: stretch !important;
+                padding: 100px 30px 30px 30px;
+                gap: 0 !important;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, .1);
+                transition: transform 2s ease-out;
+                z-index: 1000;
+                overflow-y: auto
+            }
+
+            nav.active {
+                right: 0
+            }
+
+            nav a {
+                width: 100%;
+                padding: 15px 20px;
+                margin: 5px 0;
+                border-radius: 12px;
+                font-size: 16px;
+                text-align: left;
+                border-left: 3px solid transparent;
+                transition: all .3s ease
+            }
+
+            nav a:hover {
+                background-color: rgba(0, 166, 166, .1);
+                border-left-color: var(--accent-teal);
+                transform: translateX(5px)
+            }
+
+            .nav-item {
+                width: 100%
+            }
+
+            .nav-item>a {
+                width: 100%
+            }
+
+            .dropdown {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background: rgba(0, 166, 166, .05);
+                margin: 5px 0;
+                border-radius: 8px;
+                max-height: 0;
+                opacity: 0;
+                visibility: visible;
+                overflow: hidden;
+                transition: all .3s ease
+            }
+
+            .nav-item.mobile-active .dropdown {
+                max-height: 200px;
+                opacity: 1;
+                margin-top: 8px
+            }
+
+            .dropdown a {
+                padding: 10px 20px 10px 30px;
+                font-size: 15px
+            }
+
+            .dropdown-arrow {
+                float: right
+            }
+
+            .nav-item.mobile-active .dropdown-arrow {
+                transform: rotate(180deg)
+            }
+
+            .register-btn {
+                width: 100% !important;
+                margin: 15px 0 0 0 !important;
+                padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
+                text-align: center;
+                display: block !important
+            }
+
+            .login-btn {
+                width: 100% !important;
+                margin: 10px 0 0 0 !important;
+                padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
+                background-color: var(--accent-teal);
+                transition: all .3s ease;
+                display: block !important
+            }
+
+            .login-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 5px 15px rgba(0, 166, 166, .3)
+            }
+
+            .container {
+                width: calc(100% - 40px);
+                padding: 30px 20px
+            }
+
+            .page-title {
+                font-size: 28px;
+                margin-bottom: 25px
+            }
+
+            .content {
+                padding: 25px 20px
+            }
+
+            .qualification-section {
+                padding: 20px 15px;
+                overflow-x: auto
+            }
+
+            .qualification-table {
+                min-width: 600px
+            }
+
+            .action-buttons {
+                flex-direction: column
+            }
+
+            .back-btn,
+            .next-btn {
+                width: 100%
+            }
+
+            .tabs {
+                flex-wrap: wrap
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .contact-section,
+            .footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+
+        @media (max-width:480px) {
+            body {
+                padding-top: 75px
+            }
+
+            #logo {
+                height: 45px
+            }
+
+            .hamburger {
+                width: 28px;
+                height: 22px
+            }
+
+            nav {
+                width: 260px;
+                padding: 90px 25px 25px 25px
+            }
+
+            nav a {
+                font-size: 15px;
+                padding: 12px 16px
+            }
+
+            .login-btn {
+                font-size: 15px !important;
+                padding: 12px 16px !important
+            }
+
+            .container {
+                width: calc(100% - 20px);
+                padding: 20px 15px
+            }
+
+            .page-title {
+                font-size: 24px;
+                margin-bottom: 20px
+            }
+
+            .content {
+                padding: 20px 15px
+            }
+
+            .qualification-section {
+                padding: 15px 12px
+            }
+
+            .section-title {
+                font-size: 16px
+            }
+
+            .tabs {
+                gap: 8px
+            }
+
+            .tab {
+                font-size: 15px;
+                padding: 10px 20px
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div id="header-placeholder"></div>
-    <div class="menu-overlay" id="menuOverlay"></div>
-    <div class="container1">
-        <h1 class="page-title1">Registration Form</h1>
-        <div class="tabs1">
-            <a class="tab1" href="reg1.html">Personal Details</a>
-            <a class="tab1 active" href="reg2.html">Educational Details</a>
-            <a href='reg3.html' class="tab1">Work Experience</a>
+    <header>
+        <div class="header-content">
+            <div class="logo-container">
+                <a href="index.html"><img id='logo' src="assets/Logo.avif" height="70px" alt="COV Logo"></a>
+            </div>
+            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+            <nav id="navMenu">
+                <a href="membership.html">Membership</a>
+                 <a href="training.html">Training & Courses</a>
+                <a href="events.html">Events</a>
+                <div class="nav-item">
+                    <a>About Us <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown">
+                        <a href="about.html#our-story">Our Story</a>
+                        <a href="BOD.html">Board of Directors</a>
+                        <a href="committee.html">Committee</a>
+                        <a href="bylaws.html" id="">By Laws</a>
+                    </div>
+                </div>
+                <a href="covsphere.html">COV Sphere</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <div class="nav-right">
+                <a href="reg0.html" class="register-btn">Register Now</a>
+                <button class="login-btn">Login</button>
+            </div>
         </div>
-        <div class="content1">
-            <div class="qualification-section1">
-                <h3 class="section-title1">Educational Qualification</h3>
-                <div id="educationalTableContainer1">
-                    <table class="qualification-table1">
+    </header>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="container">
+        <h1 class="page-title">Registration Form</h1>
+        <div class="tabs">
+            <a class="tab" href="reg1.html">Personal Details</a>
+            <a class="tab active" href="reg2.html">Educational Details</a>
+            <a href='reg3.html' class="tab">Work Experience</a>
+        </div>
+        <div class="content">
+            <div class="qualification-section">
+                <h3 class="section-title">Educational Qualification</h3>
+                <div id="educationalTableContainer">
+                    <table class="qualification-table">
                         <thead>
                             <tr>
                                 <th>Educational Qualification</th>
@@ -34,9 +960,9 @@
                                 <th>Upload</th>
                             </tr>
                         </thead>
-                        <tbody id="educationalTableBody1">
+                        <tbody id="educationalTableBody">
                             <tr>
-                                <td><select class="qualification-select1">
+                                <td><select class="qualification-select">
                                         <option value="">Select</option>
                                         <option value="10th">10th</option>
                                         <option value="12th">12th</option>
@@ -47,12 +973,12 @@
                                 <td><input type="text" placeholder="Marks %"></td>
                                 <td><input type="text" placeholder="Board/Univ"></td>
                                 <td><input type="text" placeholder="College/University"></td>
-                                <td><button class="upload-btn1"
+                                <td><button class="upload-btn"
                                         onclick="document.getElementById('eduUpload1').click()">Upload</button><input
                                         type="file" id="eduUpload1" accept=".pdf,.jpg,.png"></td>
                             </tr>
                             <tr>
-                                <td><select class="qualification-select1">
+                                <td><select class="qualification-select">
                                         <option value="">Select</option>
                                         <option value="10th">10th</option>
                                         <option value="12th">12th</option>
@@ -63,19 +989,19 @@
                                 <td><input type="text" placeholder="Marks %"></td>
                                 <td><input type="text" placeholder="Board/Univ"></td>
                                 <td><input type="text" placeholder="College/University"></td>
-                                <td><button class="upload-btn1"
+                                <td><button class="upload-btn"
                                         onclick="document.getElementById('eduUpload2').click()">Upload</button><input
                                         type="file" id="eduUpload2" accept=".pdf,.jpg,.png"></td>
                             </tr>
                         </tbody>
                     </table>
-                    <button class="add-row-btn1" onclick="addEducationalRow()">+ Add Row</button>
+                    <button class="add-row-btn" onclick="addEducationalRow()">+ Add Row</button>
                 </div>
             </div>
-            <div class="qualification-section1">
-                <h3 class="section-title1">Professional Qualification</h3>
-                <div id="professionalTableContainer1">
-                    <table class="qualification-table1">
+            <div class="qualification-section">
+                <h3 class="section-title">Professional Qualification</h3>
+                <div id="professionalTableContainer">
+                    <table class="qualification-table">
                         <thead>
                             <tr>
                                 <th>Professional Qualification</th>
@@ -86,14 +1012,14 @@
                                 <th>Upload</th>
                             </tr>
                         </thead>
-                        <tbody id="professionalTableBody1">
+                        <tbody id="professionalTableBody">
                             <tr>
                                 <td><input type="text" placeholder="Qualification"></td>
                                 <td><input type="text" placeholder="Institute Name"></td>
                                 <td><input type="text" placeholder="Membership No."></td>
                                 <td><input type="text" placeholder="Year"></td>
                                 <td><input type="text" placeholder="Validity"></td>
-                                <td><button class="upload-btn1"
+                                <td><button class="upload-btn"
                                         onclick="document.getElementById('proUpload1').click()">Upload</button><input
                                         type="file" id="proUpload1" accept=".pdf,.jpg,.png"></td>
                             </tr>
@@ -103,29 +1029,104 @@
                                 <td><input type="text" placeholder="Membership No."></td>
                                 <td><input type="text" placeholder="Year"></td>
                                 <td><input type="text" placeholder="Validity"></td>
-                                <td><button class="upload-btn1"
+                                <td><button class="upload-btn"
                                         onclick="document.getElementById('proUpload2').click()">Upload</button><input
                                         type="file" id="proUpload2" accept=".pdf,.jpg,.png"></td>
                             </tr>
                         </tbody>
                     </table>
-                    <button class="add-row-btn1" onclick="addProfessionalRow()">+ Add Row</button>
+                    <button class="add-row-btn" onclick="addProfessionalRow()">+ Add Row</button>
                 </div>
             </div>
-            <div class="action-buttons1">
-                <button class="back-btn1" onclick="window.location.href='reg1.html'">Back</button>
-                <button class="next-btn1" onclick="window.location.href='reg3.html'">Next</button>
+            <div class="action-buttons">
+                <button class="back-btn" onclick="window.location.href='reg1.html'">Back</button>
+                <button class="next-btn" onclick="window.location.href='reg3.html'">Next</button>
             </div>
         </div>
     </div>
-    <div id="footer-placeholder"></div>
+    
+    <!-- CONTACT SECTION -->
+    <section class="contact-section">
+        <div class="contact-container">
+
+            <!-- Subscribe -->
+            <div class="subscribe-column">
+                <h2>STAY CONNECTED</h2>
+                <p class="subscribe-text">Subscribe to our newsletter for the latest updates and opportunities.</p>
+
+                <form class="subscribe-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                </form>
+
+                <p class="no-spam">We respect your privacy. No spam!</p>
+
+                <div class="social-icons">
+                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+                </div>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="contact-column">
+                <h2>REACH US</h2>
+
+                <h3 class="office-title">Registered Office</h3>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-solid fa-location-arrow"></i></div>
+                    <div class="contact-info">
+                        <p>26/A, First Cross, First Main Canara Bank Colony,<br>Subramanyapura, Bengaluru-560061,
+                            Karnataka</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+                    <div class="contact-info">
+                        <p>+91 98888 58111</p>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
+                    <div class="contact-info">
+                        <p>info@mysite.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- horizontal line -->
+    <div class="footer-divider-wrapper">
+        <div class="footer-divider-inner">
+            <hr class="footer-divider">
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="copyright">
+                © 2025 Confederation of Valuers — All Rights Reserved
+            </p>
+
+            <div class="footer-legal">
+                <a href="refund.html">Refund Policy</a>
+                <a href="TandC.html">Terms & Conditions</a>
+                <a href="privacy.html">Privacy Policy</a>
+            </div>
+        </div>
+    </footer>
+
     <script>
         let eduRowCount = 2, proRowCount = 2; function addEducationalRow() { eduRowCount++; const t = document.getElementById("educationalTableBody"), e = document.createElement("tr"); e.innerHTML = `<td><select class="qualification-select"><option value="">Select</option><option value="10th">10th</option><option value="12th">12th</option><option value="graduate">Graduate</option><option value="postgraduate">Postgraduate</option></select></td><td><input type="text" placeholder="Year"></td><td><input type="text" placeholder="Marks %"></td><td><input type="text" placeholder="Board/Univ"></td><td><input type="text" placeholder="College/University"></td><td><button class="upload-btn" onclick="document.getElementById('eduUpload${eduRowCount}').click()">Upload</button><input type="file" id="eduUpload${eduRowCount}" accept=".pdf,.jpg,.png"></td>`, t.appendChild(e) } function addProfessionalRow() { proRowCount++; const t = document.getElementById("professionalTableBody"), e = document.createElement("tr"); e.innerHTML = `<td><input type="text" placeholder="Qualification"></td><td><input type="text" placeholder="Institute Name"></td><td><input type="text" placeholder="Membership No."></td><td><input type="text" placeholder="Year"></td><td><input type="text" placeholder="Validity"></td><td><button class="upload-btn" onclick="document.getElementById('proUpload${proRowCount}').click()">Upload</button><input type="file" id="proUpload${proRowCount}" accept=".pdf,.jpg,.png"></td>`, t.appendChild(e) } const hamburger = document.getElementById("hamburger"), navMenu = document.getElementById("navMenu"), menuOverlay = document.getElementById("menuOverlay"); hamburger.addEventListener("click", function () { this.classList.toggle("active"), navMenu.classList.toggle("active"), menuOverlay.classList.toggle("active"), document.body.style.overflow = this.classList.contains("active") ? "hidden" : "" }), menuOverlay.addEventListener("click", function () { hamburger.classList.remove("active"), navMenu.classList.remove("active"), this.classList.remove("active"), document.body.style.overflow = "" }), navMenu.querySelectorAll("a").forEach(t => { t.addEventListener("click", function (t) { window.innerWidth <= 768 && this.parentElement.classList.contains("nav-item") || (hamburger.classList.remove("active"), navMenu.classList.remove("active"), menuOverlay.classList.remove("active"), document.body.style.overflow = "") }) }); if (window.innerWidth <= 768) { const t = document.querySelector(".nav-item"); if (t) { t.querySelector("a").addEventListener("click", function (e) { e.preventDefault(), t.classList.toggle("mobile-active") }) } } const navRight = document.querySelector(".nav-right"); if (navRight && window.innerWidth <= 768) { const t = navRight.querySelector(".register-btn").cloneNode(!0), e = navRight.querySelector(".login-btn").cloneNode(!0); navMenu.appendChild(t), navMenu.appendChild(e) }
     </script>
-    <script src="js/components.js"> </script>
-<script src="js/reg.js"> </script>
-<script src="js/script.js"> </script>
-
 </body>
 
 </html>
