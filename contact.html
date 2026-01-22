@@ -7,129 +7,7 @@
     <title>Contact Us - Confederation of Valuers</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
-        /* ==================== HERO BANNER ==================== */
-        .hero-section {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-teal) 100%);
-            color: white;
-            padding: 140px 40px 100px;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            min-height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-section::before {
-            content: "";
-            position: absolute;
-            top: -50%;
-            right: -10%;
-            width: 500px;
-            height: 500px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .hero-section::after {
-            content: "";
-            position: absolute;
-            bottom: -30%;
-            left: -5%;
-            width: 400px;
-            height: 400px;
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 50%;
-            animation: float 8s ease-in-out infinite reverse;
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0) scale(1);
-            }
-
-            50% {
-                transform: translateY(-30px) scale(1.05);
-            }
-        }
-
-        .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .hero-section h1 {
-            font-size: clamp(32px, 5vw, 48px);
-            color: var(--white);
-            font-weight: 700;
-            margin: 0;
-            letter-spacing: -1px;
-            opacity: 1;
-            transform: none;
-        }
-
-        .hero-section p {
-            font-size: clamp(16px, 2vw, 20px);
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.8;
-            max-width: 900px;
-            margin: 0 auto;
-            opacity: 1;
-            transform: none;
-            margin-top: 5px;
-        }
-
-        /* Fade-in animation styles */
-        .fade-in-element {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in-left {
-            opacity: 0;
-            transform: translateX(-40px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in-right {
-            opacity: 0;
-            transform: translateX(40px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in-visible {
-            opacity: 1 !important;
-            transform: translate(0, 0) !important;
-        }
-
-        .form-group {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-
-        .info-item {
-            opacity: 0;
-            transform: translateX(30px);
-            transition: all 0.6s ease;
-        }
-
-        /* Hero text animation */
-        /* Removed to match covsphere static style */
-    </style>
 </head>
 
 <body>
@@ -140,11 +18,11 @@
     <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-content">
+    <section class="hero">
+        
             <h1>Get In Touch</h1>
             <p>We'd love to hear from you. Reach out to us anytime!</p>
-        </div>
+        
     </section>
 
     <!-- Main Container -->
