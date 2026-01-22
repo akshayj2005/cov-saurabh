@@ -6,281 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Board of Directors - COV</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <link rel="stylesheet" href="css/style.css">
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
 
-        :root {
-            --primary: #002b5b;
-            --accent-teal: #00a6a6;
-            --soft-bg: #f2f9ff;
-            --highlight: #38b6ff;
-            --text-dark: #012a4a;
-            --white: #ffffff;
-            --light-gray: #e8f4f8;
-            --hero-height: min(85vh, 600px);
-            --header-offset: 100px;
-        }
+        /* Global, Header, and Footer styles are now inherited from css/style.css */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-                Ubuntu, Cantarell, sans-serif;
-            overflow-x: hidden;
-            color: var(--text-dark);
-            background: var(--white);
-            line-height: 1.6;
-        }
-
-        body::-webkit-scrollbar {
-            display: none;
-            }
-
-        header {
-            background: var(--white);
-            box-shadow: 0 2px 10px rgba(0, 43, 91, 0.1);
-            position: relative;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-        }
-
-        .header-content {
-            max-width: 1520px;
-            margin: 0 auto;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-            flex-shrink: 0;
-        }
-
-        #logo {
-            height: 70px;
-            display: block;
-        }
-
-        /* ==================== MAIN NAVIGATION - CENTER ==================== */
-        /* This section contains the centered navigation links */
-        /* Copy this entire nav section to other pages for consistent navigation */
-        
-        nav {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            flex-wrap: nowrap;
-            justify-content: center;
-            flex: 1;
-        }
-
-        nav a {
-            position: relative;
-            padding: 8px 16px;
-            border-radius: 20px;
-            text-decoration: none;
-            color: rgb(10, 8, 94);
-            font-size: 18px;
-            transition: 0.3s ease-in-out;
-            white-space: nowrap;
-        }
-
-        nav a:hover {
-            background-color: rgba(10, 8, 94, 0.12);
-            transform: translateY(-2px);
-        }
-
-        /* Dropdown Styles */
-        .nav-item {
-            position: relative;
-        }
-
-        .dropdown {
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 25px rgba(0, 43, 91, 0.15);
-            min-width: 220px;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-            z-index: 1100;
-            margin-top: 10px;
-            overflow: hidden;
-        }
-
-        .nav-item:hover .dropdown {
-            opacity: 1;
-            visibility: visible;
-            margin-top: 15px;
-        }
-
-        .dropdown a {
-            display: block;
-            padding: 12px 20px;
-            color: var(--primary);
-            font-size: 16px;
-            border-radius: 0;
-            transition: all 0.3s ease;
-            border-left: 3px solid transparent;
-        }
-
-        .dropdown a:hover {
-            background-color: rgba(0, 166, 166, 0.1);
-            border-left-color: var(--accent-teal);
-            transform: translateX(5px);
-        }
-
-        .dropdown-arrow {
-            display: inline-block;
-            margin-left: 5px;
-            font-size: 12px;
-            transition: transform 0.3s ease;
-        }
-
-        .nav-item:hover .dropdown-arrow {
-            transform: rotate(180deg);
-        }
-        
-        /* ==================== END MAIN NAVIGATION ==================== */
-
-        /* ==================== RIGHT SIDE BUTTONS ==================== */
-        /* This section contains Register Now and Login buttons */
-        /* Copy this section to other pages for consistent button layout */
-        
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            flex-shrink: 0;
-        }
-
-       /* Replace the .register-btn section in your BOD page CSS (around line 197-207) */
-
-.register-btn {
-    padding: 6px 17px;
-    background-color: transparent;
-    color: rgb(10, 8, 94);
-    text-decoration: none;
-    border-radius: 25px;
-    border: 2px solid rgb(10, 8, 94);
-    font-size: 16px;
-    font-weight: 600;
-    transition: 0.3s ease-in-out;
-    white-space: nowrap;
-    display: inline-block;
-    line-height: 1.2;
-}
-
-.register-btn:hover {
-    background-color: rgb(10, 8, 94);
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
-}
-
-/* Also add this to prevent visited link color issues */
-.register-btn:visited {
-    color: rgb(10, 8, 94);
-}
-
-.register-btn:visited:hover {
-    color: white;
-}
-
-        .login-btn {
-            padding: 8px 20px;
-            background-color: rgb(10, 8, 94);
-            color: white;
-            border: none;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            white-space: nowrap;
-        }
-
-        .login-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(10, 8, 94, 0.4);
-        }
-        
-        /* ==================== END RIGHT SIDE BUTTONS ==================== */
-
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 30px;
-            height: 24px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            padding: 0;
-            z-index: 1001;
-            position: relative;
-        }
-
-        .hamburger span {
-            width: 100%;
-            height: 3px;
-            background-color: var(--primary);
-            border-radius: 3px;
-            transition: all 0.3s ease;
-            transform-origin: center;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: translateY(10.5px) rotate(45deg);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: translateY(-10.5px) rotate(-45deg);
-        }
-
-        .menu-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .menu-overlay.active {
-            display: block;
-            opacity: 1;
-        }
-
+        /* ==================== HERO SECTION (Page Specific Override if needed, otherwise matches style.css) ==================== */
         .hero-section {
             background: linear-gradient(135deg, var(--primary) 0%, var(--accent-teal) 100%);
             padding: 150px 40px 80px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
         }
 
         .hero-section::before {
@@ -310,9 +52,12 @@
         }
 
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0) scale(1);
             }
+
             50% {
                 transform: translateY(-30px) scale(1.05);
             }
@@ -385,13 +130,33 @@
             }
         }
 
-        .director-card:nth-child(1) { animation-delay: 0.1s; }
-        .director-card:nth-child(2) { animation-delay: 0.2s; }
-        .director-card:nth-child(3) { animation-delay: 0.3s; }
-        .director-card:nth-child(4) { animation-delay: 0.4s; }
-        .director-card:nth-child(5) { animation-delay: 0.5s; }
-        .director-card:nth-child(6) { animation-delay: 0.6s; }
-        .director-card:nth-child(7) { animation-delay: 0.7s; }
+        .director-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .director-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .director-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .director-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .director-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .director-card:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .director-card:nth-child(7) {
+            animation-delay: 0.7s;
+        }
 
         .director-card::before {
             content: "";
@@ -687,200 +452,200 @@
         }
 
         /* ===== CONTACT SECTION ===== */
-.contact-section {
-  background: var(--primary);
-  padding: 80px 40px;
-  position: relative;
-  overflow: hidden;
-}
+        .contact-section {
+            background: var(--primary);
+            padding: 80px 40px;
+            position: relative;
+            overflow: hidden;
+        }
 
-.contact-container {
-  max-width: 1440px;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 60px;
-  position: relative;
-}
+        .contact-container {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            position: relative;
+        }
 
-.subscribe-column h2,
-.contact-column h2 {
-  color: white;
-  font-size: 1.8rem;
-  margin-bottom: 25px;
-  font-weight: 600;
-  padding-bottom: 12px;
-  position: relative;
-}
+        .subscribe-column h2,
+        .contact-column h2 {
+            color: white;
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 600;
+            padding-bottom: 12px;
+            position: relative;
+        }
 
-.subscribe-column h2::after,
-.contact-column h2::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 60px;
-  height: 3px;
-  background: linear-gradient(90deg, var(--accent-teal), var(--highlight));
-}
+        .subscribe-column h2::after,
+        .contact-column h2::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-teal), var(--highlight));
+        }
 
-.subscribe-text {
-  color: var(--highlight);
-  margin-bottom: 20px;
-}
+        .subscribe-text {
+            color: var(--highlight);
+            margin-bottom: 20px;
+        }
 
-.subscribe-form {
-  display: flex;
-  gap: 10px;
-}
+        .subscribe-form {
+            display: flex;
+            gap: 10px;
+        }
 
-.subscribe-form input {
-  flex: 1;
-  padding: 14px 18px;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  border-radius: 8px;
-}
+        .subscribe-form input {
+            flex: 1;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            border-radius: 8px;
+        }
 
-.subscribe-form input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
-}
+        .subscribe-form input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
 
-.subscribe-form input:focus {
-  outline: none;
-  border-color: var(--accent-teal);
-}
+        .subscribe-form input:focus {
+            outline: none;
+            border-color: var(--accent-teal);
+        }
 
-.subscribe-form button {
-  padding: 14px 20px;
-  border: none;
-  border-radius: 8px;
-  background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
-  color: white;
-  cursor: pointer;
-  font-size: 1.1em;
-  transition: 0.3s;
-}
+        .subscribe-form button {
+            padding: 14px 20px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+            color: white;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: 0.3s;
+        }
 
-.subscribe-form button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(0, 166, 166, 0.3);
-}
+        .subscribe-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 166, 166, 0.3);
+        }
 
-.no-spam {
-  color: rgba(255, 255, 255, 0.6);
-  margin-top: 10px;
-  font-size: 0.85rem;
-}
+        .no-spam {
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 10px;
+            font-size: 0.85rem;
+        }
 
-.social-icons {
-  display: flex;
-  gap: 12px;
-  margin-top: 20px;
-}
+        .social-icons {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
 
-.social-icons a {
-  width: 40px;
-  height: 40px;
-  display: flex;
-  border-radius: 8px;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: white;
-  transition: 0.3s;
-  text-decoration: none;
-}
+        .social-icons a {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            transition: 0.3s;
+            text-decoration: none;
+        }
 
-.social-icons a:hover {
-  background: var(--accent-teal);
-  border-color: var(--accent-teal);
-  transform: translateY(-3px);
-}
+        .social-icons a:hover {
+            background: var(--accent-teal);
+            border-color: var(--accent-teal);
+            transform: translateY(-3px);
+        }
 
-.office-title {
-  color: var(--highlight);
-  font-size: 1.2rem;
-  margin-bottom: 20px;
-}
+        .office-title {
+            color: var(--highlight);
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
 
-.contact-item {
-  display: flex;
-  gap: 15px;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 18px;
-  transition: 0.3s;
-}
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 18px;
+            transition: 0.3s;
+        }
 
-.contact-item:hover {
-  transform: translateX(5px);
-}
+        .contact-item:hover {
+            transform: translateX(5px);
+        }
 
-.contact-icon {
-  width: 45px;
-  height: 45px;
-  background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
-  color: white;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 8px;
-}
+        .contact-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+            color: white;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 8px;
+        }
 
 
-/* ==================== horizontal line ==================== */
-.footer-divider-wrapper {
-  background: #002b5b;      
-}
+        /* ==================== horizontal line ==================== */
+        .footer-divider-wrapper {
+            background: #002b5b;
+        }
 
-.footer-divider-inner {
-  max-width: 1520px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
+        .footer-divider-inner {
+            max-width: 1520px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
 
-.footer-divider {
-  border: none;
-  height: 1px;
-  background: #0f3e6a;
-}
+        .footer-divider {
+            border: none;
+            height: 1px;
+            background: #0f3e6a;
+        }
 
-/* ==================== FOOTER ==================== */
+        /* ==================== FOOTER ==================== */
 
-.footer {
-  background: var(--primary);
-  padding: 25px 40px;
-}
+        .footer {
+            background: var(--primary);
+            padding: 25px 40px;
+        }
 
-.footer-content {
-  max-width: 1440px;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+        .footer-content {
+            max-width: 1440px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-.footer-content a {
-  color: white;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
+        .footer-content a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
 
-.footer-content a:hover {
-  color: var(--accent-teal);
-}
+        .footer-content a:hover {
+            color: var(--accent-teal);
+        }
 
-.footer-content p {
-  color: white;
-}
+        .footer-content p {
+            color: white;
+        }
 
-.footer-legal {
-  display: flex;
-  gap: 20px;
-}
+        .footer-legal {
+            display: flex;
+            gap: 20px;
+        }
 
 
         @media (max-width: 1280px) {
@@ -930,7 +695,7 @@
             nav.active {
                 right: 0;
             }
-            
+
 
             nav a {
                 width: 100%;
@@ -954,7 +719,7 @@
                 width: 100%;
             }
 
-            .nav-item > a {
+            .nav-item>a {
                 width: 100%;
             }
 
@@ -1048,7 +813,7 @@
                 font-size: 15px;
             }
 
-             .contact-container {
+            .contact-container {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
@@ -1122,55 +887,15 @@
         ::-webkit-scrollbar-thumb:hover {
             background: var(--primary);
         }
-        
-
     </style>
 </head>
 
 <body>
     <!-- ==================== HEADER - COPY TO ALL PAGES ==================== -->
-    <header>
-        <div class="header-content">
-            <!-- Logo Section - Left -->
-            <div class="logo-container">
-                <a href="index.html">
-                    <img id='logo' src="assets/Logo.avif" height="70px" alt="COV Logo">
-                </a>
-            </div>
-
-            <!-- Hamburger Menu - Mobile Only -->
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <!-- Main Navigation - Center -->
-                        <nav id="navMenu">
-                <a href="membership.html">Membership</a>
-                 <a href="training.html">Training & Courses</a>
-                <a href="events.html">Events</a>
-                <div class="nav-item">
-                    <a>About Us <span class="dropdown-arrow">▼</span></a>
-                    <div class="dropdown">
-                        <a href="about.html#our-story">Our Story</a>
-                        <a href="BOD.html">Board of Directors</a>
-                        <a href="committee.html">Committee</a>
-                        <a href="bylaws.html" id="">By Laws</a>
-                    </div>
-                </div>
-                <a href="covsphere.html">COV Sphere</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-
-
-            <!-- Right Side Buttons -->
-            <div class="nav-right">
-                <a href="reg0.html" class="register-btn">Register Now</a>
-                <button class="login-btn">Login</button>
-            </div>
-        </div>
-    </header>
+    <!-- ==================== HEADER ==================== -->
+    <div id="header-placeholder"></div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <!-- ==================== END HEADER ==================== -->
     <!-- ==================== END HEADER ==================== -->
 
     <div class="menu-overlay" id="menuOverlay"></div>
@@ -1195,7 +920,8 @@
                     </div>
                     <h3 class="director-name">Dr. Sandip Kumar Deb</h3>
                     <p class="director-title">Chairperson</p>
-                    <p class="director-bio-preview">Mr. Sandip Kumar Deb is the Vice Chairman of the Tangible Assets Board of
+                    <p class="director-bio-preview">Mr. Sandip Kumar Deb is the Vice Chairman of the Tangible Assets
+                        Board of
                         IVSC. He is the Registered Valuer Director of the Assessors and Registered Valuers Foundation of
                         India...</p>
                     <button class="read-more-btn">Read More</button>
@@ -1203,11 +929,12 @@
 
                 <div class="director-card" data-director="2">
                     <div class="director-image">
-                       <img src="assets/Praveen Gupta.avif" alt="">
+                        <img src="assets/Praveen Gupta.avif" alt="">
                     </div>
                     <h3 class="director-name">Mr. Praveen Kumar Gupta</h3>
                     <p class="director-title">Director</p>
-                    <p class="director-bio-preview">With a distinguished career spanning over four decades, Praveen Kumar Gupta
+                    <p class="director-bio-preview">With a distinguished career spanning over four decades, Praveen
+                        Kumar Gupta
                         has been a stalwart in India's cooperative movement. As an advisory member to several National
                         Cooperative Federations...</p>
                     <button class="read-more-btn">Read More</button>
@@ -1219,7 +946,8 @@
                     </div>
                     <h3 class="director-name">Mr. Praveen Subramanya</h3>
                     <p class="director-title">Director</p>
-                    <p class="director-bio-preview">Praveen Subramanya is a valuation expert with over 21 years of experience
+                    <p class="director-bio-preview">Praveen Subramanya is a valuation expert with over 21 years of
+                        experience
                         across real estate, business, financial instruments, and plant & machinery in India and
                         international markets...</p>
                     <button class="read-more-btn">Read More</button>
@@ -1231,7 +959,8 @@
                     </div>
                     <h3 class="director-name">Mr. Saurabh Gupta</h3>
                     <p class="director-title">Director</p>
-                    <p class="director-bio-preview">Saurabh Gupta is a seasoned management professional with nearly two decades
+                    <p class="director-bio-preview">Saurabh Gupta is a seasoned management professional with nearly two
+                        decades
                         of experience in consulting, business development, and strategic leadership. As Managing
                         Director of AaRVF...</p>
                     <button class="read-more-btn">Read More</button>
@@ -1239,11 +968,12 @@
 
                 <div class="director-card" data-director="5">
                     <div class="director-image">
-                       <img src="assets/Rahul Sharma.avif" alt="">
+                        <img src="assets/Rahul Sharma.avif" alt="">
                     </div>
                     <h3 class="director-name">Mr. Rahul Sharma</h3>
                     <p class="director-title">Director</p>
-                    <p class="director-bio-preview">With over 14 years of experience, Rahul Sharma is a seasoned professional in
+                    <p class="director-bio-preview">With over 14 years of experience, Rahul Sharma is a seasoned
+                        professional in
                         commercial operations, stakeholder liaison, and strategic business development. He has
                         successfully interfaced with Indian Railways...</p>
                     <button class="read-more-btn">Read More</button>
@@ -1251,11 +981,12 @@
 
                 <div class="director-card" data-director="6">
                     <div class="director-image">
-                      <img src="assets/Hariom Giri.avif" alt="">
+                        <img src="assets/Hariom Giri.avif" alt="">
                     </div>
                     <h3 class="director-name">Mr. Hariom Giri</h3>
                     <p class="director-title">Director</p>
-                    <p class="director-bio-preview">Hariom Giri is a seasoned valuation professional with over 25 years of
+                    <p class="director-bio-preview">Hariom Giri is a seasoned valuation professional with over 25 years
+                        of
                         experience in real estate and infrastructure valuation. As a Property Valuer at GCA Technical
                         Consultants...</p>
                     <button class="read-more-btn">Read More</button>
@@ -1263,11 +994,12 @@
 
                 <div class="director-card" data-director="7">
                     <div class="director-image">
-                       <img src="assets/Sanchit Gupta.avif" alt="">
+                        <img src="assets/Sanchit Gupta.avif" alt="">
                     </div>
                     <h3 class="director-name">Mr. Sanchit Gupta</h3>
                     <p class="director-title">Director</p>
-                    <p class="director-bio-preview">Sanchit Gupta is a real estate and construction professional with over 10
+                    <p class="director-bio-preview">Sanchit Gupta is a real estate and construction professional with
+                        over 10
                         years of experience in sales, project coordination, and client relationship management across
                         India's built environment sector...</p>
                     <button class="read-more-btn">Read More</button>
@@ -1291,148 +1023,18 @@
         </div>
     </div>
 
-   <!-- CONTACT SECTION -->
-    <section class="contact-section">
-        <div class="contact-container">
+    <!-- CONTACT SECTION -->
+    <!-- CONTACT SECTION & FOOTER -->
+    <div id="footer-placeholder"></div>
 
-            <!-- Subscribe -->
-            <div class="subscribe-column">
-                <h2>STAY CONNECTED</h2>
-                <p class="subscribe-text">Subscribe to our newsletter for the latest updates and opportunities.</p>
-
-                <form class="subscribe-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                </form>
-
-                <p class="no-spam">We respect your privacy. No spam!</p>
-
-                <div class="social-icons">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                </div>
-            </div>
-
-            <!-- Contact Info -->
-            <div class="contact-column">
-                <h2>REACH US</h2>
-
-                <h3 class="office-title">Registered Office</h3>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-solid fa-location-arrow"></i></div>
-                    <div class="contact-info">
-                        <p>26/A, First Cross, First Main Canara Bank Colony,<br>Subramanyapura, Bengaluru-560061,
-                            Karnataka</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-                    <div class="contact-info">
-                        <p>+91 98888 58111</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
-                    <div class="contact-info">
-                        <p>info@mysite.com</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- horizontal line -->
-    <div class="footer-divider-wrapper">
-        <div class="footer-divider-inner">
-            <hr class="footer-divider">
-        </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p class="copyright">
-                © 2025 Confederation of Valuers — All Rights Reserved
-            </p>
-
-            <div class="footer-legal">
-                <a href="refund.html">Refund Policy</a>
-                <a href="TandC.html">Terms & Conditions</a>
-                <a href="privacy.html">Privacy Policy</a>
-            </div>
-        </div>
-    </footer>
-
+    <script src="js/components.js"></script>
+    <script src="js/script.js"></script>
     <script>
-        // ==================== NAVIGATION SCRIPT - COPY TO ALL PAGES ====================
-        
-        // Hamburger menu
-        const hamburger = document.getElementById('hamburger');
-        const navMenu = document.getElementById('navMenu');
-        const menuOverlay = document.getElementById('menuOverlay');
-
-        hamburger.addEventListener('click', function () {
-            this.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            menuOverlay.classList.toggle('active');
-            document.body.style.overflow = this.classList.contains('active') ? 'hidden' : '';
-        });
-
-        menuOverlay.addEventListener('click', function () {
-            hamburger.classList.remove('active');
-            navMenu.classList.remove('active');
-            this.classList.remove('active');
-            document.body.style.overflow = '';
-        });
-
-        const navLinks = navMenu.querySelectorAll('a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', function (e) {
-                // Don't close menu if clicking dropdown parent on mobile
-                if (window.innerWidth <= 768 && this.parentElement.classList.contains('nav-item')) {
-                    return;
-                }
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                menuOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        });
-
-        // Mobile dropdown toggle
-        if (window.innerWidth <= 768) {
-            const navItem = document.querySelector('.nav-item');
-            if (navItem) {
-                const navItemLink = navItem.querySelector('a');
-                
-                navItemLink.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    navItem.classList.toggle('mobile-active');
-                });
-            }
-        }
-
-        // Clone right buttons into mobile menu
-        const navRight = document.querySelector('.nav-right');
-        if (navRight && window.innerWidth <= 768) {
-            const registerBtn = navRight.querySelector('.register-btn').cloneNode(true);
-            const loginBtn = navRight.querySelector('.login-btn').cloneNode(true);
-            navMenu.appendChild(registerBtn);
-            navMenu.appendChild(loginBtn);
-        }
-
-        // ==================== END NAVIGATION SCRIPT ====================
-
-        
         // ==================== PAGE-SPECIFIC SCRIPTS BELOW ====================
-        
+
+
+        // ==================== PAGE-SPECIFIC SCRIPTS BELOW ====================
+
         // Director data
         const directorsData = {
             1: {
@@ -1490,7 +1092,7 @@
 
         // Open modal
         document.querySelectorAll('.read-more-btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
+            btn.addEventListener('click', function (e) {
                 e.stopPropagation();
                 const card = this.closest('.director-card');
                 const directorId = card.getAttribute('data-director');
@@ -1518,19 +1120,19 @@
 
         modalClose.addEventListener('click', closeModal);
 
-        modalBackdrop.addEventListener('click', function(e) {
+        modalBackdrop.addEventListener('click', function (e) {
             if (e.target === modalBackdrop) {
                 closeModal();
             }
         });
 
         // Prevent modal content clicks from closing modal
-        modalContent.addEventListener('click', function(e) {
+        modalContent.addEventListener('click', function (e) {
             e.stopPropagation();
         });
 
         // Close on Escape key
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape' && modalBackdrop.classList.contains('active')) {
                 closeModal();
             }
