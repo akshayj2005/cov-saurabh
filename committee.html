@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
-    <title>Committee Members - COV</title>
     <link rel="stylesheet" href="css/style.css">
-</head>
+    <title>Committee Members - COV</title>
+    <!-- <style>
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
@@ -747,47 +748,16 @@
 
             .member-card {
                 padding: 20px;
+            }
+        }
+    </style> -->
+</head>
 <body>
-    <header>
-        <div class="header-content">
-            <div class="logo-container">
-                <a href="index.html">
-                    <img id='logo' src="assets/Logo.avif" height="70px" alt="COV Logo">
-                </a>
-            </div>
-            <button class="hamburger" id="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav id="navMenu">
-                <a href="membership.html">Membership</a>
-                 <a href="training.html">Training & Courses</a>
-                <a href="events.html">Events</a>
-                <div class="nav-item">
-                    <a>About Us <span class="dropdown-arrow">▼</span></a>
-                    <div class="dropdown">
-                        <a href="about.html#our-story">Our Story</a>
-                        <a href="BOD.html">Board of Directors</a>
-                        <a href="committee.html">Committee</a>
-                        <a href="bylaws.html" id="">By Laws</a>
-                    </div>
-                </div>
-                <a href="covsphere.html">COV Sphere</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-
-            <div class="nav-right">
-                <a href="reg0.html" class="register-btn-header">Register Now</a>
-                <button class="login-btn">Login</button>
-            </div>
-        </div>
-    </header>
-
+    <div id="header-placeholder"></div>
     <div class="menu-overlay" id="menuOverlay"></div>
 
     <!-- Hero Section -->
-    <section class="committee-hero">
+    <section class="hero">
         <h1>Committee Members</h1>
         <p>Meet the dedicated professionals leading COV's mission</p>
     </section>
@@ -980,5 +950,7 @@ if (window.innerWidth <= 768) {
         }
 
 </script>
+<script src="js/components.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>

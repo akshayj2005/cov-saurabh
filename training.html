@@ -4,17 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
-    <title>Terms & Conditions - COV</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <title>Terms & Conditions - COV</title>
 </head>
 <body>
+
     <div id="header-placeholder"></div>
+
     <div class="menu-overlay" id="menuOverlay"></div>
 
 
     <!-- Hero Section -->
-    <section class="terms-hero">
+    <section class="hero">
         <h1>Training & Courses</h1>
     </section>
 
@@ -22,65 +23,61 @@
     <div class="terms-container">
         <p>Coming Soon...</p>
     </div>
+<div id="footer-placeholder"></div>
 
-    <!-- CONTACT SECTION -->
-    <section class="contact-section">
-        <div class="contact-container">
+    <script>
+	const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+const menuOverlay = document.getElementById('menuOverlay');
 
-            <!-- Subscribe -->
-            <div class="subscribe-column">
-                <h2>STAY CONNECTED</h2>
-                <p class="subscribe-text">Subscribe to our newsletter for the latest updates and opportunities.</p>
+hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+    menuOverlay.classList.toggle('active');
+    document.body.style.overflow = hamburger.classList.contains('active') ? 'hidden' : '';
+});
 
-                <form class="subscribe-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                </form>
+menuOverlay.addEventListener('click', () => {
+    hamburger.classList.remove('active');
+    navMenu.classList.remove('active');
+    menuOverlay.classList.remove('active');
+    document.body.style.overflow = '';
+});
 
-                <p class="no-spam">We respect your privacy. No spam!</p>
+navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', function () {
+        if (window.innerWidth <= 768 && this.parentElement.classList.contains('nav-item')) return;
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        menuOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+    });
+});
 
-                <div class="social-icons">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                </div>
-            </div>
+if (window.innerWidth <= 768) {
+    const navItem = document.querySelector('.nav-item');
+    if (navItem) {
+        navItem.querySelector('a').addEventListener('click', e => {
+            e.preventDefault();
+            navItem.classList.toggle('mobile-active');
+        });
+    }
+}
+// Clone right buttons into mobile menu
+        const navRight = document.querySelector('.nav-right');
+        if (navRight && window.innerWidth <= 768) {
+            const registerBtn = navRight.querySelector('.register-btn-header');
+            const loginBtn = navRight.querySelector('.login-btn');
+            if (registerBtn && loginBtn) {
+                const registerClone = registerBtn.cloneNode(true);
+                const loginClone = loginBtn.cloneNode(true);
+                navMenu.appendChild(registerClone);
+                navMenu.appendChild(loginClone);
+            }
+        }
 
-            <!-- Contact Info -->
-            <div class="contact-column">
-                <h2>REACH US</h2>
-
-                <h3 class="office-title">Registered Office</h3>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-solid fa-location-arrow"></i></div>
-                    <div class="contact-info">
-                        <p>26/A, First Cross, First Main Canara Bank Colony,<br>Subramanyapura, Bengaluru-560061,
-                            Karnataka</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-                    <div class="contact-info">
-                        <p>+91 98888 58111</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
-                    <div class="contact-info">
-                        <p>info@mysite.com</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <div id="footer-placeholder"></div>
-    <script src="js/components.js"></script>
-
+</script>
+<script src="js/components.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

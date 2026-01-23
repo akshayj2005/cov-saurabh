@@ -7,9 +7,672 @@
     <title>Membership - COV</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
+
+        /* Global variables, Reset, and Header styles are now inherited from css/style.css */
+
+        /* ===== HERO SECTION ===== */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent-teal) 100%);
+            color: white;
+            padding: 80px 40px 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-top: 0;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-section::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-section::after {
+            content: "";
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            animation: float 5s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                transform: translateY(-30px) scale(1.05);
+            }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            display:block;
+            z-index: 2;
+        }
+
+        .hero-section h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            color: var(--white);
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 2;
+            letter-spacing: -1px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .hero-section p {
+            font-size: clamp(16px, 2vw, 20px);
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.8;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        /* ===== CATEGORIES SECTION ===== */
+        .categories-section {
+            padding: 80px 40px;
+            background: var(--white);
+        }
+
+        .categories-container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: clamp(28px, 4vw, 38px);
+            font-weight: 700;
+            color: var(--primary);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 50px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .categories-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 30px;
+            background: #e8e8e8;
+            color: #666;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+            color: white;
+            box-shadow: 0 4px 12px rgba(0, 166, 166, 0.3);
+        }
+
+        .tab-btn:hover:not(.active) {
+            background: #d5d5d5;
+        }
+
+        .tab-content {
+            display: none;
+            background: var(--soft-bg);
+            padding: 40px;
+            border-radius: 12px;
+            border: 2px solid var(--accent-teal);
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .tab-content h3 {
+            text-align: center;
+            font-size: 26px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .tagline {
+            display: block;
+            font-weight: 500;
+            font-size: large;
+            text-align: center;
+        }
+
+        .tab-content p {
+            font-size: 16px;
+            color: var(--text-dark);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .tab-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 25px;
+        }
+
+        .tab-content ul li {
+            padding: 10px 0 10px 30px;
+            position: relative;
+            font-size: 16px;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .tab-content ul li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-teal);
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .subcategories {
+            margin-left: 30px;
+            margin-top: 10px;
+        }
+
+        .register-btn1 {
+            width: 100%;
+            padding: 14px 40px;
+            background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .register-btn1:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 166, 166, 0.4);
+        }
+
+        /* ===== BENEFITS SECTION ===== */
+        .benefits-section {
+            padding: 80px 40px;
+            background: var(--soft-bg);
+        }
+
+        .benefits-container {
+            max-width: 1440px;
+            margin: 0 auto;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .benefit-card {
+            background: var(--white);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 43, 91, 0.12);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent-teal);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .benefit-card.fade-in-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0, 166, 166, 0.2);
+        }
+
+        .benefit-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--accent-teal), var(--highlight));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .benefit-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .benefit-card p {
+            font-size: 15px;
+            color: var(--text-dark);
+            line-height: 1.7;
+        }
+
+
+        /* Footer and Contact Styles inherited from css/style.css */
+
+
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1280px) {
+
+            .header-content {
+                padding: 15px 20px;
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+            #logo {
+                height: 50px;
+                z-index: 1001;
+            }
+
+            .hamburger {
+                display: flex;
+                margin-left: auto;
+            }
+
+            .nav-right {
+                display: none;
+            }
+
+            nav {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 280px;
+                height: 100vh;
+                background: linear-gradient(135deg, #f2f9ff 0%, #ffffff 100%);
+                flex-direction: column !important;
+                justify-content: flex-start !important;
+                align-items: stretch !important;
+                padding: 100px 30px 30px 30px;
+                gap: 0 !important;
+                transform: translateX(100%);
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+                transition: transform 0.4s ease-out;
+                z-index: 1000;
+                overflow-y: auto;
+            }
+
+            nav.active {
+                transform: translateX(0);
+            }
+
+            nav a {
+                width: 100%;
+                padding: 15px 20px;
+                margin: 5px 0;
+                border-radius: 12px;
+                font-size: 16px;
+                text-align: left;
+                border-left: 3px solid transparent;
+                transition: all 0.3s ease;
+            }
+
+            nav a:hover {
+                background-color: rgba(0, 166, 166, 0.1);
+                border-left-color: var(--accent-teal);
+                transform: translateX(5px);
+            }
+
+            .nav-item {
+                width: 100%;
+            }
+
+            .nav-item>a {
+                width: 100%;
+            }
+
+            .dropdown {
+                position: static;
+                transform: none;
+                box-shadow: none;
+                background: rgba(0, 166, 166, 0.05);
+                margin: 5px 0;
+                border-radius: 8px;
+                max-height: 0;
+                opacity: 0;
+                visibility: visible;
+                overflow: hidden;
+                transition: all 0.3s ease;
+            }
+
+            .nav-item.mobile-active .dropdown {
+                max-height: 200px;
+                opacity: 1;
+                margin-top: 8px;
+            }
+
+            .dropdown a {
+                padding: 10px 20px 10px 30px;
+                font-size: 15px;
+            }
+
+            .dropdown-arrow {
+                float: right;
+            }
+
+            .nav-item.mobile-active .dropdown-arrow {
+                transform: rotate(180deg);
+            }
+
+            .register-btn-header {
+                width: 100% !important;
+                margin: 15px 0 0 0 !important;
+                padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
+                text-align: center;
+                display: block !important;
+            }
+
+            .login-btn {
+                width: 100% !important;
+                margin: 10px 0 0 0 !important;
+                padding: 15px 20px !important;
+                border-radius: 12px;
+                font-size: 16px;
+                background-color: var(--accent-teal);
+                transition: all 0.3s ease;
+                display: block !important;
+            }
+
+            /* Navigation responsive styles inherited from css/style.css */
+
+            .hero-section {
+                padding: 80px 20px 80px;
+                min-height: 400px;
+            }
+
+            .categories-section,
+            .benefits-section {
+                padding: 50px 20px;
+            }
+
+            .tab-content {
+                padding: 25px 20px;
+            }
+
+            .categories-tabs {
+                gap: 10px;
+            }
+
+            .tab-btn {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+
+            .contact-section,
+            .footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+        }
+
+        @media(min-width:480px) and (max-width:1280px) {
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            #logo {
+                height: 45px;
+            }
+
+
+            .benefits-grid {
+                grid-template-columns: 1fr;
+                margin: 0;
+            }
+
+            .hamburger {
+                width: 28px;
+                height: 22px;
+            }
+
+            nav {
+                width: 260px;
+                padding: 90px 25px 25px 25px;
+            }
+
+
+            /* Modal spacing on mobile */
+            .eligibility-modal {
+                width: 95vw;
+                padding: 16px;
+            }
+
+            /* Scroll container */
+            .eligibility-scroll {
+                overflow-x: auto;
+                overflow-y: auto;
+                max-height: 70vh;
+            }
+
+            /* THIS creates the left & right gap */
+            #eligibilityDynamicContent {
+                padding: 0 16px;
+                /* ← KEY LINE */
+
+            }
+
+            /* Close button stays pinned */
+            .close-modal {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 28px;
+                z-index: 1;
+            }
+
+        }
+
+        ::-webkit-scrollbar {
+            width: 0;
+            height: 0;
+        }
+
+        * {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+
+
+        .popup {
+            display: block;
+            width: fit-content;
+            margin: 20px auto 10px auto;
+            padding: 12px 22px;
+
+
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+
+            color: #002b5b;
+            background: transparent;
+            border: 2px solid #002b5b;
+            border-radius: 6px;
+
+            transition: all 0.3s ease;
+        }
+
+        .popup:hover {
+            background: #002b5b;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .popup:active {
+            transform: translateY(0);
+        }
+
+        /* ===== ELIGIBILITY TABLE ===== */
+        .eligibility-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.45);
+            backdrop-filter: blur(6px);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .eligibility-overlay.active {
+            display: flex;
+        }
+
+        .eligibility-modal {
+            background: #ffffff;
+            padding: 40px;
+            max-width: 520px;
+            width: 90%;
+            border-radius: 12px;
+            position: relative;
+            animation: scaleIn 0.3s ease;
+        }
+
+        .eligibility-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+
+        .eligibility-table th,
+        .eligibility-table td {
+            border: 1px solid #dcdcdc;
+            padding: 12px;
+            vertical-align: top;
+        }
+
+        .eligibility-table th {
+            background: #002b5b;
+            color: #ffffff;
+            text-align: left;
+        }
+
+        .eligibility-table tr:nth-child(even) {
+            background: #f5f8fc;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: transparent;
+            border: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #002b5b;
+        }
+
+        /* mobile scroll */
+        .eligibility-modal {
+            max-height: 85vh;
+            overflow-y: auto;
+        }
+
+        /* animation */
+        @keyframes modalScaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.92);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
 
-<body class="membership-page">
+<body>
     <!-- HEADER -->
     <!-- HEADER -->
     <div id="header-placeholder"></div>
@@ -64,7 +727,7 @@
                 <p>Join a community that empowers future valuation leaders and supports your growth from the ground up.
                 </p>
                 <button class="popup" data-eligibility="student">Check Eligibility</button>
-                <a href="reg0.html" class="register-btn">Register Now</a>
+                <a href="reg0.html" class="register-btn1">Register Now</a>
             </div>
 
             <!-- Affiliate Tab -->
@@ -110,7 +773,7 @@
                     </div>
                 </ul>
                 <button class="popup" data-eligibility="affiliate">Check Eligibility</button>
-                <a href="reg0.html" class="register-btn">Register Now</a>
+                <a href="reg0.html" class="register-btn1">Register Now</a>
             </div>
 
             <!-- Chartered Tab -->
@@ -137,7 +800,7 @@
                         alignment with international standards and ethical valuation practice.</li>
                 </ul>
                 <button class="popup" data-eligibility="chartered">Check Eligibility</button>
-                <a href="reg0.html" class="register-btn">Register Now</a>
+                <a href="reg0.html" class="register-btn1">Register Now</a>
             </div>
 
             <!-- Fellow Tab -->
@@ -162,7 +825,7 @@
                         abroad.</li>
                 </ul>
                 <button class="popup" data-eligibility="fellow">Check Eligibility</button>
-                <a href="reg0.html" class="register-btn">Register Now</a>
+                <a href="reg0.html" class="register-btn1">Register Now</a>
             </div>
 
             <!-- Institutional Tab -->
@@ -182,7 +845,7 @@
                     <li>Industry associations supporting valuation as a discipline</li>
                 </ul>
                 <button class="popup" data-eligibility="institutional">Check Eligibility</button>
-                <a href="reg0.html" class="register-btn">Register Now</a>
+                <a href="reg0.html" class="register-btn1">Register Now</a>
             </div>
         </div>
     </section>
