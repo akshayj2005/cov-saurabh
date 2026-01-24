@@ -10,7 +10,7 @@
 
 </head>
 
-<body>
+<body class="reg-page reg3-only">
     <div id="header-placeholder"></div>
     <div class="menu-overlay" id="menuOverlay"></div>
     <div class="container1">
@@ -89,7 +89,7 @@
                         <div class="radio-group1">
                             <div class="radio-option1"><input type="radio" id="q2-yes" name="question2"
                                     value="yes"><label for="q2-yes">Yes</label></div>
-                            <div class="radio-option11"><input type="radio" id="q2-no" name="question2" value="no"
+                            <div class="radio-option1"><input type="radio" id="q2-no" name="question2" value="no"
                                     checked><label for="q2-no">No</label></div>
                         </div>
                     </li>
@@ -139,7 +139,7 @@
                                     checked><label for="q7-no">No</label></div>
                         </div>
                     </li>
-                    <li class="no-counter" style="margin-left:35px">
+                    <li class="no-counter">
                         <ul class="sub-list">
                             <li><span>Directors disqualified under section 164 of companies act 2013</span>
                                 <div class="radio-group1">
@@ -188,7 +188,7 @@
     <div id="footer-placeholder"></div>
     
     <script>
-        let expRowCount = 2; function addExperienceRow() { expRowCount++; const t = document.getElementById("experienceTableBody"), e = document.createElement("tr"); e.innerHTML = `<td><select><option value="">Select</option><option value="employment">Employment</option><option value="practice">Practice</option></select></td><td><input type="text" placeholder="Year"></td><td><input type="text" placeholder="From"></td><td><input type="text" placeholder="To"></td><td><input type="text" placeholder="Employer"></td><td><input type="text" placeholder="Designation"></td><td><input type="text" placeholder="Area"></td><td><button class="upload-btn" onclick="document.getElementById('expUpload${expRowCount}').click()">Upload</button><input type="file" id="expUpload${expRowCount}" accept=".pdf,.jpg,.png"></td>`, t.appendChild(e) } 
+        let expRowCount = 2; function addExperienceRow() { expRowCount++; const t = document.getElementById("experienceTableBody1"), e = document.createElement("tr"); e.innerHTML = `<td><select><option value="">Select</option><option value="employment">Employment</option><option value="practice">Practice</option></select></td><td><input type="text" placeholder="Year"></td><td><input type="text" placeholder="From"></td><td><input type="text" placeholder="To"></td><td><input type="text" placeholder="Employer"></td><td><input type="text" placeholder="Designation"></td><td><input type="text" placeholder="Area"></td><td><button class="upload-btn1" onclick="document.getElementById('expUpload${expRowCount}').click()">Upload</button><input type="file" id="expUpload${expRowCount}" accept=".pdf,.jpg,.png"></td>`, t.appendChild(e) } 
         const hamburger = document.getElementById("hamburger"), navMenu = document.getElementById("navMenu"), menuOverlay = document.getElementById("menuOverlay"); hamburger.addEventListener("click", function () { this.classList.toggle("active"), navMenu.classList.toggle("active"), menuOverlay.classList.toggle("active"), document.body.style.overflow = this.classList.contains("active") ? "hidden" : "" }), menuOverlay.addEventListener("click", function () { hamburger.classList.remove("active"), navMenu.classList.remove("active"), this.classList.remove("active"), document.body.style.overflow = "" }), navMenu.querySelectorAll("a").forEach(t => { t.addEventListener("click", function (t) { window.innerWidth <= 768 && this.parentElement.classList.contains("nav-item") || (hamburger.classList.remove("active"), navMenu.classList.remove("active"), menuOverlay.classList.remove("active"), document.body.style.overflow = "") }) }); if (window.innerWidth <= 768) { const t = document.querySelector(".nav-item"); if (t) { t.querySelector("a").addEventListener("click", function (e) { e.preventDefault(), t.classList.toggle("mobile-active") }) } } const navRight = document.querySelector(".nav-right"); if (navRight && window.innerWidth <= 768) { const t = navRight.querySelector(".register-btn").cloneNode(!0), e = navRight.querySelector(".login-btn").cloneNode(!0); navMenu.appendChild(t), navMenu.appendChild(e) }
     </script>
     <script src="js/components.js"></script>
