@@ -36,12 +36,11 @@
       ]
     }
     </script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
     <!-- HEADER -->
-    <div id="header-placeholder"></div>
-
+    <%- include("../components/header") %>
     <div class="menu-overlay" id="menuOverlay"></div>
     <!-- Hero Section -->
     <section class="hero">
@@ -148,7 +147,7 @@
         </div>
     </div>
 
-<div id="footer-placeholder"></div>
+<%- include("../components/footer") %>
      <script>
         // Hamburger menu
         const hamburger = document.getElementById('hamburger');

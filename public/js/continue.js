@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
             localStorage.removeItem("continueRegistration");
 
             if (proceed) {
-                window.location.href = "reg1.html";
+                window.location.href = "/personal";
             }
         }, 500);
     }

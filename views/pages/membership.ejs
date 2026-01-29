@@ -36,7 +36,7 @@
       ]
     }
     </script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap");
@@ -705,8 +705,7 @@
 
 <body>
     <!-- HEADER -->
-    <!-- HEADER -->
-    <div id="header-placeholder"></div>
+    <%- include("../components/header") %>
 
 
     <div class="menu-overlay" id="menuOverlay"></div>
@@ -758,7 +757,7 @@
                 <p>Join a community that empowers future valuation leaders and supports your growth from the ground up.
                 </p>
                 <button class="popup" data-eligibility="student">Check Eligibility</button>
-                <a href="reg0.html" class="register-btn1">Register Now</a>
+                <a href="/registration" class="register-btn1">Register Now</a>
             </div>
 
             <!-- Affiliate Tab -->
@@ -804,7 +803,7 @@
                     </div>
                 </ul>
                 <button class="popup" data-eligibility="affiliate">Check Eligibility</button>
-                <a href="reg0.html" class="register-btn1">Register Now</a>
+                <a href="/registration" class="register-btn1">Register Now</a>
             </div>
 
             <!-- Chartered Tab -->
@@ -831,7 +830,7 @@
                         alignment with international standards and ethical valuation practice.</li>
                 </ul>
                 <button class="popup" data-eligibility="chartered">Check Eligibility</button>
-                <a href="reg0.html" class="register-btn1">Register Now</a>
+                <a href="/registration" class="register-btn1">Register Now</a>
             </div>
 
             <!-- Fellow Tab -->
@@ -856,7 +855,7 @@
                         abroad.</li>
                 </ul>
                 <button class="popup" data-eligibility="fellow">Check Eligibility</button>
-                <a href="reg0.html" class="register-btn1">Register Now</a>
+                <a href="/registration" class="register-btn1">Register Now</a>
             </div>
 
             <!-- Institutional Tab -->
@@ -876,7 +875,7 @@
                     <li>Industry associations supporting valuation as a discipline</li>
                 </ul>
                 <button class="popup" data-eligibility="institutional">Check Eligibility</button>
-                <a href="reg0.html" class="register-btn1">Register Now</a>
+                <a href="/registration" class="register-btn1">Register Now</a>
             </div>
         </div>
     </section>
@@ -930,10 +929,9 @@
     <!-- FOOTER -->
     <!-- CONTACT SECTION -->
     <!-- CONTACT SECTION -->
-    <div id="footer-placeholder"></div>
+    <%- include("../components/footer") %>
 
-    <script src="js/components.js"></script>
-    <script src="js/script.js"></script>
+    <script src="/js/script.js"></script>
     <script>
 
         // Tab functionality
@@ -1245,7 +1243,6 @@
             </div>
         </div>
     </div>
-
 
 
     <script>

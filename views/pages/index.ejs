@@ -54,14 +54,14 @@
       ]
     }
     </script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
 
 </head>
 
 <body>
 
-    <div id="header-placeholder"></div>
+    <%- include("../components/header") %>
 
     <div class="menu-overlay" id="menuOverlay"></div>
 
@@ -132,7 +132,7 @@
                     practitioners, and institutional stakeholders—while aligning practice with evolving domestic and
                     global benchmarks.
                 </p>
-                <a href="about.html" class="btn-primary">About Us</a>
+                <a href="/about/our-story" class="btn-primary">About Us</a>
 
             </div>
         </div>
@@ -247,10 +247,10 @@
     </section>
 
     <!-- CONTACT SECTION -->
-    <div id="footer-placeholder"></div>
-    <script src="js/components.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/continue.js"></script>
+    <%- include("../components/footer") %>
+
+    <script src="/js/script.js"></script>
+    <script src="/js/continue.js"></script>
 </body>
 
 </html>

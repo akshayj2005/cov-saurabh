@@ -37,13 +37,13 @@
       ]
     }
     </script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
 </head>
 
 
 <body class="about-body">
-    <div id="header-placeholder"></div>
+    <%- include("../components/header") %>
 
     <div class="menu-overlay" id="menuOverlay"></div>
 
@@ -288,11 +288,10 @@
         </div>
     </section>
 
-    <div id="footer-placeholder"></div>
+    <%- include('../components/footer') %>
 
-    <script src="js/components.js"></script>
-    <script src="js/script.js"></script>
-    <script src="js/about_script.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/about_script.js"></script>
 
 </body>
 

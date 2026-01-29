@@ -30,22 +30,22 @@
       ]
     }
     </script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     
 </head>
 
 <body class="reg-page reg1-only">
-    <div id="header-placeholder"></div>
+    <%- include("../components/header") %>
     <div class="menu-overlay" id="menuOverlay"></div>
 
 
     <div class="container1">
         <h1 class="page-title1">Registration Form</h1>
         <div class="tabs1">
-            <a class="tab1 active" href="reg1.html">Personal Details</a>
-            <a class="tab1" href="reg2.html">Educational Details</a>
-            <a href='reg3.html' class="tab1">Work Experience</a>
+            <a class="tab1 active" href="/personal">Personal Details</a>
+            <a class="tab1" href="/education">Educational Details</a>
+            <a href='/work' class="tab1">Work Experience</a>
         </div>
         <div class="content1">
             <div class="form-grid1">
@@ -161,91 +161,15 @@
                 </div>
             </div>
             <div class="action-buttons1">
-                <button class="back-btn1" onclick="window.location.href='index.html'">Back</button>
-                <button class="next-btn1" onclick="window.location.href='reg2.html'">Next</button>
+                <button class="back-btn1" onclick="window.location.href='/'">Back</button>
+                <button class="next-btn1" onclick="window.location.href='/education'">Next</button>
             </div>
 
         </div>
     </div>
     
     <!-- CONTACT SECTION -->
-    <section class="contact-section">
-        <div class="contact-container">
-
-            <!-- Subscribe -->
-            <div class="subscribe-column">
-                <h2>STAY CONNECTED</h2>
-                <p class="subscribe-text">Subscribe to our newsletter for the latest updates and opportunities.</p>
-
-                <form class="subscribe-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit"><i class="fas fa-paper-plane"></i></button>
-                </form>
-
-                <p class="no-spam">We respect your privacy. No spam!</p>
-
-                <div class="social-icons">
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                    <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
-                </div>
-            </div>
-
-            <!-- Contact Info -->
-            <div class="contact-column">
-                <h2>REACH US</h2>
-
-                <h3 class="office-title">Registered Office</h3>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-solid fa-location-arrow"></i></div>
-                    <div class="contact-info">
-                        <p>26/A, First Cross, First Main Canara Bank Colony,<br>Subramanyapura, Bengaluru-560061,
-                            Karnataka</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-                    <div class="contact-info">
-                        <p>+91 98888 58111</p>
-                    </div>
-                </div>
-
-                <div class="contact-item">
-                    <div class="contact-icon"><i class="fa-regular fa-envelope"></i></div>
-                    <div class="contact-info">
-                        <p>info@mysite.com</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- horizontal line -->
-    <div class="footer-divider-wrapper">
-        <div class="footer-divider-inner">
-            <hr class="footer-divider">
-        </div>
-    </div>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-content">
-            <p class="copyright">
-                © 2025 Confederation of Valuers — All Rights Reserved
-            </p>
-
-            <div class="footer-legal">
-                <a href="refund.html">Refund Policy</a>
-                <a href="TandC.html">Terms & Conditions</a>
-                <a href="privacy.html">Privacy Policy</a>
-            </div>
-        </div>
-    </footer>
+    <%- include("../components/footer") %>
 
     <script>
 	const hamburger = document.getElementById('hamburger');
@@ -299,8 +223,7 @@ if (window.innerWidth <= 768) {
         }
 
 </script>
-<script src="js/components.js"></script>
-    <script src="js/script.js"></script>
+    <script src="/js/script.js"></script>
 </body>
 
 

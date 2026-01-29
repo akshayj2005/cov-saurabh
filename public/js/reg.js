@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("continueRegistration", "true");
 
         // Redirect to home page
-        window.location.href = "index.html";
+        window.location.href = "/";
     });
 
     const inputs = document.querySelectorAll("input[required]");

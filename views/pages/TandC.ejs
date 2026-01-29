@@ -36,11 +36,11 @@
       ]
     }
     </script>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body class="tandc-page">
 
-<div id="header-placeholder"></div>
+<%- include("../components/header") %>
     <div class="menu-overlay" id="menuOverlay"></div>
 
 
@@ -178,7 +178,9 @@
             </div>
         </div>
     </div>
-<div id="footer-placeholder"></div>
+
+    <!-- FOOTER -->
+    <%- include("../components/footer") %>
 <script>
 	const hamburger = document.getElementById('hamburger');
 const navMenu = document.getElementById('navMenu');
@@ -231,8 +233,7 @@ if (window.innerWidth <= 768) {
         }
 
 </script>
-<script src="js/components.js"></script>
-    <script src="js/script.js"></script>
+    <script src="/js/script.js"></script>
     
 
 </body>
