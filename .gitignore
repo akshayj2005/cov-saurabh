@@ -12,3 +12,5 @@ Thumbs.db
 
 # env files
 .env
+
+data/contact.json
