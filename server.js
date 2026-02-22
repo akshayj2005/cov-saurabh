@@ -5,8 +5,9 @@ const app = express();
 const PORT = 3000;
 
 const contactRoutes=require("./routes/contacts");
-app.use(contactRoutes);
+const authRoutes=require("./routes/auth");
 
+app.use("/api/auth",authRoutes);
 
 // Serve all frontend files
 app.use(express.static(path.join(__dirname, "public")));
@@ -17,10 +18,13 @@ app.use(express.json());
 app.set("view engine","ejs");
 app.set("views", path.join(__dirname, "views"));
 
+
 // Default route
 app.get("/", (req, res) => {
   res.render("pages/index");
 });
+
+app.use("/api/contact", contactRoutes);
 
 app.get("/membership", (req, res) => {
   res.render("pages/membership");
@@ -87,14 +91,11 @@ app.get("/work", (req, res) => {
 });
 
 
-app.use("/api/contact", contactRoutes);
-
+app.listen(PORT, () => {
+  console.log(`Server running at http://localhost:${PORT}`);
+});
 
 //nodejs
 // app.get("/work", (req, res) => {
 //   res.sendFile(path.join(__dirname, "reg3.html"));
 // });
-
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
